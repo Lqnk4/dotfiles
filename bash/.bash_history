@@ -404,3 +404,82 @@ cd sway
 ls 
 ls -a
 cd ..
+firefox &
+exit
+sway
+sway
+nv
+sway -d
+sway
+sway
+cd .dotfiles
+ls -a
+cd nvim
+ls 
+mkdir .config
+ls
+ls -a
+mv init.lua .config/
+ls -a
+cd .config
+ls
+vim init.lua 
+ls
+cd ..
+ls -a
+mv lazy-lock.json .config/
+ls -a
+mv lua .config/
+ls
+cd .config
+ls -a
+vim lazy-lock.json 
+vim lua/plugin/colorscheme.lua 
+cd ..
+cd. .
+cd ..
+stow nvim
+cd ..
+ls -a
+cd .config
+ls -a
+cd pulse
+ls -a
+vim cookie 
+:q
+cd ..
+cd ..
+cd ..
+cd ~
+ls -a
+cd .dotfiles
+ls -a
+git status
+vim bash/.bash_history 
+ls -a
+vim .gitignore
+ls -a
+git status
+git add .gitignore 
+git add nvim/
+git status
+git add -A
+git push
+cd ..
+ls -a
+cd git_tokens/
+vim tokens.txt 
+cd ~/.dotfiles/
+git push
+git push
+cd ..
+cat ~/git_tokens/tokens.txt 
+cd .dotfiles/
+git push
+git status
+git commit -m nvim
+git push
+firefox
+cd ..
+sway
+sudo reboot
