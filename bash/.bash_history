@@ -311,3 +311,96 @@ firefox &
 sway -v
 ls -a
 vim sway.log 
+ls -a
+ls
+mkdir git_tokens
+cd git_tokens/
+vim git_tokens.txt
+firefox &
+firefox &
+ls 
+cd git_tokens/
+ls 0-a
+ls -a
+vim tokens.txt
+cd .dotfiles
+git push -u origin
+git push --set-upstream origin main
+git push --set-upstream origin main
+firefox &
+sway
+sway
+sway
+:q
+exit
+ls -a
+cd .dotfiles
+ls -a
+git status
+git add -a
+git add -A
+git status
+git commit
+git config --global user.email ilanchea@wlhs.wlwv.k12.or.us
+git config --global user.name Lqnk4
+git commit -m first
+git branch -M main
+git remote add origin https://github.com/Lqnk4/dotfiles.git
+git push -u origin main
+git push -u origin main
+git config --global user.email internalbeast109@gmail.com
+git push -u origin
+git push -u origin
+git push --set-upstream origin main
+git push --set-upstream origin main
+hyprland
+reboot
+firefox &
+cd .dotfiles
+ls 0a
+ls -a
+cd ..
+ls -a
+cd .dotfiles
+ls -a
+git clone https://github.com/Lqnk4/Neovim-Config.git
+ls -a
+mv Neovim-Config/ nvim
+ls -a
+cd nvim
+ls -a
+rm .git
+rm -a .git
+rm -rf .git
+ls -a
+rm .gitignore 
+firefox &
+firefox
+cd .dotfiles
+ls -a
+stow nvim
+ls -a
+cd ..
+ls 0a
+ls -a
+firefox
+firefox &
+cd .dotfiles
+ls -a
+stow -d nvim
+stow -D nvim
+ls -a
+cd ..
+ls -a
+cd .dotfiles
+ls -a
+cd nvim
+ls -a
+cd ..
+cd bash
+ls -a
+cd ..
+cd sway
+ls 
+ls -a
+cd ..
