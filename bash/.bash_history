@@ -1,485 +1,143 @@
-alacritty
-man sway
-mkdir -p ~/.config/sway
-cp /etc/sway/config ~/.config/sway/
-$EDITOR ~/.config/sway/config
-sudo $EDITOR ~/.config/sway/config
-sudo
-vim ~/.config/sway/config
-alacritty
-q
-exit
-alacritty
-vim ~/.config/sway/config
-exit
-vim ~/.config/sway/config
-nvim .config/sway/config
-nvim .config/sway/config
-vim ~/.config/sway/config
-neofetch
-sudo pacman -Rns foot
-vim ~/.config/sway/config
-neofetch
-vim ~/.config/sway/config
-firefox
-firefox
-vim .config/sway/config 
-vim .config/sway/config '
-
-
-z
-
-vim .config/sway/config
-vim .config/sway/config
-vim .config/sway/config
-exit
-vim .config/sway/config
-firefox
-exit
-wave
-li
-vi
-vim
-nvim
-sudo pacman -S stow
+reboot
 ls -a
-mkdir dotfiles
-cd dotfiles
-git
-firefox
-firefox
-swaymsg -r get_tree
-vi
-vim
-nano
-jjjjjjjj
-bi
-journalctl
-journalctl --user
-journalctl --user
+rm -rf build
+cd .config
 ls -a
-vim sway.log
-rm sway.log
-man 1 swaymsg
-swaymsg -p
-ls -a
-htop
-man sway
-man 2 sway
-man 3 swat
-man 3 sway
-man 4 sway
-man 5 sway
-env
-cd .etc
-cd /etc
-ls -a
-cd ~/.config/environment.d/envvars.conf 
-cd ~/.config/environment.d
+cd ..
+git clone https://github.com/Lqnk4/dotfiles.git
 ls
-nvim envvars.conf 
-rm envvars.conf 
-cd ..
-ls 
-rm environment.d/
-rm -f environment.d/
-rm -rf environment.d/
+ls -a
+rm dotfiles .dotfiles
+mv dotfiles .dotfiles
+ls -a
 ls
-cd ..
-neofetch
-nvim .config/sway/config 
-ly
-pacman -Q ly
-sudo pacman -Runs ly
-sudo pacman -Runs ly
-nvim
-ls -a
-cd .dotfiles
-git init
-git add .
-git status
-git commit -m "Initial commit"
-ls -a
-cd .config
-ls -a
-cd ..
-cd ..
-ls -a
-firefox
-man stow
-info stow
-ls -a
-rm -rf dotfiles
-mkdir ~/.dotfiles
-ls -a
-htop
-ls -a
-cd .cofnig
-cd .config
-ls -a
-htop
-nvim neofetch/config.conf 
-neofetch
-cd ~/.dotfiles/
-stow .
-ls -a
-cd .git
-cd ..
-cd ..
-ls -a
-cd .config
-ls -a
-cd ..
-cd ..
-cd .dotfiles
-cd ..
-cd ~
-ls -a
 cd .dotfiles
 ls -a
-stow .
-cd .git
-ls -a
-cd ..
-mkdir bash
-ls -a
-mv ./bash* ./bash/
-cd ./bash
-ls -a
-cd ..
-ls -a
-mv .bash* ./bash/
-ls -a
-cd bash
-ls -a
-cd ..
 stow bash
-ls -a
-cd bash
-ls -a
-cd ..
+stow bash --adopt
 cd ..
 ls -a
 cd .dotfiles
 ls -a
-cd bash
-ls -a
-nvim .bash_history 
-cd ~
-nvim .bash_history 
-cd .dotfiles/
-stow bash
-ls -a
-cd .config
-ls -a
-cd ..
-cd ..
-cd .dotfiles
-echo ..
-echo $..
-ls -a
-mkdir htop
-ls -a
-mkdir htop/.config
-cd .config
-ls -a
-cd ..
-mv ~/.dotfiles/.config/htop ~/.dotfiles/htop/.config
 stow htop
-htop
-ls -a
+stow neofetch
+stow neofetch --adopt
+stow nvim
+stow sway
+stow systemd
+rm -rf systemd
+stow vim
 cd ..
-ls -a
-cd .config
-ls -a
-cd ~/.dotfiles/
-ls -a
-cd .config
-ls -a
-neofetch
-cd ..
-ls -a
-cd .config
-ls -a
-cd ..
-mkdir neofetch
-ls -a
-mkdir neofetch/.config
-mv .config/neofetch neofetch/.config
+vim
+nvim
 ls -a
 cd .config
 ls -a
 cd ..
-neofetch
+cd .dotfiles
+stow neofetch
+cd ..
+cd .config
+ls
+cd neofetch
 ls -a
+cd ..
+cd nvim
+ls -a
+cd ..
+cd ..
+cd ..
+cd ~
+cd .dotfiles
+dir
 cd neofetch
 ls -a
 cd .config
 ls -a
-cd neofetch/
+cd neofetch
 ls -a
 cd ..
 cd ..
+cd ..
+ls -a
+dc htop
+ls
+cd htop
+ls 
+ls -a
+cd .config
+ls -a
+cd htop
+ls -a
+cd ..
+cd ..
+cd ..
+cd neofetch
+ls -a
+cd .config
+ls -a
+cd neofetch
+ls -a
+ls -a
+cd ..
+cd ..
+cd ..
+cd ..
+cd .dotfiles
+git status
+cd .git
+ls
+cd ..
+ls -a
+nvim .git
+nvim .gitignore 
+nvim .gitignore 
+sudo pacman -S tree-sitter
+sudo pacman -S tree-sitter-cli
+nvim .gitignore 
+cd ~
+sudo pacman -S nodejs
+cd .dotfiles/
+nvim .gitignore 
+git status
+ls -a
+cd .git
+ls -a
 cd ..
 stow neofetch
+cd ..
+cd .config/neofetch/
 ls -a
 cd ..
 ls -a
-cd .config
-ls -a
-cd ..
-cd .dotfiles/
-ls -a
-mkdir sway
-mkdir sway/.config
-mv .config/sway/ sway/.config/
-ls -a
-cd sway/
-ls -a
-cd .config/
-ls -a
-cd sway/
-ls -a
-nvim config
-cd ~/.dotfiles/
-stow sway
-ls -a
-cd .config
-ls -a
-cd ..
-mkdir systemd
-mkdir systemd/.config
-ls -a
-cd systemd/
-ls -a
-cd .config/
-ls
-ls -a
-cd ..
-cd ..
-mv .config/systemd/ systemd/.config/
-cd .config
-ls -a
-cd ..
-cd systemd/
-cd .config
-ls -a
-cd systemd/
-ls -a
-cd user
-ls -a
-cd ~/.dotfiles
-stow systemd
-ls -a
-cd .config
-ls -a
-cd ..
-rm -r .config
-ls -a
-firefox
-ls -a
-cd .dotfiles
-ls -a
-mkdir vim
-mv .viminfo vim
-cd vim
-ls
-ls -a
-cd ..
-stow vim
-cd ..
-ls -a
-cd .dotfiles/
-ls -a
-neofetch
-cd ..
-cd .dotfiles/
-firefox
-firefox
-firefox
-ls -a
-firefox
-vim .config/sway/config 
-nvim
-vim
-firefox
-firefox "&#"
-firefox
-firefox &
-firefox &
-firefox &
-sway -v
-ls -a
-vim sway.log 
-ls -a
-ls
-mkdir git_tokens
-cd git_tokens/
-vim git_tokens.txt
-firefox &
-firefox &
-ls 
-cd git_tokens/
-ls 0-a
-ls -a
-vim tokens.txt
-cd .dotfiles
-git push -u origin
-git push --set-upstream origin main
-git push --set-upstream origin main
-firefox &
-sway
-sway
-sway
-:q
-exit
-ls -a
-cd .dotfiles
-ls -a
-git status
-git add -a
-git add -A
-git status
-git commit
-git config --global user.email ilanchea@wlhs.wlwv.k12.or.us
-git config --global user.name Lqnk4
-git commit -m first
-git branch -M main
-git remote add origin https://github.com/Lqnk4/dotfiles.git
-git push -u origin main
-git push -u origin main
-git config --global user.email internalbeast109@gmail.com
-git push -u origin
-git push -u origin
-git push --set-upstream origin main
-git push --set-upstream origin main
-hyprland
-reboot
-firefox &
-cd .dotfiles
-ls 0a
-ls -a
-cd ..
-ls -a
-cd .dotfiles
-ls -a
-git clone https://github.com/Lqnk4/Neovim-Config.git
-ls -a
-mv Neovim-Config/ nvim
-ls -a
-cd nvim
-ls -a
-rm .git
-rm -a .git
-rm -rf .git
-ls -a
-rm .gitignore 
-firefox &
-firefox
-cd .dotfiles
-ls -a
-stow nvim
-ls -a
-cd ..
-ls 0a
-ls -a
-firefox
-firefox &
-cd .dotfiles
-ls -a
-stow -d nvim
-stow -D nvim
-ls -a
-cd ..
-ls -a
-cd .dotfiles
-ls -a
-cd nvim
-ls -a
-cd ..
-cd bash
+cd neofetch
 ls -a
 cd ..
 cd sway
-ls 
 ls -a
 cd ..
-firefox &
-exit
-sway
-sway
-nv
-sway -d
-sway
-sway
-cd .dotfiles
-ls -a
-cd nvim
-ls 
-mkdir .config
-ls
-ls -a
-mv init.lua .config/
-ls -a
-cd .config
-ls
-vim init.lua 
-ls
-cd ..
-ls -a
-mv lazy-lock.json .config/
-ls -a
-mv lua .config/
-ls
-cd .config
-ls -a
-vim lazy-lock.json 
-vim lua/plugin/colorscheme.lua 
-cd ..
-cd. .
-cd ..
-stow nvim
-cd ..
-ls -a
-cd .config
-ls -a
-cd pulse
-ls -a
-vim cookie 
-:q
-cd ..
-cd ..
-cd ..
+neofetch
 cd ~
-ls -a
+nvim .config/neofetch/config.conf 
+nvim .dotfiles/neofetch/.config/neofetch/config.conf 
+neofetch
 cd .dotfiles
+ls
+cd ~
+cd .config
 ls -a
-git status
-vim bash/.bash_history 
+cd systemd
 ls -a
-vim .gitignore
 ls -a
-git status
-git add .gitignore 
-git add nvim/
-git status
-git add -A
-git push
-cd ..
+cd user
 ls -a
-cd git_tokens/
-vim tokens.txt 
-cd ~/.dotfiles/
-git push
-git push
-cd ..
-cat ~/git_tokens/tokens.txt 
-cd .dotfiles/
-git push
-git status
-git commit -m nvim
-git push
-firefox
-cd ..
+sudo pacman -Q pipewire
+pacman -h
+pacman -Q pipe
+pacman -Q pipewire
+cd ~
+nvim .config/sway/config 
 sway
-sudo reboot
+shutdown
+neofetch
+font
