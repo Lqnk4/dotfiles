@@ -1,0 +1,8 @@
+# theme
+import = [
+    "~/.config/alacritty/themes/themes/kanagawa_dragon.toml"
+]
+
+# font
+[font]
+size = 14.0

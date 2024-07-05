@@ -23,13 +23,16 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
+output * bg ~/wallpaper/gruv-abstract-maze.png fill
+
+output eDP-1 {
+    resolution 1920x1080 position 0,0
+    scale 1
+}
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# Set default font
+font monospace:JetBrainsMono 11
 
 ### Idle configuration
 
@@ -52,6 +55,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #       natural_scroll enabled
 #       middle_emulation enabled
 #   }
+    input "Elan Touchpad" {
+        dwt enabled
+        tap enabled
+        natural_scroll enabled
+        middle_emulation enabled
+    }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -193,12 +202,24 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
 #
-### My Customization
+# Audio bindings
+#
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+##################### My Customization
+#
+### Window Customization
 #
 # Inner gaps for all windows: space between two adjacent windows (or split containers).
-gaps inner 20
+gaps outer 10
+
+# No titlebars
+default_border pixel 4
+default_floating_border pixel 4
+client.focused #ffffff #ffffff #ffffff #ffffff
 
 #
 # Status Bar:
@@ -213,7 +234,7 @@ bar {
 
     colors {
         statusline #ffffff
-        background #323232
+        background #ffffff00
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }

@@ -12,9 +12,9 @@
 ~h
 # Command Line History (newest to oldest):
 :q!
-|2,0,1718761375,,"q!"
+|2,0,1720042119,,"q!"
 :q
-|2,0,1718761374,,"q"
+|2,0,1720042117,,"q"
 :w
 |2,0,1718690926,,"w"
 
@@ -66,16 +66,32 @@
 # Jumplist (newest first):
 -'  4  5  /usr/share/wayland-sessions/sway.desktop
 |4,39,4,5,1718761375,"/usr/share/wayland-sessions/sway.desktop"
+-'  4  5  /usr/share/wayland-sessions/sway.desktop
+|4,39,4,5,1718761375,"/usr/share/wayland-sessions/sway.desktop"
+-'  1  0  /usr/share/wayland-sessions/sway.desktop
+|4,39,1,0,1718761357,"/usr/share/wayland-sessions/sway.desktop"
 -'  1  0  /usr/share/wayland-sessions/sway.desktop
 |4,39,1,0,1718761357,"/usr/share/wayland-sessions/sway.desktop"
 -'  1215  0  ~/sway.log
 |4,39,1215,0,1718759711,"~/sway.log"
 -'  1215  0  ~/sway.log
 |4,39,1215,0,1718759711,"~/sway.log"
+-'  1215  0  ~/sway.log
+|4,39,1215,0,1718759711,"~/sway.log"
+-'  1215  0  ~/sway.log
+|4,39,1215,0,1718759711,"~/sway.log"
 -'  228  0  ~/sway.log
 |4,39,228,0,1718759708,"~/sway.log"
 -'  228  0  ~/sway.log
 |4,39,228,0,1718759708,"~/sway.log"
+-'  228  0  ~/sway.log
+|4,39,228,0,1718759708,"~/sway.log"
+-'  228  0  ~/sway.log
+|4,39,228,0,1718759708,"~/sway.log"
+-'  1  0  ~/sway.log
+|4,39,1,0,1718759697,"~/sway.log"
+-'  1  0  ~/sway.log
+|4,39,1,0,1718759697,"~/sway.log"
 -'  1  0  ~/sway.log
 |4,39,1,0,1718759697,"~/sway.log"
 -'  1  0  ~/sway.log
@@ -112,6 +128,70 @@
 |4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
 -'  2  24  ~/.config/environment.d/envvars.conf
 |4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  2  24  ~/.config/environment.d/envvars.conf
+|4,39,2,24,1718690927,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
+-'  1  0  ~/.config/environment.d/envvars.conf
+|4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
 -'  1  0  ~/.config/environment.d/envvars.conf
 |4,39,1,0,1718690897,"~/.config/environment.d/envvars.conf"
 -'  1  0  ~/.config/environment.d/envvars.conf
@@ -182,88 +262,6 @@
 |4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
 -'  3  2  /etc/sway/config.d/50-systemd-user.conf
 |4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  3  2  /etc/sway/config.d/50-systemd-user.conf
-|4,39,3,2,1718690773,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
--'  1  0  /etc/sway/config.d/50-systemd-user.conf
-|4,39,1,0,1718690516,"/etc/sway/config.d/50-systemd-user.conf"
 
 # History of marks within files (newest to oldest):
 
