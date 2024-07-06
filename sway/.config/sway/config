@@ -226,7 +226,7 @@ default_border pixel 4
 default_floating_border pixel 4
 
 #colored borders
-client.focused #ffffff #d5c4a1 #ffffff #d5c4a1
+client.focused #ffffff #ebdbb2 #ffffff #d5c4a1
 
 #
 # Status Bar:

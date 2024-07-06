@@ -1,6 +1,8 @@
 {
     "layer": "top",
+
     "modules-left": ["sway/workspaces", "sway/mode"],
+    // "modules-center": ["sway/window"],
     "modules-right": ["battery", "clock"],
 
     "sway/window": {
@@ -8,7 +10,9 @@
     },
     
     "battery": {
-        "format": "{capacity}%"
+        "format": "{capacity}% {icon}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰂃"]
+
     },
 
     "clock": {
