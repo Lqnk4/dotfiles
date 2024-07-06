@@ -5,7 +5,7 @@ bash/.bash_history
 nvim/.config/nvim/lazy-lock.json
 
 # Ignore ssh keys
-.ssh/*
+.ssh/**
 !.ssh/config
 
 # Ignore alacritty themes

@@ -18,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | wmenu | xargs swaymsg exec --
+set $menu rofi -show drun | wmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -33,6 +33,11 @@ output eDP-1 {
 
 # Set default font
 font monospace:JetBrainsMono 11
+
+# GTK
+exec {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Dark'
+}
 
 ### Idle configuration
 
@@ -213,13 +218,16 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 #
 ### Window Customization
 #
-# Inner gaps for all windows: space between two adjacent windows (or split containers).
-gaps outer 10
+# gaps
+gaps outer 5
+gaps inner 10
 
 # No titlebars
 default_border pixel 4
 default_floating_border pixel 4
-client.focused #ffffff #ffffff #ffffff #ffffff
+
+#colored borders
+client.focused #ffffff #d5c4a1 #ffffff #d5c4a1
 
 #
 # Status Bar:

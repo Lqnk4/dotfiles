@@ -5,7 +5,7 @@ local M = {
   keys = function()
     local builtin = require('telescope.builtin')
     return {
-      { "<leader>pf", builtin.find_files, {}},
+      { "<leader>pf", builtin.find_files, { find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}},
       { "<C-p>", builtin.git_files, {}},
       { "<leader>pb", builtin.buffers, {}},
       { "<leader>ps", builtin.live_grep, {}},
