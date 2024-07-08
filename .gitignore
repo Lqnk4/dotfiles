@@ -1,5 +1,6 @@
 # Ignore bash history
 bash/.bash_history
+bash/*.tmp
 
 # Ignore lazy.nvim file tracking
 nvim/.config/nvim/lazy-lock.json

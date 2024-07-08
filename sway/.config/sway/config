@@ -40,11 +40,12 @@ exec {
 }
 
 ### Idle configuration
+exec swayidle -w \
+	timeout 300 'swaylock -f -c 000000' \
+	timeout 600 'swaymsg "output * dpms off"' \
+		resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock -f -c 000000'
 
- exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -213,6 +214,12 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+#
+# Screenshots
+#
+bindsym $mod+p exec grim -g "$(slurp -d)" - | swappy -f -
+bindsym $mod+Shift+p exec grim - | swappy -f -
 
 ##################### My Customization
 #
