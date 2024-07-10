@@ -3,12 +3,26 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     // "modules-center": ["sway/window"],
-    "modules-right": ["battery", "clock"],
+    "modules-right": ["network", "battery", "clock"],
 
     "sway/window": {
         "max-length": 50
     },
     
+   
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-ethernet": "{ifname}",
+        "format-disconnected": "disconnected",
+        "format-icons": [""],
+        "on-click": {
+            "format-wifi": "{essid} ({signalStrength}%)",
+        },
+        "max-length": 50
+    },
+
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰂃"]
