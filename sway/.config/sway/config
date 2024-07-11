@@ -8,21 +8,19 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu rofi -show drun | wmenu | xargs swaymsg exec --
 
+set $term alacritty
+set $menu rofi -show drun | wmenu | xargs swaymsg exec --
+set $file lf
+set $browser firefox
+
+#
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/wallpaper/ziap.png fill
 
 output eDP-1 {
@@ -36,20 +34,21 @@ font monospace:JetBrainsMono 11
 
 # GTK
 exec {
-    gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Dark'
+    #gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Dark'
 }
 
 ### Idle configuration
 exec swayidle -w \
-	timeout 300 'swaylock -f -c 000000' \
-	timeout 600 'swaymsg "output * dpms off"' \
+	timeout 600 'swaylock -f -c 000000' \
+	timeout 1200 'swaymsg "output * dpms off"' \
 		resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock -f -c 000000'
-
-
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+# It will also stop swayidle when a window is in fullscreen.
 
 ### Input configuration
 #
@@ -83,6 +82,9 @@ exec swayidle -w \
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Start your browser
+    bindsym $mod+g exec $browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
