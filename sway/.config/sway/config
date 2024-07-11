@@ -23,7 +23,7 @@ set $menu rofi -show drun | wmenu | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/wallpaper/gruv-abstract-maze.png fill
+output * bg ~/wallpaper/ziap.png fill
 
 output eDP-1 {
     resolution 1920x1080 position 0,0
