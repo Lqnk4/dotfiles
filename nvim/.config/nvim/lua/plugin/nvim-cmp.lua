@@ -1,7 +1,11 @@
 local M = {
     {
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp' },
+    lazy = true,
+    dependencies = {
+        'hrsh7th/cmp-nvim-lsp',
+        lazy = true,
+    },
     event = { "InsertEnter" },
 
     },
