@@ -10,4 +10,5 @@ alias grep='grep --color=auto'
 
 PS1='[\u@\h \W]\$ '
 
-
+# Java nonreparenting window potential fix for jetbrains
+export _JAVA_AWT_WM_NONREPARENTING=1

@@ -8,10 +8,10 @@ vim.wo.relativenumber = true
 -- Highlight current line
 vim.opt.cursorline = false
 
-vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.tabstop = 4      -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
 -- Enable mouse mode
 vim.o.mouse = "a"
@@ -47,3 +47,5 @@ vim.o.termguicolors = true
 -- Set mode message
 --vim.opt.showmode = false
 
+-- Set inlay hints enabled by default
+vim.lsp.inlay_hint.enable()
