@@ -47,5 +47,3 @@ vim.o.termguicolors = true
 -- Set mode message
 --vim.opt.showmode = false
 
--- Set inlay hints enabled by default
-vim.lsp.inlay_hint.enable()
