@@ -33,6 +33,7 @@ require('mason-lspconfig').setup({
     ensure_installed = { "clangd", "lua_ls", "rust_analyzer", },
     handlers = {
         default_setup,
+        ["rust_analyzer"] = function() end -- Set up by rustacean.nvim
     },
 })
 
@@ -41,8 +42,6 @@ local luasnip = require('luasnip')
 cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'path' },
-        { name = 'buffer' },
     },
     mapping = cmp.mapping.preset.insert({
         -- Enter key confirms completion item
@@ -60,18 +59,14 @@ cmp.setup({
 
         -- Tab or Shift + Tab jumps across snippets
         ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.locally_jumpable(1) then
+            if luasnip.locally_jumpable(1) then
                 luasnip.jump(1)
             else
                 fallback()
             end
         end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.locally_jumpable(-1) then
+            if luasnip.locally_jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
@@ -84,3 +79,4 @@ cmp.setup({
         end,
     },
 })
+

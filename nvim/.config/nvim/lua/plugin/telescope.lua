@@ -9,6 +9,7 @@ local M = {
       { "<C-p>", builtin.git_files, {}},
       { "<leader>pb", builtin.buffers, {}},
       { "<leader>ps", builtin.live_grep, {}},
+      { "<leader>pd", builtin.diagnostics, {}},
     }
   end,
 }
