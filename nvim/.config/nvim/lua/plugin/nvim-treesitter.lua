@@ -5,7 +5,7 @@ local M = {
   build = ":TSUpdate",
   opts = {
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "cpp", "lua", "comment", "vim", "vimdoc", "query", "rust", "java", "python", "kotlin", "latex", "haskell"},
+    ensure_installed = { "c", "cpp", "lua", "comment", "vim", "vimdoc", "query", "rust", "java", "python", "kotlin", "latex", "haskell", "markdown", },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,

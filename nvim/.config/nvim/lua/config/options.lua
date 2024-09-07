@@ -13,8 +13,8 @@ vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a T
 vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
--- Enable mouse mode
-vim.o.mouse = "a"
+-- Set conceal level
+vim.o.conceallevel = 2
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
