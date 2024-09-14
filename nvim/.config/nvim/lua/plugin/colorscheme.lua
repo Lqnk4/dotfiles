@@ -1,20 +1,22 @@
-local M = {
+local colorscheme = {}
+
+colorscheme.kanagawa = {
     "rebelot/kanagawa.nvim",
     name = "kanagawa",
     config = function()
         -- Default options:
         require('kanagawa').setup({
-            compile = true, -- enable compiling the colorscheme
+            compile = true,   -- enable compiling the colorscheme
             undercurl = true, -- enable undercurls
             commentStyle = { italic = true },
             functionStyle = {},
             keywordStyle = { italic = true },
             statementStyle = { bold = true },
             typeStyle = {},
-            transparent = false, -- do not set background color
-            dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+            transparent = false,   -- do not set background color
+            dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
             terminalColors = true, -- define vim.g.terminal_color_{0,17}
-            colors = {     -- add/modify theme and palette colors
+            colors = {             -- add/modify theme and palette colors
                 palette = {},
                 theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
             },
@@ -27,8 +29,8 @@ local M = {
                     PmenuThumb = { bg = theme.ui.bg_p2 },
                 }
             end,
-            theme = "wave", -- Load "wave" theme when 'background' option is not set
-            background = { -- map the value of 'background' option to a theme
+            theme = "wave",      -- Load "wave" theme when 'background' option is not set
+            background = {       -- map the value of 'background' option to a theme
                 dark = "dragon", -- try "dragon" !
                 light = "lotus"
             },
@@ -39,4 +41,17 @@ local M = {
     end
 }
 
-return M
+colorscheme.rose_pine = {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+        variant = "auto", -- auto, main, moon, or dawn
+        dark_variant = "main", --main, moon, or dawn
+    },
+    config = function()
+        vim.cmd("colorscheme rose-pine")
+    end,
+
+}
+
+return colorscheme.rose_pine
