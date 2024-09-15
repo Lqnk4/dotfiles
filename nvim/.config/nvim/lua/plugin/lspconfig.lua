@@ -7,7 +7,13 @@ local M = {
 
         {
             'williamboman/mason.nvim',
-            dependencies = { 'williamboman/mason-lspconfig.nvim' },
+            dependencies = {
+                { 
+                    'williamboman/mason-lspconfig.nvim',
+                    lazy = true,
+                    event = { "VeryLazy" }
+                },
+            },
             lazy = true,
             build = ":MasonUpdate",
             cmd = { "Mason", "MasonLog" },

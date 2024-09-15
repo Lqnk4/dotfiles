@@ -26,5 +26,5 @@ else
     start_agent;
 fi
 
-
+[[ -f ~/.profile ]] && . ~/.profile
 [[ -f ~/.bashrc ]] && . ~/.bashrc
