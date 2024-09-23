@@ -10,5 +10,10 @@ alias grep='grep --color=auto'
 
 PS1='[\u@\h \W]\$ '
 
-# Java nonreparenting window potential fix for jetbrains
-export _JAVA_AWT_WM_NONREPARENTING=1
+# Aliases
+alias sudo='sudo '
+alias vim='nvim'
+alias bashrc='nvim ~/.bashrc'
+alias i3config='nvim ~/.config/i3/config'
+alias ls='ls --color=auto'
+alias vimconfig='nvim ~/.config/nvim/'

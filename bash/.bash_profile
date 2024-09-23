@@ -26,5 +26,8 @@ else
     start_agent;
 fi
 
+# Java nonreparenting window potential fix for jetbrains
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 [[ -f ~/.profile ]] && . ~/.profile
 [[ -f ~/.bashrc ]] && . ~/.bashrc
