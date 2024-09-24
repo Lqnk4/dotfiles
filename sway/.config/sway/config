@@ -235,8 +235,8 @@ bindsym $mod+Shift+p exec grim - | swappy -f -
 gaps inner 10
 
 # No titlebars
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 2
+default_floating_border pixel 2
 
 #colored borders
 client.focused #ffffff #ebdbb2 #ffffff #d5c4a1

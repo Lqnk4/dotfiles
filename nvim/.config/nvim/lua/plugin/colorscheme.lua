@@ -54,4 +54,4 @@ colorscheme.rose_pine = {
 
 }
 
-return colorscheme.rose_pine
+return colorscheme.kanagawa
