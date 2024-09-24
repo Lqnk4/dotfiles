@@ -1,0 +1,32 @@
+/bin/sh: line 1: xss-lock: command not found
+/bin/sh: line 1: nm-applet: command not found
+/bin/sh: line 1: dex: command not found
+i3status: trying to auto-detect output_format setting
+i3status: auto-detected "i3bar"
+xterm: cannot load font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1"
+xterm: cannot load font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1"
+xterm: cannot load font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1"
+xterm: cannot load font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1"
+/home/aaryan/.cache/dmenu_run: No such file or directory
+[libi3] ../libi3/font.c Using Pango font monospace, size 8
+[libi3] ../i3-nagbar/main.c Found current focus at x = 4 / y = 32.
+i3status: exiting due to signal.
+xterm: cannot load font "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1"
+[libi3] ../libi3/font.c Using Pango font monospace, size 8
+[libi3] ../i3-nagbar/main.c Found current focus at x = 4 / y = 32.
+Closing SHM log "/i3-log-625"
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0"
+      after 491 requests (488 known processed) with 0 events remaining.
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0"
+      after 1170 requests (1167 known processed) with 0 events remaining.
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0"
+      after 701 requests (698 known processed) with 0 events remaining.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
