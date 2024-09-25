@@ -18,3 +18,6 @@ alias bashrc='nvim ~/.bashrc'
 alias i3config='nvim ~/.config/i3/config'
 alias ls='ls --color=auto'
 alias vimconfig='nvim ~/.config/nvim/'
+
+# Aliases DWM
+alias dwmclean='make clean && rm -f config.h && git reset --hard origin/master'
