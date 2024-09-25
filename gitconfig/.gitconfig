@@ -1,3 +1,5 @@
 [user]
 	email = internalbeast109@gmail.com
 	name = Lqnk4
+[alias]
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
