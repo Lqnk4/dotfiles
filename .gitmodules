@@ -1,3 +1,7 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = git@github.com:Lqnk4/nvim-config.git
+[submodule "dwmblocks"]
+	path = dwmblocks
+	url = git@github.com:Lqnk4/dwmblocks-config.git
+	branch = master
