@@ -1,0 +1,6 @@
+/bin/sh: line 1: dex: command not found
+/bin/sh: line 1: xss-lock: command not found
+[libi3] ../libi3/font.c Using Pango font monospace, size 8
+[libi3] ../i3-nagbar/main.c Found current focus at x = 4 / y = 32.
+Closing SHM log "/i3-log-1836"
+X connection to :0 broken (explicit kill or server shutdown).
