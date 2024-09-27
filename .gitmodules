@@ -6,3 +6,7 @@
 	path = dwmblocks
 	url = git@github.com:Lqnk4/dwmblocks-config.git
 	branch = master
+[submodule "dwm"]
+	path = dwm
+	url = git@github.com:Lqnk4/dwm-config.git
+	branch = master
