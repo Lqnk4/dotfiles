@@ -23,4 +23,4 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Aliases DWM
-alias dwmclean='make clean && rm -f config.h && git reset --hard origin/master'
+alias dwmclean='make clean && rm -f config.h && git reset --hard upstream/master'

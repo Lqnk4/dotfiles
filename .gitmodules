@@ -10,3 +10,4 @@
 	path = dwm
 	url = git@github.com:Lqnk4/dwm-config.git
 	branch = master
+    ignore = all
