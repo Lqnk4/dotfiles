@@ -2,3 +2,4 @@
 	path = nvim/.config/nvim
 	url = git@github.com:Lqnk4/nvim-config.git
 	branch = master
+    ignore = all
