@@ -241,6 +241,9 @@ default_floating_border pixel 2
 #colored borders
 client.focused #ffffff #ebdbb2 #ffffff #d5c4a1
 
+# no border for single window
+smart_borders on
+
 #
 # Status Bar:
 #
