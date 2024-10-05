@@ -233,6 +233,7 @@ bindsym $mod+Shift+p exec grim - | swappy -f -
 #
 # gaps
 gaps inner 10
+gaps outer 0
 
 # No titlebars
 default_border pixel 2
