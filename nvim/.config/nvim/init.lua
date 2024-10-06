@@ -8,7 +8,7 @@ require("config.lazy")
 --set colorscheme
 vim.cmd [[colorscheme kanagawa]]
 
---source vim options, keymaps 
+--source vim options, keymaps
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")

@@ -52,26 +52,27 @@ return {
     },
   },
 
- {
+  -- kanagawa
+  {
     "rebelot/kanagawa.nvim",
     name = "kanagawa",
+    lazy = true,
     opts = {
-            overrides = function(colors) -- add/modify highlights
-                local theme = colors.theme
-                return {
-                    Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-                    PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-                    PmenuSbar = { bg = theme.ui.bg_m1 },
-                    PmenuThumb = { bg = theme.ui.bg_p2 },
-                }
-            end,
-            theme = "wave",      -- Load "wave" theme when 'background' option is not set
-            background = {       -- map the value of 'background' option to a theme
-                dark = "dragon", -- try "dragon" !
-                light = "lotus"
-            },
+      overrides = function(colors) -- add/modify highlights
+        local theme = colors.theme
+        return {
+          Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+          PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+          PmenuSbar = { bg = theme.ui.bg_m1 },
+          PmenuThumb = { bg = theme.ui.bg_p2 },
+        }
+      end,
+      theme = "wave",    -- Load "wave" theme when 'background' option is not set
+      background = {     -- map the value of 'background' option to a theme
+        dark = "dragon", -- try "dragon" !
+        light = "lotus"
+      },
     }
-},
+  },
 
 }
-
