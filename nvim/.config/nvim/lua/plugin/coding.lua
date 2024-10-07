@@ -43,10 +43,10 @@ return {
         }),
         formatting = {
           format = function(entry, item)
-            -- local icons = LazyVim.config.icons.kinds
-            -- if icons[item.kind] then
-            --   item.kind = icons[item.kind] .. item.kind
-            -- end
+            local icons = require("config").icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
 
             local widths = {
               abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
@@ -175,7 +175,7 @@ return {
       require("mini.ai").setup(opts)
       require("util").on_load("which-key.nvim", function()
         vim.schedule(function()
-          miniUtil.ai_whichkey(opts)
+          require("util.mini").ai_whichkey(opts)
         end)
       end)
     end,
