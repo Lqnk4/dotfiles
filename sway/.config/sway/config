@@ -21,7 +21,7 @@ set $browser firefox
 #
 ### Output configuration
 #
-output * bg ~/wallpaper/gruv-wallhaven-011km1.png fill
+output * bg ~/wallpaper/tora.png fill
 
 output eDP-1 {
     resolution 1920x1080 position 0,0
