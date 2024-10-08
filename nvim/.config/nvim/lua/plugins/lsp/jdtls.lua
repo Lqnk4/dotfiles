@@ -116,6 +116,7 @@ return {
 
                         map("v", "<leader>cxv", [[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]], { desc = "Extract Variable" })
                         map("v", "<leader>cxc", [[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]], { desc = "Extract Variable" })
+                        map("v", "<leader>cxm", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], { desc = "Extract Method" })
                     end
                 end,
             })
