@@ -37,8 +37,6 @@ return {
             -- mason = false, -- set to false if you don't want this server to be installed with mason
             -- Use this to add any additional keymaps
             -- for specific lsp servers
-            -- ---@type LazyKeysSpec[]
-            -- keys = {},
             settings = {
               Lua = {
                 workspace = {
@@ -59,6 +57,7 @@ return {
                   arrayIndex = "Disable",
                 },
               },
+              jdtls = {},
             },
           },
         },
@@ -66,6 +65,9 @@ return {
         -- return true if you don't want this server to be setup with lspconfig
         ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
         setup = {
+          jdtls = function()
+            return true
+          end,
 
         },
       }
