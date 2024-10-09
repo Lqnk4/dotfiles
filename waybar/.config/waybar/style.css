@@ -18,19 +18,19 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
-#workspaces button {
+#tags button {
   padding: 0 5px;
   color: #ebdbb2;
   border-radius: 5px;
 }
 
-#workspaces button.focused {
+#tags button.focused {
   background-color: #ebdbb2;
   color: #282828;
   border-bottom: none;
 }
 
-#workspaces button.urgent {
+#tags button.urgent {
   background-color: #cc241d;
 }
 

@@ -1,5 +1,5 @@
 {
-  "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
+  "modules-left": ["river/tags", "river/window"],
   "modules-right": ["pulseaudio", "backlight", "network", "battery", "clock"],
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -51,7 +51,11 @@
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
-  "sway/workspaces": {
-    "disable-scroll": true
+  "river/tags": {
+        "tag-labels": ["一", "二", "三","四", "五", "六", "七", "八", "九", "十"]
+  },
+  "river/mode": {
+    "disable-scroll": true,
+
   }
 }
