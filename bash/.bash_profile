@@ -26,8 +26,12 @@ else
     start_agent;
 fi
 
-# Java nonreparenting window potential fix for jetbrains
+# IM Module variables https://wiki.archlinux.org/title/Fcitx5
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# Fix for IntelliJ windows (dated)
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-[[ -f ~/.profile ]] && . ~/.profile
 [[ -f ~/.bashrc ]] && . ~/.bashrc

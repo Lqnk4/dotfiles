@@ -37,7 +37,6 @@ return {
                     Util.on_load("telescope.nvim", function()
                         local ok, err = pcall(require("telescope").load_extension, "fzf")
                         if not ok then
-                            print("Failed to load telescope-fzf-native.nvim")
                         end
                     end)
                 end,

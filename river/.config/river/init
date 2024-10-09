@@ -9,6 +9,9 @@ riverctl map normal Super+Shift Return spawn alacritty
 # Super+G to start firefox
 riverctl map normal Super G spawn firefox
 
+# Super+D to start rofi app launcher
+riverctl map normal Super D spawn 'rofi -show drun'
+
 # Super+Shift+Q to close the focused view
 riverctl map normal Super+Shift Q close
 
@@ -135,6 +138,12 @@ do
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
 done
 
+# Super+P Take screenshot and drag to select area
+riverctl map normal Super P spawn 'grim -g "$(slurp -d)" - | swappy -f -'
+
+# Super+Shift+P Take screenshot of whole screen
+riverctl map normal Super+Shift P spawn 'grim - | swappy -f -'
+
 # Set wallpaper
 swaybg --image ~/wallpaper/tora.png &
 
@@ -144,7 +153,7 @@ waybar &
 # Set background and border color
 #riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+riverctl border-color-unfocused 0x282828
 
 # Idle Configuration using waylock and swayidle
 swayidle -w \
@@ -168,4 +177,4 @@ riverctl rule-add -app-id "firefox" ssd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 3 -outer-padding 3 &
+rivertile -view-padding 0 -outer-padding 0 &
