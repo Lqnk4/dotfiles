@@ -1,6 +1,13 @@
 {
   "modules-left": ["river/tags", "river/window"],
-  "modules-right": ["pulseaudio", "backlight", "network", "battery", "clock"],
+  "modules-right": ["pulseaudio", "backlight", "custom/keyboard_layout", "network", "battery", "clock"],
+  "river/tags": {
+        "tag-labels": ["一", "二", "三","四", "五", "六", "七", "八", "九", "十"]
+  },
+  "river/mode": {
+    "disable-scroll": true,
+
+  },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "{:%b %d(%H:%M) 󰃰}"
@@ -51,11 +58,11 @@
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
-  "river/tags": {
-        "tag-labels": ["一", "二", "三","四", "五", "六", "七", "八", "九", "十"]
-  },
-  "river/mode": {
-    "disable-scroll": true,
-
-  }
+    "custom/keyboard_layout": {
+        "exec": "~/.config/waybar/scripts/fcitx5.sh",
+        "interval": "once",
+        "signal": 1,
+        "format": "{} {icon}",
+        "format-icons": ["󰌌"]
+    }
 }
