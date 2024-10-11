@@ -5,5 +5,9 @@ import = [
 
 # font
 [font]
-size = 10.0
+size = 11.0
 normal = { family = "Jetbrains Mono Nerd Font Mono", style = "Regular" }
+
+[cursor]
+style = "Block"
+vi_mode_style = "Block"
