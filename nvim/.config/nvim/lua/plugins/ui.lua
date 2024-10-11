@@ -301,6 +301,103 @@ return {
                 hl = { fg = "green", bold = true },
             }
 
+            -- navic
+            -- Full nerd (with icon colors and clickable elements)!
+            -- works in multi window, but does not support flexible components (yet ...)
+            local Navic = {
+                condition = function() return require("nvim-navic").is_available() end,
+                static = {
+                    -- create a type highlight map
+                    type_hl = {
+                        File = "Directory",
+                        Module = "@include",
+                        Namespace = "@namespace",
+                        Package = "@include",
+                        Class = "@structure",
+                        Method = "@method",
+                        Property = "@property",
+                        Field = "@field",
+                        Constructor = "@constructor",
+                        Enum = "@field",
+                        Interface = "@type",
+                        Function = "@function",
+                        Variable = "@variable",
+                        Constant = "@constant",
+                        String = "@string",
+                        Number = "@number",
+                        Boolean = "@boolean",
+                        Array = "@field",
+                        Object = "@type",
+                        Key = "@keyword",
+                        Null = "@comment",
+                        EnumMember = "@field",
+                        Struct = "@structure",
+                        Event = "@keyword",
+                        Operator = "@operator",
+                        TypeParameter = "@type",
+                    },
+                    -- bit operation dark magic, see below...
+                    enc = function(line, col, winnr)
+                        return bit.bor(bit.lshift(line, 16), bit.lshift(col, 6), winnr)
+                    end,
+                    -- line: 16 bit (65535); col: 10 bit (1023); winnr: 6 bit (63)
+                    dec = function(c)
+                        local line = bit.rshift(c, 16)
+                        local col = bit.band(bit.rshift(c, 6), 1023)
+                        local winnr = bit.band(c, 63)
+                        return line, col, winnr
+                    end
+                },
+                init = function(self)
+                    local data = require("nvim-navic").get_data() or {}
+                    local children = {}
+                    -- create a child for each level
+                    for i, d in ipairs(data) do
+                        -- encode line and column numbers into a single integer
+                        local pos = self.enc(d.scope.start.line, d.scope.start.character, self.winnr)
+                        local child = {
+                            {
+                                provider = d.icon,
+                                hl = self.type_hl[d.type],
+                            },
+                            {
+                                -- escape `%`s (elixir) and buggy default separators
+                                provider = d.name:gsub("%%", "%%%%"):gsub("%s*->%s*", ''),
+                                -- highlight icon only or location name as well
+                                -- hl = self.type_hl[d.type],
+
+                                on_click = {
+                                    -- pass the encoded position through minwid
+                                    minwid = pos,
+                                    callback = function(_, minwid)
+                                        -- decode
+                                        local line, col, winnr = self.dec(minwid)
+                                        vim.api.nvim_win_set_cursor(vim.fn.win_getid(winnr), { line, col })
+                                    end,
+                                    name = "heirline_navic",
+                                },
+                            },
+                        }
+                        -- add a separator only if needed
+                        if #data > 1 and i < #data then
+                            table.insert(child, {
+                                provider = " > ",
+                                hl = { fg = 'bright_fg' },
+                            })
+                        end
+                        table.insert(children, child)
+                    end
+                    -- instantiate the new child, overwriting the previous one
+                    self.child = self:new(children, 1)
+                end,
+                -- evaluate the children containing navic components
+                provider = function(self)
+                    return self.child:eval()
+                end,
+                hl = { fg = "gray" },
+                update = 'CursorMoved'
+            }
+
             -- lsp diagnostics
             local Diagnostics = {
 
@@ -477,32 +574,38 @@ return {
 
             -- working directory
             local WorkDir = {
-                provider = function()
-                    local icon = (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. " "
+                init = function(self)
+                    self.icon = (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. " "
                     local cwd = vim.fn.getcwd(0)
-                    cwd = vim.fn.fnamemodify(cwd, ":~")
-                    if not conditions.width_percent_below(#cwd, 0.25) then
-                        cwd = vim.fn.pathshorten(cwd)
-                    end
-                    local trail = cwd:sub(-1) == '/' and '' or "/"
-                    return icon .. cwd .. trail
+                    self.cwd = vim.fn.fnamemodify(cwd, ":~")
                 end,
                 hl = { fg = "blue", bold = true },
+
+                flexible = 1,
+
+                {
+                    -- evaluates to the full-lenth path
+                    provider = function(self)
+                        local trail = self.cwd:sub(-1) == "/" and "" or "/"
+                        return self.icon .. self.cwd .. trail .. " "
+                    end,
+                },
+                {
+                    -- evaluates to the shortened path
+                    provider = function(self)
+                        local cwd = vim.fn.pathshorten(self.cwd)
+                        local trail = self.cwd:sub(-1) == "/" and "" or "/"
+                        return self.icon .. cwd .. trail .. " "
+                    end,
+                },
+                {
+                    -- evaluates to "", hiding the component
+                    provider = "",
+                }
             }
 
-            -- terminal buf name
-            local TerminalName = {
-                -- we could add a condition to check that buftype == 'terminal'
-                -- or we could do that later (see #conditional-statuslines below)
-                provider = function()
-                    local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
-                    return " " .. tname
-                end,
-                hl = { fg = "blue", bold = true },
-            }
-
-            -- name of help file currently being viewed
-            local HelpFileName = {
+            -- hepfile name
+            local HelpFilename = {
                 condition = function()
                     return vim.bo.filetype == "help"
                 end,
@@ -510,7 +613,32 @@ return {
                     local filename = vim.api.nvim_buf_get_name(0)
                     return vim.fn.fnamemodify(filename, ":t")
                 end,
-                hl = { fg = "blue" },
+                hl = "Directory",
+            }
+
+            -- terminal buf name
+            local TerminalName = {
+                -- icon = ' ', -- 
+                {
+                    provider = function()
+                        local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
+                        return " " .. tname
+                    end,
+                    hl = { fg = "blue", bold = true },
+                },
+                { provider = " - " },
+                {
+                    provider = function()
+                        return vim.b.term_title
+                    end,
+                },
+                {
+                    provider = function()
+                        local id = require("terminal"):current_term_index()
+                        return " " .. (id or "Exited")
+                    end,
+                    hl = { bold = true, fg = "blue" },
+                },
             }
 
             -- indicator of when inside a snippet
@@ -599,12 +727,12 @@ return {
                 Space,
                 Diagnostics,
                 Align,
-                -- { flexible = 3,   { Navic, Space }, { provider = "" } },
+                { flexible = 3,   { Navic, Space }, { provider = "" } },
                 Align,
                 LSPActive,
                 Space,
                 FileType,
-                { flexible = 3,   { FileEncoding, Space }, { provider = "" } },
+                { flexible = 3, { FileEncoding, Space }, { provider = "" } },
                 Space,
                 Ruler,
                 SearchCount,
@@ -612,11 +740,12 @@ return {
                 ScrollBar,
             }
             -- for inactive windows
+
             local InactiveStatusline = {
                 condition = conditions.is_not_active,
-                FileType,
-                Space,
-                FileName,
+                { hl = { fg = "gray", force = true }, WorkDir },
+                FileNameBlock,
+                { provider = "%<" },
                 Align,
             }
 
@@ -628,23 +757,37 @@ return {
                         filetype = { "^git.*", "fugitive" },
                     })
                 end,
+                FileType,
+                { provider = "%q" },
+                Space,
+                HelpFilename,
+                Align,
+            }
 
+            -- git statusline
+            local GitStatusline = {
+                condition = function()
+                    return conditions.buffer_matches({
+                        filetype = { "^git.*", "fugitive" },
+                    })
+                end,
                 FileType,
                 Space,
-                HelpFileName,
-                Align
+                {
+                    provider = function()
+                        return vim.fn.FugitiveStatusline()
+                    end,
+                },
+                Space,
+                Align,
             }
 
             -- terminal statusline
             local TerminalStatusline = {
-
                 condition = function()
                     return conditions.buffer_matches({ buftype = { "terminal" } })
                 end,
-
                 hl = { bg = "dark_red" },
-
-                -- Quickly add a condition to the ViMode to only show it when buffer is active!
                 { condition = conditions.is_active, ViMode, Space },
                 FileType,
                 Space,
@@ -661,17 +804,34 @@ return {
                         return "StatusLineNC"
                     end
                 end,
-
-                -- the first statusline with no condition, or which condition returns true is used.
-                -- think of it as a switch case with breaks to stop fallthrough.
+                static = {
+                    mode_colors = {
+                        n = "red",
+                        i = "green",
+                        v = "cyan",
+                        V = "cyan",
+                        ["\22"] = "cyan", -- this is an actual ^V, type <C-v><C-v> in insert mode
+                        c = "orange",
+                        s = "purple",
+                        S = "purple",
+                        ["\19"] = "purple", -- this is an actual ^S, type <C-v><C-s> in insert mode
+                        R = "orange",
+                        r = "orange",
+                        ["!"] = "red",
+                        t = "green",
+                    },
+                    mode_color = function(self)
+                        local mode = conditions.is_active() and vim.fn.mode() or "n"
+                        return self.mode_colors[mode]
+                    end,
+                },
                 fallthrough = false,
-
+                -- GitStatusline,
                 SpecialStatusline,
                 TerminalStatusline,
                 InactiveStatusline,
                 DefaultStatusline,
             }
-
 
             return {
                 -- intentional duplicate, see :h heirline config.opts

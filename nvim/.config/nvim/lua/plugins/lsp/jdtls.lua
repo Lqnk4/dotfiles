@@ -132,29 +132,27 @@ return {
                 callback = attach_jdtls,
             })
 
-            vim.api.nvim_create_autocmd("LspAttach", {
-                callback = function(args)
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    if client and client.name == "jdtls" then
-                        -- keybindings here
-                        local map = function(mode, lhs, rhs, opts)
-                            vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("keep", opts, { buffer = args.buf }))
-                        end
-
-                        map("n", "<leader>co", require("jdtls").organize_imports, { desc = "Organize Imports" })
-                        map("n", "gs", require("jdtls").super_implementation, { desc = "Goto Super" })
-                        map("n", "<leader>cxv", require("jdtls").extract_variable_all, { desc = "Extract Variable" })
-                        map("n", "<leader>cxc", require("jdtls").extract_constant, { desc = "Extract Constant" })
-
-                        map("v", "<leader>cxv", [[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
-                            { desc = "Extract Variable" })
-                        map("v", "<leader>cxc", [[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]],
-                            { desc = "Extract Variable" })
-                        map("v", "<leader>cxm", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
-                            { desc = "Extract Method" })
+            require("util.lsp").on_attach(
+                function(client, bufnr)
+                    -- keybindings here
+                    local map = function(mode, lhs, rhs, opts)
+                        vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("keep", opts, { buffer = bufnr }))
                     end
-                end,
-            })
+
+                    map("n", "<leader>co", require("jdtls").organize_imports, { desc = "Organize Imports" })
+                    map("n", "gs", require("jdtls").super_implementation, { desc = "Goto Super" })
+                    map("n", "<leader>cxv", require("jdtls").extract_variable_all, { desc = "Extract Variable" })
+                    map("n", "<leader>cxc", require("jdtls").extract_constant, { desc = "Extract Constant" })
+
+                    map("v", "<leader>cxv", [[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
+                        { desc = "Extract Variable" })
+                    map("v", "<leader>cxc", [[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]],
+                        { desc = "Extract Variable" })
+                    map("v", "<leader>cxm", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
+                        { desc = "Extract Method" })
+                end
+            )
+
 
             attach_jdtls()
         end,

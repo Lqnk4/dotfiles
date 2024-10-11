@@ -65,7 +65,7 @@ return {
                 },
                 -- you can do any additional lsp server setup here
                 -- return true if you don't want this server to be setup with lspconfig
-                ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+                ---@type table<string, fun(server:string, opts):boolean?>
                 setup = {
                     jdtls = function()
                         return true
@@ -85,11 +85,8 @@ return {
             map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
             map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
-            vim.api.nvim_create_autocmd('LspAttach', {
-                desc = 'LSP actions',
-                callback = function(args)
-                    local bufnr = args.buf
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+            require("util.lsp").on_attach(
+                function(client, bufnr)
                     local key_opts = { buffer = bufnr }
 
                     -- these will be buffer-local keybindings
@@ -121,7 +118,7 @@ return {
                         end
                     end
                 end
-            })
+            )
 
             local servers = opts.servers
             local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
