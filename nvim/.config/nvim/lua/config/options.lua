@@ -1,56 +1,59 @@
--- Transparent background highlight group
--- vim.cmd [[
---   highlight Normal guibg=none
---   highlight NonText guibg=none
---   highlight Normal ctermbg=none
---   highlight NonText ctermbg=none
--- ]]
+-- Set filetype to `bigfile` for files larger than 1.5 MB
+-- Only vim syntax will be enabled (with the correct filetype)
+-- LSP, treesitter and other ft plugins will be disabled.
+vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
--- Set highlight on search
-vim.o.hlsearch = false
+local opt = vim.opt
 
--- Make relative line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+opt.number = true         -- Print line number
+opt.relativenumber = true -- Relative line numbers
 
--- Highlight current line
-vim.opt.cursorline = false
+opt.tabstop = 4           -- Size of a tab
+opt.shiftwidth = 4        -- Size of an indent
+opt.softtabstop = 4
+opt.expandtab = true      -- Use spaces instead of tabs
+opt.breakindent = true
 
-vim.o.tabstop = 4      -- A TAB character looks like 4 spaces
-vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
-vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
+opt.clipboard = "unnamedplus" -- sync system clipboard
 
--- Set conceal level
-vim.o.conceallevel = 2
+opt.completeopt = "menu,menuone,noselect"
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
--- vim.o.clipboard = "unnamedplus"
+opt.conceallevel = 2   -- Hide * markup for bold and italic, but not markers with substitutions
+opt.confirm = true     -- Confirm to save changes before exiting modified buffer
+opt.cursorline = false -- Highlighting of the current line
+opt.fillchars = {
+    foldopen = "",
+    foldclose = "",
+    fold = " ",
+    foldsep = " ",
+    diff = "╱",
+    eob = " ",
+}
 
--- Enable break indent
-vim.o.breakindent = true
+opt.foldlevel = 99
 
--- Save undo history
-vim.o.undofile = true
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
 
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+opt.ignorecase = true      -- Ignore case
+opt.smartcase = true       -- Don't ignore case with capitals
 
--- Keep signcolumn as auto. Set this to 'yes' if you want it enabled
-vim.wo.signcolumn = "auto"
+opt.inccommand = "nosplit" -- preview incremental substitute
+opt.jumpoptions = "view"
 
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 400
+opt.showmode = false -- statusline is configured
+-- opt.laststatus = 3         -- global statusline
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+opt.wrap = false         -- Disable line wrap
+opt.linebreak = true     -- Wrap lines at convenient points
 
--- Set terminal gui colors to true
-vim.o.termguicolors = true
+opt.termguicolors = true -- True color support
 
--- Set mode message
---vim.opt.showmode = false
+opt.undofile = true
+opt.undolevels = 10000
+
+opt.updatetime = 200 -- Save swap file and trigger CursorHold
+opt.smoothscroll = true
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
