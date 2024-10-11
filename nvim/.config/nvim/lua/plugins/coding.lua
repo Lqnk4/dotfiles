@@ -21,6 +21,10 @@ return {
                     completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
                 },
                 preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+                window = {
+                    completion = cmp.config.window.bordered({ border = "single" }),
+                    documentation = cmp.config.window.bordered({ border = "single" }),
+                },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -79,7 +83,7 @@ return {
             {
                 "garymjr/nvim-snippets",
                 opts = {
-                    friendly_snippets = true,
+                    friendly_snippets = false,
                 },
                 dependencies = { "rafamadriz/friendly-snippets" },
             },
@@ -133,6 +137,9 @@ return {
             -- better deal with markdown code blocks
             markdown = true,
         },
+        config = function(_, opts)
+            require("util.mini").pairs(opts)
+        end,
     },
 
     -- comments
@@ -179,6 +186,41 @@ return {
                 end)
             end)
         end,
+    },
+
+    -- surround text objects
+    {
+        "echasnovski/mini.surround",
+        event = "VeryLazy",
+        recommended = true,
+        keys = function(_, keys)
+            -- Populate the keys based on the user's options
+            local opts = require("util").opts("mini.surround")
+            local mappings = {
+                { opts.mappings.add,            desc = "Add Surrounding",                     mode = { "n", "v" } },
+                { opts.mappings.delete,         desc = "Delete Surrounding" },
+                { opts.mappings.find,           desc = "Find Right Surrounding" },
+                { opts.mappings.find_left,      desc = "Find Left Surrounding" },
+                { opts.mappings.highlight,      desc = "Highlight Surrounding" },
+                { opts.mappings.replace,        desc = "Replace Surrounding" },
+                { opts.mappings.update_n_lines, desc = "Update `MiniSurround.config.n_lines`" },
+            }
+            mappings = vim.tbl_filter(function(m)
+                return m[1] and #m[1] > 0
+            end, mappings)
+            return vim.list_extend(mappings, keys)
+        end,
+        opts = {
+            mappings = {
+                add = "sa",  -- Add surrounding in Normal and Visual modes
+                delete = "sd", -- Delete surrounding
+                find = "sf", -- Find surrounding (to the right)
+                find_left = "sF", -- Find surrounding (to the left)
+                highlight = "sh", -- Highlight surrounding
+                replace = "sr", -- Replace surrounding
+                update_n_lines = "sn", -- Update `n_lines`
+            },
+        },
     },
 
     -- lua lsp setup
