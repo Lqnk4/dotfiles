@@ -2,7 +2,9 @@
     "height": 25,
     "margin": "6 12 0 12",
     "modules-left": [
-        "river/tags"
+        "river/tags",
+        "river/window",
+        "river/mode"
     ],
     "modules-center": [],
     "modules-right": [
@@ -12,6 +14,10 @@
         "battery",
         "custom/clock"
     ],
+    "river/window": {
+        "max-length": 48,
+        "min-length": 4
+    },
     "custom/clock": {
         "exec": "date +'%I:%M'",
         "on-click": "month",

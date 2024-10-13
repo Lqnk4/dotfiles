@@ -19,6 +19,12 @@ window#waybar {
   border: 2px solid @border;
 }
 
+#tags,
+#window,
+#mode {
+    padding: 0px 8px;
+}
+
 #tags button {
   padding: 0px;
   min-width: 22px;
@@ -45,7 +51,19 @@ window#waybar {
   color: @urgent;
 }
 
+#window {
+    color: @empty;
+}
 
+#mode {
+    color: @focused;
+}
+
+#mode.normal {
+    opacity: 0;
+}
+
+#pulseaudio,
 #bluetooth,
 #custom-keyboard_layout
 #battery,

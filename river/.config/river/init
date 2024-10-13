@@ -10,7 +10,7 @@ riverctl map normal Super+Shift Return spawn alacritty
 riverctl map normal Super G spawn firefox
 
 # Super+D to start rofi app launcher
-riverctl map normal Super D spawn 'rofi -show drun'
+riverctl map normal Super D spawn 'fuzzel'
 
 # Ctrl+Space change keyboard layout and update the waybar module
 riverctl map normal Control Space spawn 'fcitx5-remote -t ; pkill -SIGRTMIN+1 waybar'
