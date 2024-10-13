@@ -1,111 +1,49 @@
 {
+    "height": 25,
+    "margin": "6 12 0 12",
     "modules-left": [
-        "river/tags",
-        "river/window"
+        "river/tags"
     ],
+    "modules-center": [],
     "modules-right": [
         "pulseaudio",
-        "backlight",
+        "bluetooth",
         "custom/keyboard_layout",
-        "network",
         "battery",
-        "clock"
+        "custom/clock"
     ],
-    "river/tags": {
-        "tag-labels": [
-            "一",
-            "二",
-            "三",
-            "四",
-            "五",
-            "六",
-            "七",
-            "八",
-            "九",
-            "十"
-        ]
-    },
-    "river/mode": {
-        "disable-scroll": true,
-        "num-tags": 1
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%b %d(%H:%M) 󰃰}"
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "on-scroll-up": "light -A 1",
-        "on-scroll-down": "light -U 1"
+    "custom/clock": {
+        "exec": "date +'%I:%M'",
+        "on-click": "month",
+        "interval": 60
     },
     "battery": {
         "states": {
-            "warning": 30,
-            "critical": 15
+            "warning": 50,
+            "critical": 25
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰢝",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{icon} {capacity}%",
+        "format-charging": "<span color=\"#9ece6a\">󰂄</span> {capacity}%",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
+            "󰂎",
+            "󰁻",
+            "󰁾",
+            "󰂀",
+            "󰁹"
+        ],
+        "interval": 30
     },
-    "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰝟 {icon} {format_source}",
-        "format-muted": "󰝟 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "󱠰",
-            "headset": "󰋎",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        },
-        "on-click": "pavucontrol"
-    },
-    "network": {
-        "format": "{ifname}",
-        "format-wifi": "Connected ",
-        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
-        "format-disconnected": "Disconnected 󱛅", //An empty format will hide the module.
-        "tooltip-format": "{ifname} via {gwaddr} 󰛳",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
+    "bluetooth": {
+        "format": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_battery_percentage}% ({device_alias})",
+        "tooltip-format": "{num_connections} connected"
     },
     "custom/keyboard_layout": {
         "exec": "~/.config/waybar/scripts/fcitx5.sh",
         "interval": "once",
         "signal": 1,
-        "format": "{} {icon}",
-        "format-icons": [
-            "󰌌"
-        ]
-    }
+        "format": "{} "
+    },
+    "pulseaudio": {}
 }

@@ -1,102 +1,54 @@
+@define-color background #101010;
+@define-color foreground #cccccc;
+@define-color focused #DEEEED;
+@define-color occupied #7A7A7A;
+@define-color empty #444444;
+@define-color urgent #f7768e;
+@define-color bluetooth #2ac3de;
+@define-color border #2A2A2A;
+
 * {
-  border: none;
-  border-radius: 0;
-  font-family: Jetbrains Mono Nerd Font;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: monospace;
+  font-size: 10pt;
+  min-height: 0px;
 }
 
 window#waybar {
-  background-color: #181616;
-  color: #ebdbb2;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  border-bottom: solid 0px #3c3836;
-}
-
-window#waybar.hidden {
-  opacity: 0.2;
+  color: @foreground;
+  background: @background;
+  border: 2px solid @border;
 }
 
 #tags button {
-  padding: 0 5px;
-  color: #ebdbb2;
-  border-radius: 5px;
+  padding: 0px;
+  min-width: 22px;
+  color: @empty;
+  border-radius: 0px;
+}
+
+#tags button:hover {
+  box-shadow: none;
+  text-shadow: none;
+  background: transparent;
+}
+
+#tags button.occupied {
+  color: @occupied;
+  font-weight: bold;
 }
 
 #tags button.focused {
-  background-color: #ebdbb2;
-  color: #282828;
-  border-bottom: none;
+  color: @focused;
 }
 
 #tags button.urgent {
-  background-color: #cc241d;
+  color: @urgent;
 }
 
-widget > * {
-  margin-top: 6px;
-  margin-bottom: 6px;
-}
 
-.modules-left > widget > * {
-  margin-left: 12px;
-  margin-right: 12px;
-}
-
-.modules-left > widget:first-child > * {
-  margin-left: 6px;
-}
-
-.modules-left > widget:last-child > * {
-  margin-right: 18px;
-}
-
-.modules-right > widget > * {
-  padding: 0 12px;
-  margin-left: 0;
-  margin-right: 0;
-  color: #282828;
-  background-color: #ebdbb2;
-}
-
-.modules-right > widget:first-child > * {
-  border-radius: 5px 0 0 5px;
-}
-
-.modules-right > widget:last-child > * {
-  border-radius: 0 5px 5px 0;
-  margin-right: 6px;
-}
-
-#mode {
-  background: transparent;
-  color: #fb4934;
-}
-
-@keyframes blink {
-  to {
-    color: #ebdbb2;
-  }
-}
-
-#battery.critical:not(.charging) {
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-label:focus {
-  background-color: #282828;
-}
-
-tooltip {
-  border-radius: 5px;
-  background: #504945;
-}
-
-tooltip label {
-  color: #ebdbb2;
+#bluetooth,
+#custom-keyboard_layout
+#battery,
+#custom-clock {
+  padding: 0px 8px;
 }

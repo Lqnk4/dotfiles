@@ -6,7 +6,7 @@ vim.g.maplocalleader = "\\"
 require("config.lazy")
 
 --set colorscheme
-vim.cmd [[colorscheme kanagawa]]
+vim.cmd [[colorscheme lackluster]]
 
 --source vim options, keymaps
 require("config.options")

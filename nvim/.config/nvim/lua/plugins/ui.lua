@@ -2,6 +2,7 @@ return {
     -- statusline
     {
         "rebelot/heirline.nvim",
+        enabled = false,
         event = "VeryLazy",
         init = function()
             vim.g.lualine_laststatus = vim.o.laststatus
@@ -17,6 +18,8 @@ return {
             local conditions = require("heirline.conditions")
             local utils = require("heirline.utils")
 
+            -- FIX: git_del, git_add, git_change are missing from most colorthemes besides kanagawa.nvim,
+            -- this causes errors and the statusline fails to load
             local function setup_colors()
                 return {
                     bright_bg = utils.get_highlight("Folded").bg,
@@ -813,4 +816,40 @@ return {
             }
         end,
     },
+    --
+    -- worse temp statusline
+    {
+        'nvim-lualine/lualine.nvim',
+        init = function()
+            vim.g.lualine_laststatus = vim.o.laststatus
+            if vim.fn.argc(-1) > 0 then
+                -- set an empty statusline till lualine loads
+                vim.o.statusline = " "
+            else
+                -- hide the statusline on the starter page
+                vim.o.laststatus = 0
+            end
+        end,
+        opts = {
+            icons_enabled = false,
+            theme = "lackluster",
+            sections = {
+                lualine_a = { 'mode' },
+                lualine_b = {},
+                lualine_c = { 'filename' },
+                lualine_x = {},
+                lualine_y = { 'filetype' },
+                lualine_z = { 'branch' }
+            },
+            inactive_sections = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = { 'filename' },
+                lualine_x = { 'location' },
+                lualine_y = {},
+                lualine_z = {}
+            },
+        }
+
+    }
 }

@@ -111,4 +111,41 @@ return {
         }
     },
 
+    -- lackluster
+    {
+        "slugbyte/lackluster.nvim",
+        lazy = true,
+        opts = function()
+            local lackluster = require("lackluster")
+            return {
+                tweak_syntax = {
+                    comment = lackluster.color.gray5,
+                },
+                tweak_background = {
+                    -- normal = "default", -- main background
+                    normal = "none", -- transparent
+                },
+                tweak_highlight = {
+                    FloatBorder = {
+                        overwrite = true,
+                        fg = lackluster.color.gray5,
+                        bg = "NONE",
+                    },
+                    ["@keyword"] = {
+                        overwrite = true,
+                        bold = false,
+                        italic = true,
+                        fg = lackluster.color.gray6,
+                    },
+                    ["@keyword.return"] = {
+                        overwrite = true,
+                        bold = false,
+                        italic = true,
+                        fg = lackluster.color.green,
+                    },
+                },
+            }
+        end,
+    },
+
 }

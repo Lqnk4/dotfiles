@@ -221,5 +221,21 @@ return {
                 lazy_update_context = true,
             }
         end,
+    },
+
+    -- Todo comments
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        cmd = { "TodoTrouble", "TodoTelescope" },
+        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            { "]t",         function() require("todo-comments").jump_next() end, desc = "Next Todo Comment" },
+            { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
+            { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
+            { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
+        },
     }
 }

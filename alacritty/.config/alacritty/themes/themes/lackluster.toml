@@ -1,0 +1,13 @@
+# generated with termcolors.nvim
+[colors.primary]
+foreground = "#cccccc"
+background = "#101010"
+
+[colors.selection]
+background = "#cccccc"
+text = "#000000"
+
+[colors.cursor]
+text = "#101010"
+cursor = "#cccccc"
+

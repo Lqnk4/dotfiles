@@ -1,6 +1,6 @@
 # theme
 import = [
-    "~/.config/alacritty/themes/themes/kanagawa_dragon.toml"
+    "~/.config/alacritty/themes/themes/lackluster.toml"
 ]
 
 # font
