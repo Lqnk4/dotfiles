@@ -8,10 +8,12 @@ local opt = vim.opt
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers
 
-opt.tabstop = 4           -- Size of a tab
-opt.shiftwidth = 4        -- Size of an indent
+opt.guicursor = "n-v-i-c:block-Cursor"
+
+opt.tabstop = 4      -- Size of a tab
+opt.shiftwidth = 4   -- Size of an indent
 opt.softtabstop = 4
-opt.expandtab = true      -- Use spaces instead of tabs
+opt.expandtab = true -- Use spaces instead of tabs
 opt.breakindent = true
 
 opt.clipboard = "unnamedplus" -- sync system clipboard
@@ -19,7 +21,7 @@ opt.clipboard = "unnamedplus" -- sync system clipboard
 opt.completeopt = "menu,menuone,noselect"
 
 opt.conceallevel = 2   -- Hide * markup for bold and italic, but not markers with substitutions
-opt.confirm = true     -- Confirm to save changes before exiting modified buffer
+opt.confirm = false   -- Confirm to save changes before exiting modified buffer
 opt.cursorline = false -- Highlighting of the current line
 opt.fillchars = {
     foldopen = "",

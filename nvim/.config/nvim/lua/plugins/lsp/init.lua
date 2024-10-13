@@ -31,7 +31,6 @@ return {
                     },
                 },
                 -- LSP Server Settings
-                ---@type lspconfig.options
                 servers = {
                     bashls = {},
                     lua_ls = {
@@ -61,6 +60,18 @@ return {
                         },
                     },
                     jdtls = {},
+                    jsonls = {
+                        settings = {
+                            json = {
+                                format = {
+                                    enable = true,
+                                },
+                                validate = {
+                                    enable = true,
+                                },
+                            }
+                        }
+                    },
                     zls = {},
                 },
                 -- you can do any additional lsp server setup here

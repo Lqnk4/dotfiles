@@ -36,3 +36,8 @@ export XMODIFIERS=@im=fcitx
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# autostart wm
+if [[ "$(tty)" = "/dev/tty1" ]] then
+    pgrep river || river
+fi

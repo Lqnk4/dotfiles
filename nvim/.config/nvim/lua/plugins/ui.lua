@@ -96,21 +96,6 @@ return {
                         ["!"] = "!",
                         t = "Terminal",
                     },
-                    mode_colors = {
-                        n = "red",
-                        i = "green",
-                        v = "cyan",
-                        V = "cyan",
-                        ["\22"] = "cyan",
-                        c = "orange",
-                        s = "purple",
-                        S = "purple",
-                        ["\19"] = "purple",
-                        R = "orange",
-                        r = "orange",
-                        ["!"] = "red",
-                        t = "red",
-                    }
                 },
                 -- We can now access the value of mode() that, by now, would have been
                 -- computed by `init()` and use it to index our strings dictionary.
@@ -618,27 +603,13 @@ return {
 
             -- terminal buf name
             local TerminalName = {
-                -- icon = ' ', -- 
-                {
-                    provider = function()
-                        local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
-                        return " " .. tname
-                    end,
-                    hl = { fg = "blue", bold = true },
-                },
-                { provider = " - " },
-                {
-                    provider = function()
-                        return vim.b.term_title
-                    end,
-                },
-                {
-                    provider = function()
-                        local id = require("terminal"):current_term_index()
-                        return " " .. (id or "Exited")
-                    end,
-                    hl = { bold = true, fg = "blue" },
-                },
+                -- we could add a condition to check that buftype == 'terminal'
+                -- or we could do that later (see #conditional-statuslines below)
+                provider = function()
+                    local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
+                    return " " .. tname
+                end,
+                hl = { fg = "blue", bold = true },
             }
 
             -- indicator of when inside a snippet
@@ -826,7 +797,7 @@ return {
                     end,
                 },
                 fallthrough = false,
-                -- GitStatusline,
+                GitStatusline,
                 SpecialStatusline,
                 TerminalStatusline,
                 InactiveStatusline,
@@ -841,5 +812,5 @@ return {
                 statusline = { StatusLines }
             }
         end,
-    }
+    },
 }

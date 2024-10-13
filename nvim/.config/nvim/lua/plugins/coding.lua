@@ -9,6 +9,23 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+
+            -- autopairing of (){}[] etc
+            {
+                "windwp/nvim-autopairs",
+                opts = {
+                    fast_wrap = {},
+                    disable_filetype = { "TelescopePrompt", "vim" },
+                },
+                config = function(_, opts)
+                    require("nvim-autopairs").setup(opts)
+
+                    -- setup cmp for autopairs
+                    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                end,
+            },
+
         },
         opts = function()
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -121,27 +138,6 @@ return {
         },
     },
 
-    -- auto pairs
-    {
-        "echasnovski/mini.pairs",
-        event = "VeryLazy",
-        opts = {
-            modes = { insert = true, command = true, terminal = false },
-            -- skip autopair when next character is one of these
-            skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-            -- skip autopair when the cursor is inside these treesitter nodes
-            skip_ts = { "string" },
-            -- skip autopair when next character is closing pair
-            -- and there are more closing pairs than opening pairs
-            skip_unbalanced = true,
-            -- better deal with markdown code blocks
-            markdown = true,
-        },
-        config = function(_, opts)
-            require("util.mini").pairs(opts)
-        end,
-    },
-
     -- comments
     {
         "folke/ts-comments.nvim",
@@ -212,12 +208,12 @@ return {
         end,
         opts = {
             mappings = {
-                add = "sa",  -- Add surrounding in Normal and Visual modes
-                delete = "sd", -- Delete surrounding
-                find = "sf", -- Find surrounding (to the right)
-                find_left = "sF", -- Find surrounding (to the left)
-                highlight = "sh", -- Highlight surrounding
-                replace = "sr", -- Replace surrounding
+                add = "sa",            -- Add surrounding in Normal and Visual modes
+                delete = "sd",         -- Delete surrounding
+                find = "sf",           -- Find surrounding (to the right)
+                find_left = "sF",      -- Find surrounding (to the left)
+                highlight = "sh",      -- Highlight surrounding
+                replace = "sr",        -- Replace surrounding
                 update_n_lines = "sn", -- Update `n_lines`
             },
         },
