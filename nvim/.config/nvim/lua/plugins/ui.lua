@@ -19,6 +19,7 @@ return {
             local utils = require("heirline.utils")
 
             -- FIX: git_del, git_add, git_change are missing from most colorthemes besides kanagawa.nvim,
+            -- some colorschemes are missing certain foregrounds or backgrounds
             -- this causes errors and the statusline fails to load
             local function setup_colors()
                 return {
@@ -816,10 +817,12 @@ return {
             }
         end,
     },
-    --
+
     -- worse temp statusline
     {
         'nvim-lualine/lualine.nvim',
+        enabled = true,
+        event = "VeryLazy",
         init = function()
             vim.g.lualine_laststatus = vim.o.laststatus
             if vim.fn.argc(-1) > 0 then
@@ -830,26 +833,91 @@ return {
                 vim.o.laststatus = 0
             end
         end,
-        opts = {
-            icons_enabled = false,
-            theme = "lackluster",
-            sections = {
-                lualine_a = { 'mode' },
-                lualine_b = {},
-                lualine_c = { 'filename' },
-                lualine_x = {},
-                lualine_y = { 'filetype' },
-                lualine_z = { 'branch' }
-            },
-            inactive_sections = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = { 'filename' },
-                lualine_x = { 'location' },
-                lualine_y = {},
-                lualine_z = {}
-            },
-        }
+        opts = function()
+            local Config = require("config")
+
+            local LSPActive = {
+                function()
+                    local names = {}
+                    for i, server in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                        table.insert(names, server.name)
+                    end
+                    return " [" .. table.concat(names, " ") .. "]"
+                end,
+                cond = function()
+                    return next(vim.lsp.get_clients({ bufnr = 0 })) ~= nil
+                end
+            }
+
+
+            -- LSP clients attached to buffer
+
+            return {
+                icons_enabled = false,
+                theme = 'auto',
+                options = {
+                    component_separators = { left = ' ', right = ' ' },
+                    section_separators = { left = '', right = '' },
+                },
+                sections = {
+                    lualine_a = { 'mode' },
+                    lualine_b = {
+                        {
+                            'filename',
+                            path = 0, -- relative path
+                        }
+
+                    },
+                    lualine_c = {
+                        {
+                            'filetype',
+                        },
+                        {
+                            'branch',
+                            icon = "",
+                        },
+                        {
+                            "diff",
+                            source = function()
+                                local gitsigns = vim.b.gitsigns_status_dict
+                                if gitsigns then
+                                    return {
+                                        added = gitsigns.added,
+                                        modified = gitsigns.changed,
+                                        removed = gitsigns.removed,
+                                    }
+                                end
+                            end,
+                            separator = { left = '(', right = ')' },
+                        },
+                        {
+                            'diagnostics',
+                            sources = { "nvim_diagnostic" },
+                            symbols = {
+                                error = Config.icons.diagnostics.Error,
+                                warn = Config.icons.diagnostics.Warm,
+                                info = Config.icons.diagnostics.Info,
+                                hint = Config.icons.diagnostics.Hint,
+                            },
+                            colored = true,
+                        }
+                    },
+                    lualine_x = {
+                        LSPActive,
+                    },
+                    lualine_y = {},
+                    lualine_z = {}
+                },
+                inactive_sections = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = { 'filename' },
+                    lualine_x = { 'location' },
+                    lualine_y = {},
+                    lualine_z = {}
+                },
+            }
+        end,
 
     }
 }

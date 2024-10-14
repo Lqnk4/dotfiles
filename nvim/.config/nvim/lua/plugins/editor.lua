@@ -1,89 +1,36 @@
 local Util = require("util")
 
 return {
-    -- highlights changed text since last commit
     {
-        "lewis6991/gitsigns.nvim",
-        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
-        opts = {
-            signs = {
-                add = { text = "▎" },
-                change = { text = "▎" },
-                delete = { text = "" },
-                topdelete = { text = "" },
-                changedelete = { text = "▎" },
-                untracked = { text = "▎" },
-            },
-            signs_staged = {
-                add = { text = "▎" },
-                change = { text = "▎" },
-                delete = { text = "" },
-                topdelete = { text = "" },
-                changedelete = { text = "▎" },
-            },
-            signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
-            on_attach = function(buffer)
-                local gs = package.loaded.gitsigns
-
-                local function map(mode, l, r, desc)
-                    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-                end
-
-                -- stylua: ignore start
-                map("n", "<leader>ght", "<cmd>Gitsigns toggle_signs<cr>", "Toggle Gitsigns")
-                map("n", "]h", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "]c", bang = true })
-                    else
-                        gs.nav_hunk("next")
-                    end
-                end, "Next Hunk")
-                map("n", "[h", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "[c", bang = true })
-                    else
-                        gs.nav_hunk("prev")
-                    end
-                end, "Prev Hunk")
-                map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
-                map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
-                map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-                map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-                map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-                map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-                map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-                map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
-                map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-                map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
-                map("n", "<leader>ghd", gs.diffthis, "Diff This")
-                map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-                map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-            end,
-        },
-    },
-
-    -- search/replace in multiple files
-    {
-        "MagicDuck/grug-far.nvim",
-        opts = { headerMaxWidth = 80 },
-        cmd = "GrugFar",
+        'stevearc/oil.nvim',
+        lazy = false,
         keys = {
-            {
-                "<leader>sr",
-                function()
-                    local grug = require("grug-far")
-                    local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-                    grug.open({
-                        transient = true,
-                        prefills = {
-                            filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-                        },
-                    })
-                end,
-                mode = { "n", "v" },
-                desc = "Search and Replace",
-            },
+            { "<leader>pv", "<cmd>Oil<cr>", { desc = "Oil" } },
         },
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = function()
+            local detail = false -- toggle for file detail view
+
+            return {
+                keymaps = {
+                    ["gd"] = {
+                        desc = "Toggle file detail view",
+                        callback = function()
+                            detail = not detail
+                            if detail then
+                                require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+                            else
+                                require("oil").set_columns({ "icon" })
+                            end
+                        end,
+                    },
+                },
+                keymaps_help = {
+                    border = "single",
+                }
+            }
+        end,
     },
 
     -- Telescope
@@ -91,16 +38,6 @@ return {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         version = false, -- telescope did only one release, so use HEAD for now
-        dependencies = {
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                config = function(plugin)
-                    Util.on_load("telescope.nvim", function()
-                        local ok, err = pcall(require("telescope").load_extension, "fzf")
-                    end)
-                end,
-            },
-        },
         keys = function()
             local builtin = require("telescope.builtin")
             return {
@@ -221,6 +158,67 @@ return {
                 lazy_update_context = true,
             }
         end,
+    },
+
+    -- highlights changed text since last commit
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
+        opts = {
+            signs = {
+                add = { text = "▎" },
+                change = { text = "▎" },
+                delete = { text = "" },
+                topdelete = { text = "" },
+                changedelete = { text = "▎" },
+                untracked = { text = "▎" },
+            },
+            signs_staged = {
+                add = { text = "▎" },
+                change = { text = "▎" },
+                delete = { text = "" },
+                topdelete = { text = "" },
+                changedelete = { text = "▎" },
+            },
+            signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+            on_attach = function(buffer)
+                local gs = package.loaded.gitsigns
+
+                local function map(mode, l, r, desc)
+                    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+                end
+
+                -- stylua: ignore start
+                map("n", "<leader>ght", "<cmd>Gitsigns toggle_signs<cr>", "Toggle Gitsigns")
+                map("n", "]h", function()
+                    if vim.wo.diff then
+                        vim.cmd.normal({ "]c", bang = true })
+                    else
+                        gs.nav_hunk("next")
+                    end
+                end, "Next Hunk")
+                map("n", "[h", function()
+                    if vim.wo.diff then
+                        vim.cmd.normal({ "[c", bang = true })
+                    else
+                        gs.nav_hunk("prev")
+                    end
+                end, "Prev Hunk")
+                map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+                map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+                map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+                map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+                map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+                map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+                map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+                map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+                map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+                map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
+                map("n", "<leader>ghd", gs.diffthis, "Diff This")
+                map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+                map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+            end,
+        },
     },
 
     -- Todo comments
