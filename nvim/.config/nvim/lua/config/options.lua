@@ -18,7 +18,7 @@ opt.softtabstop = 4
 opt.expandtab = true -- Use spaces instead of tabs
 opt.breakindent = true
 
-opt.clipboard = "unnamedplus" -- sync system clipboard
+-- opt.clipboard = "unnamedplus" -- sync system clipboard
 
 opt.completeopt = "menu,menuone,noselect"
 
@@ -46,7 +46,7 @@ opt.inccommand = "nosplit" -- preview incremental substitute
 opt.jumpoptions = "view"
 
 opt.showmode = false -- statusline is configured
--- opt.laststatus = 3         -- global statusline
+opt.laststatus = 3         -- global statusline
 
 opt.wrap = false         -- Disable line wrap
 opt.linebreak = true     -- Wrap lines at convenient points
