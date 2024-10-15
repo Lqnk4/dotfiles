@@ -1,10 +1,9 @@
-Util = require("util")
-
 return {
 
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        enabled = true,
         version = false, -- last release is way too old and doesn't work on Windows
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
@@ -28,7 +27,12 @@ return {
         ---@diagnostic disable-next-line: missing-fields
         opts = {
             highlight = { enable = true },
-            indent = { enable = true },
+            indent = {
+                enable = true,
+                disable = {
+                    "zig",
+                }
+            },
             ensure_installed = {
                 "bash",
                 "c",

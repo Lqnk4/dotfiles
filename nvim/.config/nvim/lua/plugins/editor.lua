@@ -36,6 +36,15 @@ return {
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                config = function()
+                    require('telescope').load_extension('fzf')
+                end,
+            }
+        },
         cmd = "Telescope",
         version = false, -- telescope did only one release, so use HEAD for now
         keys = function()
@@ -180,7 +189,7 @@ return {
                 topdelete = { text = "" },
                 changedelete = { text = "▎" },
             },
-            signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+            signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
             on_attach = function(buffer)
                 local gs = package.loaded.gitsigns
 
