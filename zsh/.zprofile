@@ -1,5 +1,5 @@
 #
-# ~/.bash_profile
+# ~/.zprofile
 #
 
 ### SSH
@@ -38,13 +38,10 @@ export XMODIFIERS=@im=fcitx
 # Fix for IntelliJ windows (dated)
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-### BASHRC
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
 ### WM
 
 # autostart wm
 if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ]; then
   exec river
 fi
+

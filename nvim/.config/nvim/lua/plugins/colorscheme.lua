@@ -122,8 +122,8 @@ return {
                     comment = lackluster.color.gray5,
                 },
                 tweak_background = {
-                    -- normal = "default", -- main background
-                    normal = "none", -- transparent
+                    normal = "default", -- main background
+                    -- normal = "none", -- transparent
                 },
                 tweak_highlight = {
                     FloatBorder = {
@@ -147,4 +147,5 @@ return {
             }
         end,
     },
+
 }

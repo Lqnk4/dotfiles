@@ -2,6 +2,10 @@
 bash/.bash_history
 bash/*.tmp
 
+# Ignore zsh history, compdumps
+zsh/.zsh_history
+zsh/.zcompdump
+
 # Ignore systemd
 systemd/**
 

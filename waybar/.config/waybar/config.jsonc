@@ -1,6 +1,6 @@
 {
     "height": 25,
-    "margin": "6 12 0 12",
+//    "margin": "6 12 0 12",
     "modules-left": [
         "river/tags",
 //        "river/window",
@@ -47,7 +47,7 @@
     },
     "custom/keyboard_layout": {
         "exec": "~/.config/waybar/scripts/fcitx5.sh",
-        "interval": "once",
+        "interval": 30,
         "signal": 1,
         "format": "{} "
     },

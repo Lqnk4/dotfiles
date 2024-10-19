@@ -927,6 +927,7 @@ return {
         opts = function()
             local dashboard = require("alpha.themes.dashboard")
             local saturn = [[
+
                                          _.oo.
                  _.u[[/;:,.         .odMMMMMM'
               .o888UU[[[/;:-.  .o@P^    MMM^
@@ -978,23 +979,6 @@ YMMMUP^
             end
 
             require("alpha").setup(dashboard.opts)
-
-            vim.api.nvim_create_autocmd("User", {
-                once = true,
-                pattern = "LazyVimStarted",
-                callback = function()
-                    local stats = require("lazy").stats()
-                    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                    dashboard.section.footer.val = "⚡ Neovim loaded "
-                        .. stats.loaded
-                        .. "/"
-                        .. stats.count
-                        .. " plugins in "
-                        .. ms
-                        .. "ms"
-                    pcall(vim.cmd.AlphaRedraw)
-                end,
-            })
         end,
     }
 }

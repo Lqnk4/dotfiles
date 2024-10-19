@@ -22,4 +22,19 @@ function M.on_attach(on_attach, name)
   })
 end
 
+-- keymaps for code actions
+M.action = setmetatable({}, {
+  __index = function(_, action)
+    return function()
+      vim.lsp.buf.code_action({
+        apply = true,
+        context = {
+          only = { action },
+          diagnostics = {},
+        },
+      })
+    end
+  end,
+})
+
 return M

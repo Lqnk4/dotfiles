@@ -141,7 +141,7 @@ return {
                     end
 
                     map("n", "<leader>co", require("jdtls").organize_imports, { desc = "Organize Imports" })
-                    map("n", "gs", require("jdtls").super_implementation, { desc = "Goto Super" })
+                    map("n", "gS", require("jdtls").super_implementation, { desc = "Goto Super" })
                     map("n", "<leader>cxv", require("jdtls").extract_variable_all, { desc = "Extract Variable" })
                     map("n", "<leader>cxc", require("jdtls").extract_constant, { desc = "Extract Constant" })
 

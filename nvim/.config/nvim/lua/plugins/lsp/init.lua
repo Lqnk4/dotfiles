@@ -33,6 +33,7 @@ return {
                 -- LSP Server Settings
                 servers = {
                     bashls = {},
+                    clangd = {},
                     lua_ls = {
                         -- mason = false, -- set to false if you don't want this server to be installed with mason
                         -- Use this to add any additional keymaps
@@ -72,6 +73,7 @@ return {
                             }
                         }
                     },
+                    pyright = {},
                     zls = {},
                 },
                 -- you can do any additional lsp server setup here
@@ -81,7 +83,6 @@ return {
                     jdtls = function()
                         return true
                     end,
-
                 },
             }
             return ret
