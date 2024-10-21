@@ -13,7 +13,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-prompt="[%n@%m %1~]%$ "
+export PS1="%{%F{243}%}%n%{%F{245}%}@%{%F{249}%}%m %{%F{254}%}%1~ %{%f%}$ "
 
 # Aliases
 alias sudo='sudo '

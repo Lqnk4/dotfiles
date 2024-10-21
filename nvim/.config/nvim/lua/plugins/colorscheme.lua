@@ -3,6 +3,7 @@ return {
     -- tokyonight
     {
         "folke/tokyonight.nvim",
+        enabled = false,
         lazy = true,
         opts = {
             style = "moon",
@@ -12,6 +13,7 @@ return {
     -- catppuccin
     {
         "catppuccin/nvim",
+        enabled = false,
         lazy = true,
         name = "catppuccin",
         opts = {
@@ -57,6 +59,7 @@ return {
     -- kanagawa
     {
         "rebelot/kanagawa.nvim",
+        enabled = false,
         name = "kanagawa",
         lazy = true,
         opts = {

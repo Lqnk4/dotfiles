@@ -33,7 +33,6 @@ return {
                 -- LSP Server Settings
                 servers = {
                     bashls = {},
-                    clangd = {},
                     lua_ls = {
                         -- mason = false, -- set to false if you don't want this server to be installed with mason
                         -- Use this to add any additional keymaps
@@ -60,7 +59,6 @@ return {
                             },
                         },
                     },
-                    jdtls = {},
                     jsonls = {
                         settings = {
                             json = {
@@ -80,9 +78,8 @@ return {
                 -- return true if you don't want this server to be setup with lspconfig
                 ---@type table<string, fun(server:string, opts):boolean?>
                 setup = {
-                    jdtls = function()
-                        return true
-                    end,
+
+
                 },
             }
             return ret

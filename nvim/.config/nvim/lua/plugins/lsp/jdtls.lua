@@ -1,6 +1,31 @@
 local java_filetypes = { "java" }
 
 return {
+
+    -- add to treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = { ensure_installed = { "java" } },
+    },
+
+    -- lspconfig setup
+    -- defer to nvim-jdtls
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            -- make sure mason installs the server
+            servers = {
+                jdtls = {},
+            },
+            setup = {
+                jdtls = function()
+                    return true -- avoid duplicate servers
+                end,
+            },
+        },
+    },
+
+    -- jdtls
     {
         "mfussenegger/nvim-jdtls",
         ft = java_filetypes,
