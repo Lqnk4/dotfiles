@@ -71,7 +71,6 @@ return {
                             }
                         }
                     },
-                    pyright = {},
                     zls = {},
                 },
                 -- you can do any additional lsp server setup here
