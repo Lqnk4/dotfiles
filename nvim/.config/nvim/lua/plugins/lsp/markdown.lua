@@ -48,5 +48,11 @@ return {
             },
         },
         ft = { "markdown", "norg", "rmd", "org" },
+        keys = {
+            { "<leader>um", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle Render" },
+        },
+        config = function()
+            require("render-markdown").disable()
+        end,
     }
 }

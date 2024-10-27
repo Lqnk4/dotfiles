@@ -16,6 +16,8 @@ compinit
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+bindkey "^H" backward-delete-char
+bindkey "^?" backward-delete-char
 
 ## Copy this into your .zshrc file
 export COLOR_RESET=$'\x1b[0m'

@@ -950,10 +950,10 @@ YMMMUP^
             -- stylua: ignore
             dashboard.section.buttons.val = {
                 dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-                dashboard.button("<>pf", "  > Find file", "Telescope find_files<CR>"),
+                dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
                 dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
                 dashboard.button("c", "  > Config", ":e $MYVIMRC | :cd %:p:h |<CR>"),
-                dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
+                dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do
                 button.opts.hl = "AlphaButtons"
