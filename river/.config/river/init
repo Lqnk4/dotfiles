@@ -161,11 +161,11 @@ riverctl map normal Super B spawn 'killall waybar || waybar'
 riverctl border-color-focused 0x7A7A7A
 riverctl border-color-unfocused 0x2A2A2A
 
-# Idle Configuration using waylock and swayidle
+# Idle Configuration using waylock and swayidle (monoitor specific)
 swayidle -w \
-	timeout 300 'swaylock -f -c 000000' \
-	timeout 600 'swaymsg "output * dpms off"' \
-		resume 'swaymsg "output * dpms on"' \
+	timeout 500 'swaylock -f -c 000000' \
+	timeout 1000 'wlr-randr --output ePD-1 --off' \
+		resume 'wlr-randr --output eDP-1 --on' \
 	before-sleep 'swaylock -f -c 000000' &
 
 # Set keyboard repeat rate
