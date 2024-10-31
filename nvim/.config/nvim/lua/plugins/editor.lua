@@ -51,19 +51,20 @@ return {
             local builtin = require("telescope.builtin")
             return {
                 --find
-                { "<leader>pf", builtin.find_files,               { desc = "Find Files" } },
-                { "<leader>ps", builtin.live_grep,                { desc = "Live Grep" } },
-                { '<leader>pb', builtin.buffers,                  { desc = 'Telescope buffers' } },
-                --lsp
-                { '<leader>pd', builtin.diagnostics,              { desc = 'Telescope LSP diagnostics' } },
+                { "<leader>pf", builtin.find_files,                                            { desc = "Find Files" } },
+                { "<leader>ps", builtin.live_grep,                                             { desc = "Live Grep" } },
+                { "<leader>pb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" }, --lsp
+                { '<leader>pd', builtin.diagnostics,                                           { desc = 'Telescope LSP diagnostics' } },
+                { '<leader>pr', builtin.oldfiles,                                              { desc = 'Telescope LSP diagnostics' } },
                 --help
-                { '<leader>ph', builtin.help_tags,                { desc = 'Telescope help tags' } },
+                { '<leader>ph', builtin.help_tags,                                             { desc = 'Telescope help tags' } },
+                { '<leader>pm', builtin.man_pages,                                             { desc = 'Telescope help tags' } },
                 -- git
-                { "<leader>pg", builtin.git_files,                { desc = "Find Files" } },
-                { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
-                { "<leader>gs", "<cmd>Telescope git_status<CR>",  desc = "Status" },
+                { "<leader>pg", builtin.git_files,                                             { desc = "Find Files" } },
+                { "<leader>gc", "<cmd>Telescope git_commits<CR>",                              desc = "Commits" },
+                { "<leader>gs", "<cmd>Telescope git_status<CR>",                               desc = "Status" },
                 -- colorschemes
-                { "<leader>uC", builtin.colorscheme,              desc = "Colorscheme with Preview" },
+                { "<leader>uC", builtin.colorscheme,                                           { desc = "Colorscheme with Preview" } },
 
             }
         end,
