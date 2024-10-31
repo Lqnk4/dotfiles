@@ -5,12 +5,14 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
 local opt = vim.opt
 
-vim.opt.background = "dark"
+vim.opt.background = "light"
 
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers
 
 opt.guicursor = "n-v-i-c:block-Cursor"
+
+opt.mouse = ""
 
 opt.tabstop = 4      -- Size of a tab
 opt.shiftwidth = 4   -- Size of an indent

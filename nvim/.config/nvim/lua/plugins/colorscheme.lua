@@ -151,4 +151,10 @@ return {
         end,
     },
 
+    -- nano
+    {
+        "ronisbr/nano-theme.nvim",
+        lazy = true,
+   }
+
 }

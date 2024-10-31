@@ -62,6 +62,8 @@ return {
                 { "<leader>pg", builtin.git_files,                { desc = "Find Files" } },
                 { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
                 { "<leader>gs", "<cmd>Telescope git_status<CR>",  desc = "Status" },
+                -- colorschemes
+                { "<leader>uC", builtin.colorscheme,              desc = "Colorscheme with Preview" },
 
             }
         end,
