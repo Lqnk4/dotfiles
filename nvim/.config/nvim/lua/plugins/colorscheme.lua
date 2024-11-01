@@ -3,7 +3,7 @@ return {
     -- tokyonight
     {
         "folke/tokyonight.nvim",
-        enabled = false,
+        enabled = true,
         lazy = true,
         opts = {
             style = "moon",
@@ -13,7 +13,7 @@ return {
     -- catppuccin
     {
         "catppuccin/nvim",
-        enabled = false,
+        enabled = true,
         lazy = true,
         name = "catppuccin",
         opts = {
@@ -59,7 +59,7 @@ return {
     -- kanagawa
     {
         "rebelot/kanagawa.nvim",
-        enabled = false,
+        enabled = true,
         name = "kanagawa",
         lazy = true,
         opts = {
@@ -155,6 +155,6 @@ return {
     {
         "ronisbr/nano-theme.nvim",
         lazy = true,
-   }
+    }
 
 }

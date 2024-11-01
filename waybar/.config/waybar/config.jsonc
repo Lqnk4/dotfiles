@@ -1,27 +1,51 @@
 {
     "height": 25,
-//    "margin": "6 12 0 12",
+    //    "margin": "6 12 0 12",
     "modules-left": [
         "river/tags",
-//        "river/window",
+        //        "river/window",
         "river/mode"
     ],
     "modules-center": [],
     "modules-right": [
         "pulseaudio",
         "bluetooth",
-        "custom/keyboard_layout",
+        "network",
+        "custom/keyboard-layout",
         "battery",
-        "custom/clock"
+        "clock"
     ],
     "river/window": {
         "max-length": 48,
         "min-length": 4
     },
-    "custom/clock": {
-        "exec": "date +'%I:%M'",
-        "on-click": "month",
-        "interval": 60
+    "clock": {
+        "interval": 60,
+        "format": "{:%I:%M }",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip": true,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     "battery": {
         "states": {
@@ -45,11 +69,28 @@
         "format-connected-battery": " {device_battery_percentage}% ({device_alias})",
         "tooltip-format": "{num_connections} connected"
     },
-    "custom/keyboard_layout": {
+    "custom/keyboard-layout": {
         "exec": "~/.config/waybar/scripts/fcitx5.sh",
         "interval": 30,
         "signal": 1,
-        "format": "{} "
+        "format": "{}",
+        "tooltip": false
     },
-    "pulseaudio": {}
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}%  {format_source}",
+        "format-bluetooth": "{volume}%  {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    }
 }

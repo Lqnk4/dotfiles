@@ -65,8 +65,9 @@ window#waybar {
 
 #pulseaudio,
 #bluetooth,
-#custom-keyboard_layout
+#custom-keyboard-layout,
 #battery,
-#custom-clock {
-  padding: 0px 8px;
+#network,
+#clock {
+  padding: 0px 4px;
 }
