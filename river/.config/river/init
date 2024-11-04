@@ -158,8 +158,8 @@ riverctl map normal Super B spawn 'killall waybar || waybar'
 
 # Set background and border color
 #riverctl background-color 0x002b36
-riverctl border-color-unfocused 0x7A7A7A
-riverctl border-color-focused 0x2A2A2A
+riverctl border-color-focused 0x7A7A7A
+riverctl border-color-unfocused 0x2A2A2A
 
 # Idle Configuration using waylock and swayidle (monoitor specific)
 swayidle -w \

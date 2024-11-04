@@ -155,6 +155,13 @@ return {
     {
         "ronisbr/nano-theme.nvim",
         lazy = true,
-    }
+    },
+
+    -- rose pine
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        lazy = true
+    },
 
 }
