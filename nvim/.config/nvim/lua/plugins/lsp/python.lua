@@ -21,6 +21,7 @@ return {
                             logLevel = "error",
                         },
                     },
+                    -- FIX: make this keybind actually do something, don't just leave the table here
                     keys = {
                         {
                             "<leader>co",
