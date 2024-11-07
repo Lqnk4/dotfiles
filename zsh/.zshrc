@@ -41,53 +41,11 @@ export COLOR_GRAY9=$'\x1b[38;2;221;221;221m'
 # You can use these colors in your scripts...
 # echo "${COLOR_BLUE}Some message${COLOR_RESET}"
 
-#---- PROMPT ---- ##############################################
-lackluster_reset_prompt(){
-  if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
-    if [[ "$branch" == "HEAD" ]]; then
-      LL_BRANCH_NAME='(detached)'
-     else 
-      LL_BRANCH_NAME="[$branch]"
-    fi
-  else 
-    LL_BRANCH_NAME=''
-  fi
-
-  git_status_result=$(git status --porcelain 2> /dev/null)
-  if [[ "$git_status_result" != "" ]]; then
-     # branch is dirty
-     LL_BRANCH_COLOR=$COLOR_ORANGE
-  else
-     # branch is clean
-     LL_BRANCH_COLOR=$COLOR_GRAY6
-  fi
-
-  LL_PWD=${PWD/$HOME/}
-  if [[ $LL_PWD = "" ]];then
-      LL_PWD="~"
-  fi
-
-  LL_PROMPT=$'\n'"| "
-  return 0
-}
-
-setopt prompt_subst
-autoload -U add-zsh-hook 
-add-zsh-hook precmd lackluster_reset_prompt
-PROMPT='%{$LL_BRANCH_COLOR%}${LL_BRANCH_NAME} %{$COLOR_GRAY5%}${LL_PWD}%{$COLOR_RESET%}${LL_PROMPT}'
-
-## UNCOMMENT THIS IF YOU USE VI MODE
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/N}/(main|viins)/ I}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-selectxport PS1="%{%F{243}%}%n%{%F{245}%}@%{%F{249}%}%m %{%F{254}%}%1~ %{%f%}$ "
-
 # Aliases
 alias sudo='sudo '
 alias vim='nvim'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+# starship prompt
+eval "$(starship init zsh)"
