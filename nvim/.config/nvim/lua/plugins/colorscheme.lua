@@ -164,4 +164,10 @@ return {
         lazy = true
     },
 
+    -- nightfox
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = true,
+    }
+
 }

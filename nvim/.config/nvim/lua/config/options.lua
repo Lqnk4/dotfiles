@@ -5,7 +5,7 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
 local opt = vim.opt
 
-vim.opt.background = "light"
+vim.opt.background = "dark"
 
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers

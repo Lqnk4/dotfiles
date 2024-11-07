@@ -10,7 +10,7 @@ if vim.g.vscode then
 end
 
 --set colorscheme
-vim.cmd [[colorscheme nano-theme]]
+vim.cmd [[colorscheme terafox]]
 
 ::colorschemedone::
 

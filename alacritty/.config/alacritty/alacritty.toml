@@ -10,5 +10,5 @@ vi_mode_style = "Block"
 [general]
 # theme
 import = [
-    "~/.config/alacritty/themes/themes/nano-theme.toml"
+    "~/.config/alacritty/themes/themes/terafox.toml"
 ]
