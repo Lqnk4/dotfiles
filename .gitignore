@@ -12,6 +12,9 @@ systemd/**
 # Ignore lazy.nvim file tracking
 nvim/.config/nvim/lazy-lock.json
 
+# Ignore plugins in development
+nvim/.config/nvim/lua/plugins/dev.lua
+
 # Ignore ssh keys
 .ssh/**
 !.ssh/config

@@ -189,7 +189,7 @@ return {
         opts = {
             bigfile = { enabled = true },
             notifier = {
-                enabled = false,
+                enabled = true,
                 timeout = 3000,
             },
             quickfile = { enabled = true },
