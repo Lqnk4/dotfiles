@@ -66,6 +66,7 @@ return {
                         "--completion-style=detailed",
                         "--function-arg-placeholders",
                         "--fallback-style=llvm",
+                        -- "--fallback-style=webkit",
                     },
                     init_options = {
                         usePlaceholders = true,

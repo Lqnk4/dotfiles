@@ -1,6 +1,6 @@
 # font
 [font]
-size = 11.0
+size = 10.0
 normal = { family = "Jetbrains Mono Nerd Font", style = "Regular" }
 
 [cursor]
