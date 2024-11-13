@@ -289,7 +289,7 @@ symbol = "zig "
 format = "\\[[$symbol($version)]($style)\\]"
 
 [cmd_duration]
-#disabled = true
+disabled = true
 format = "\\[[took $duration]($style)\\]"
 
 [erlang]
