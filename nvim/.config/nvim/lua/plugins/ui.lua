@@ -2,10 +2,9 @@ return {
     -- statusline
     {
         "rebelot/heirline.nvim",
-        enabled = false,
+        enabled = true,
         event = "VeryLazy",
         init = function()
-            vim.g.lualine_laststatus = vim.o.laststatus
             if vim.fn.argc(-1) > 0 then
                 -- set an empty statusline till lualine loads
                 vim.o.statusline = " "
@@ -37,7 +36,8 @@ return {
                     diag_error = utils.get_highlight("DiagnosticError").fg,
                     diag_hint = utils.get_highlight("DiagnosticHint").fg,
                     diag_info = utils.get_highlight("DiagnosticInfo").fg,
-                    git_del = utils.get_highlight("diffDeleted").fg,
+                    -- git_del = utils.get_highlight("diffDeleted").fg, -- temp fix for nightfox
+                    git_del = utils.get_highlight("DiagnosticError").fg,
                     git_add = utils.get_highlight("diffAdded").fg,
                     git_change = utils.get_highlight("diffChanged").fg,
                 }
@@ -109,7 +109,7 @@ return {
                 -- control the padding and make sure our string is always at least 2
                 -- characters long. Plus a nice Icon.
                 provider = function(self)
-                    return " %2(" .. self.mode_names[self.mode] .. "%)"
+                    return "%2(" .. self.mode_names[self.mode] .. "%)"
                 end,
                 -- Same goes for the highlight. Now the foreground will change according to the current mode.
                 hl = function(self)
@@ -821,7 +821,7 @@ return {
     -- worse temp statusline
     {
         'nvim-lualine/lualine.nvim',
-        enabled = true,
+        enabled = false,
         event = "VeryLazy",
         init = function()
             vim.g.lualine_laststatus = vim.o.laststatus
@@ -943,7 +943,7 @@ return {
  dMMMMMMM@^`       `^^^^
 YMMMUP^
  ^^
-    
+
 
     ]]
             dashboard.section.header.val = vim.split(saturn, "\n")

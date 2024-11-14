@@ -266,7 +266,7 @@ return {
     -- lsp symbol navigation for statusline
     {
         "SmiteshP/nvim-navic",
-        enabled = false,
+        enabled = true,
         lazy = true,
         init = function()
             vim.g.navic_silence = true
