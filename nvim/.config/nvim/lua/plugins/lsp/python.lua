@@ -68,6 +68,7 @@ return {
         branch = "regexp", -- Use this branch for the new version
         cmd = "VenvSelect",
         enabled = function()
+            -- TODO: replace with fzf-lua later
             return require("util").has_plugin("telescope.nvim")
         end,
         opts = {

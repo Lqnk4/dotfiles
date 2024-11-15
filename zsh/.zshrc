@@ -27,6 +27,7 @@ alias sudo='sudo '
 alias vim='nvim'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias top='htop'
 
 # starship prompt
 eval "$(starship init zsh)"
