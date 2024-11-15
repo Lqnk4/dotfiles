@@ -107,7 +107,8 @@ return {
                     map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', key_opts)
                     map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', key_opts)
                     map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', key_opts)
-                    map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', key_opts)
+                    -- map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', key_opts)
+                    map("n", "<F2>", require "util.lsp_renamer", key_opts)
                     map({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', key_opts)
                     map('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', key_opts)
 
