@@ -51,20 +51,16 @@ return {
                 end,
                 group = "Heirline",
             })
+            -- temp fix for update schedule_warp crash on exit
+            vim.cmd(":au VimLeavePre * set stl=")
 
             -- mode
             local ViMode = {
-                -- get vim current mode, this information will be required by the provider
-                -- and the highlight functions, so we compute it only once per component
-                -- evaluation and store it as a component attribute
                 init = function(self)
                     self.mode = vim.fn.mode(1) -- :h mode()
                 end,
-                -- Now we define some dictionaries to map the output of mode() to the
-                -- corresponding string and color. We can put these into `static` to compute
-                -- them at initialisation time.
                 static = {
-                    mode_names = { -- change the strings if you like it vvvvverbose!
+                    mode_names = {
                         n = "Normal",
                         no = "N?",
                         nov = "N?",
@@ -101,13 +97,6 @@ return {
                         t = "Terminal",
                     },
                 },
-                -- We can now access the value of mode() that, by now, would have been
-                -- computed by `init()` and use it to index our strings dictionary.
-                -- note how `static` fields become just regular attributes once the
-                -- component is instantiated.
-                -- To be extra meticulous, we can also add some vim statusline syntax to
-                -- control the padding and make sure our string is always at least 2
-                -- characters long. Plus a nice Icon.
                 provider = function(self)
                     return "%2(" .. self.mode_names[self.mode] .. "%)"
                 end,
@@ -116,8 +105,6 @@ return {
                     local mode = self.mode:sub(1, 1) -- get only the first mode character
                     return { fg = self.mode_colors[mode], bold = true, }
                 end,
-                -- Re-evaluate the component only on ModeChanged event!
-                -- Also allows the statusline to be re-evaluated when entering operator-pending mode
                 update = {
                     "ModeChanged",
                     pattern = "*:*",
@@ -130,10 +117,19 @@ return {
             local FileName = {
                 init = function(self)
                     self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
-                    if self.lfilename == "" then self.lfilename = "[No Name]" end
+                    if self.lfilename == "" then
+                        self.lfilename = "[No Name]"
+                    end
+                    if not conditions.width_percent_below(#self.lfilename, 0.27) then
+                        self.lfilename = vim.fn.pathshorten(self.lfilename)
+                    end
                 end,
-                hl = { fg = utils.get_highlight("Directory").fg },
-
+                hl = function()
+                    if vim.bo.modified then
+                        return { fg = utils.get_highlight("Directory").fg, bold = true, italic = true }
+                    end
+                    return "Directory"
+                end,
                 flexible = 2,
 
                 {
@@ -172,20 +168,6 @@ return {
                 end,
                 FileName,
                 unpack(FileFlags),
-            }
-
-            -- Now, let's say that we want the filename color to change if the buffer is
-            -- modified. Of course, we could do that directly using the FileName.hl field,
-            -- but we'll see how easy it is to alter existing components using a "modifier"
-            -- component
-
-            local FileNameModifer = {
-                hl = function()
-                    if vim.bo.modified then
-                        -- use `force` because we need to override the child's hl foreground
-                        return { fg = "cyan", bold = true, force = true }
-                    end
-                end,
             }
 
             -- filetype
@@ -406,7 +388,13 @@ return {
                     self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
                 end,
 
-                update = { "DiagnosticChanged", "BufEnter" },
+                update = {
+                    "DiagnosticChanged",
+                    callback = vim.schedule_wrap(function()
+                        vim.cmd("redrawstatus")
+                        vim.cmd("redrawtabline")
+                    end),
+                },
 
                 {
                     provider = "![",
@@ -493,6 +481,13 @@ return {
                         return self.has_changes
                     end,
                     provider = ")",
+                },
+                update = {
+                    "User",
+                    pattern = "GitSignsUpdate",
+                    callback = vim.schedule_wrap(function()
+                        vim.cmd("redrawstatus")
+                    end),
                 },
             }
 
@@ -801,7 +796,7 @@ return {
                     end,
                 },
                 fallthrough = false,
-                GitStatusline,
+                --GitStatusline,
                 SpecialStatusline,
                 TerminalStatusline,
                 InactiveStatusline,
@@ -818,107 +813,7 @@ return {
         end,
     },
 
-    -- worse temp statusline
-    {
-        'nvim-lualine/lualine.nvim',
-        enabled = false,
-        event = "VeryLazy",
-        init = function()
-            vim.g.lualine_laststatus = vim.o.laststatus
-            if vim.fn.argc(-1) > 0 then
-                -- set an empty statusline till lualine loads
-                vim.o.statusline = " "
-            else
-                -- hide the statusline on the starter page
-                vim.o.laststatus = 0
-            end
-        end,
-        opts = function()
-            local Config = require("config")
-
-            local LSPActive = {
-                function()
-                    local names = {}
-                    for i, server in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
-                        table.insert(names, server.name)
-                    end
-                    return " [" .. table.concat(names, " ") .. "]"
-                end,
-                cond = function()
-                    return next(vim.lsp.get_clients({ bufnr = 0 })) ~= nil
-                end
-            }
-
-            -- LSP clients attached to buffer
-
-            return {
-                icons_enabled = false,
-                theme = 'auto',
-                options = {
-                    component_separators = { left = ' ', right = ' ' },
-                    section_separators = { left = '', right = '' },
-                },
-                sections = {
-                    lualine_a = { 'mode' },
-                    lualine_b = {
-                        {
-                            'filename',
-                            path = 0, -- relative path
-                        }
-
-                    },
-                    lualine_c = {
-                        {
-                            'filetype',
-                        },
-                        {
-                            'branch',
-                            icon = "",
-                        },
-                        {
-                            "diff",
-                            source = function()
-                                local gitsigns = vim.b.gitsigns_status_dict
-                                if gitsigns then
-                                    return {
-                                        added = gitsigns.added,
-                                        modified = gitsigns.changed,
-                                        removed = gitsigns.removed,
-                                    }
-                                end
-                            end,
-                            separator = { left = '(', right = ')' },
-                        },
-                        {
-                            'diagnostics',
-                            sources = { "nvim_diagnostic" },
-                            symbols = {
-                                error = Config.icons.diagnostics.Error,
-                                warn = Config.icons.diagnostics.Warm,
-                                info = Config.icons.diagnostics.Info,
-                                hint = Config.icons.diagnostics.Hint,
-                            },
-                            colored = true,
-                        }
-                    },
-                    lualine_x = {
-                        LSPActive,
-                    },
-                    lualine_y = {},
-                    lualine_z = {}
-                },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { 'filename' },
-                    lualine_x = { 'location' },
-                    lualine_y = {},
-                    lualine_z = {}
-                },
-            }
-        end,
-
-    },
+    -- dashboard
     {
         "goolord/alpha-nvim",
         event = "VimEnter",
@@ -980,5 +875,50 @@ YMMMUP^
 
             require("alpha").setup(dashboard.opts)
         end,
+    },
+
+    -- indent guide
+    {
+        "echasnovski/mini.indentscope",
+        version = false, -- wait till new 0.7.0 release to put it back on semver
+        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
+        opts = {
+            -- symbol = "▏",
+            symbol = "│",
+            options = { try_as_border = true },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "Trouble",
+                    "alpha",
+                    "dashboard",
+                    "fzf",
+                    "help",
+                    "lazy",
+                    "mason",
+                    "neo-tree",
+                    "notify",
+                    "snacks_notif",
+                    "snacks_terminal",
+                    "snacks_win",
+                    "toggleterm",
+                    "trouble",
+                },
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
+        end,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
+        main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
+        opts = {
+            scope = { enabled = false },
+        },
     }
 }
