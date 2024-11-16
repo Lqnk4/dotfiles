@@ -17,15 +17,16 @@ return {
             local conditions = require("heirline.conditions")
             local utils = require("heirline.utils")
 
-            -- FIX: git_del, git_add, git_change are missing from most colorthemes besides kanagawa.nvim,
-            -- some colorschemes are missing certain foregrounds or backgrounds
-            -- this causes errors and the statusline fails to load
+            local get_highlight_with_fallback = function(group, layer, alt_group)
+                return utils.get_highlight(group)[layer] or utils.get_highlight(alt_group)[layer]
+            end
+
             local function setup_colors()
                 return {
-                    bright_bg = utils.get_highlight("Folded").bg,
+                    bright_bg = get_highlight_with_fallback("Folded", "bg", "StatusLine"),
                     bright_fg = utils.get_highlight("Folded").fg,
                     red = utils.get_highlight("DiagnosticError").fg,
-                    dark_red = utils.get_highlight("DiffDelete").bg,
+                    dark_red = get_highlight_with_fallback("DiffDelete", "bg", "StatusLine"),
                     green = utils.get_highlight("String").fg,
                     blue = utils.get_highlight("Function").fg,
                     gray = utils.get_highlight("NonText").fg,
@@ -36,10 +37,9 @@ return {
                     diag_error = utils.get_highlight("DiagnosticError").fg,
                     diag_hint = utils.get_highlight("DiagnosticHint").fg,
                     diag_info = utils.get_highlight("DiagnosticInfo").fg,
-                    -- git_del = utils.get_highlight("diffDeleted").fg, -- temp fix for nightfox
-                    git_del = utils.get_highlight("DiagnosticError").fg,
-                    git_add = utils.get_highlight("diffAdded").fg,
-                    git_change = utils.get_highlight("diffChanged").fg,
+                    git_del = get_highlight_with_fallback("diffDeleted", "fg", "DiagnosticError"),
+                    git_add = get_highlight_with_fallback("diffAdded", "fg", "String") or get_highlight_with_fallback("diffAdded", "bg"),
+                    git_change = get_highlight_with_fallback("diffChanged", "fg", "DiagnosticWarn")  or get_highlight_with_fallback("diffChange", "bg"),
                 }
             end
 
@@ -876,49 +876,4 @@ YMMMUP^
             require("alpha").setup(dashboard.opts)
         end,
     },
-
-    -- indent guide
-    {
-        "echasnovski/mini.indentscope",
-        version = false, -- wait till new 0.7.0 release to put it back on semver
-        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
-        opts = {
-            -- symbol = "▏",
-            symbol = "│",
-            options = { try_as_border = true },
-        },
-        init = function()
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = {
-                    "Trouble",
-                    "alpha",
-                    "dashboard",
-                    "fzf",
-                    "help",
-                    "lazy",
-                    "mason",
-                    "neo-tree",
-                    "notify",
-                    "snacks_notif",
-                    "snacks_terminal",
-                    "snacks_win",
-                    "toggleterm",
-                    "trouble",
-                },
-                callback = function()
-                    vim.b.miniindentscope_disable = true
-                end,
-            })
-        end,
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPost", "BufNewFile", "BufWritePre", },
-        main = "ibl",
-        ---@module "ibl"
-        ---@type ibl.config
-        opts = {
-            scope = { enabled = false },
-        },
-    }
 }

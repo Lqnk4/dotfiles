@@ -168,6 +168,25 @@ return {
     {
         "EdenEast/nightfox.nvim",
         lazy = true,
+    },
+
+    -- solarized
+    {
+        'maxmx03/solarized.nvim',
+        lazy = true,
+    },
+
+    -- melange
+    {
+        "savq/melange-nvim",
+        lazy = true,
+    },
+
+    -- gruvbox
+    {
+        "ellisonleao/gruvbox.nvim",
+        lazy = true,
     }
+
 
 }
