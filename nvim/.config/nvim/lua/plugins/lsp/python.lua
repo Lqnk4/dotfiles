@@ -21,23 +21,22 @@ return {
                             logLevel = "error",
                         },
                     },
-                    -- FIX: make this keybind actually do something, don't just leave the table here
-                    keys = {
-                        {
-                            "<leader>co",
-                            require("util.lsp").action["source.organizeImports"],
-                            desc = "Organize Imports",
-                        },
-                    },
+                    -- keys = {
+                    --     {
+                    --         "<leader>co",
+                    --         require("util.lsp").action["source.organizeImports"],
+                    --         desc = "Organize Imports",
+                    --     },
+                    -- },
                 },
                 ruff_lsp = {
-                    keys = {
-                        {
-                            "<leader>co",
-                            require("util.lsp").action["source.organizeImports"],
-                            desc = "Organize Imports",
-                        },
-                    },
+                    -- keys = {
+                    --     {
+                    --         "<leader>co",
+                    --         require("util.lsp").action["source.organizeImports"],
+                    --         desc = "Organize Imports",
+                    --     },
+                    -- },
                 },
             },
             setup = {
@@ -45,6 +44,7 @@ return {
                     require("util.lsp").on_attach(function(client, _)
                         -- Disable hover in favor of Pyright
                         client.server_capabilities.hoverProvider = false
+                        vim.keymap.set('n', "<leader>co", require("util.lsp").action["source.organizeImports"], {desc = "Organize Imports"})
                     end, ruff)
                 end,
             },
@@ -67,10 +67,7 @@ return {
         "linux-cultist/venv-selector.nvim",
         branch = "regexp", -- Use this branch for the new version
         cmd = "VenvSelect",
-        enabled = function()
-            -- TODO: replace with fzf-lua later
-            return require("util").has_plugin("telescope.nvim")
-        end,
+        enabled = false,
         opts = {
             settings = {
                 options = {
@@ -80,7 +77,8 @@ return {
         },
         --  Call config for python files and load the cached venv automatically
         ft = "python",
-        keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
+        -- TODO: depends on telescope, replace with fzf-lua when available
+        -- keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
     },
 
     {

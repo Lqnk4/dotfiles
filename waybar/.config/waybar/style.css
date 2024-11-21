@@ -9,7 +9,7 @@
 
 * {
   font-family: monospace;
-  font-size: 10pt;
+  font-size: 9px;
   min-height: 0px;
 }
 
@@ -22,12 +22,12 @@ window#waybar {
 #tags,
 #window,
 #mode {
-    padding: 0px 8px;
+    padding: 0px 4px;
 }
 
 #tags button {
   padding: 0px;
-  min-width: 22px;
+  min-width: 16px;
   color: @empty;
   border-radius: 0px;
 }

@@ -36,6 +36,7 @@ return {
     -- render in editor
     {
         "MeanderingProgrammer/render-markdown.nvim",
+        enabled = false,
         opts = {
             code = {
                 sign = false,
@@ -48,11 +49,22 @@ return {
             },
         },
         ft = { "markdown", "norg", "rmd", "org" },
-        keys = {
-            { "<leader>um", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle Render" },
-        },
-        config = function()
-            require("render-markdown").disable()
+        config = function(_, opts)
+            require("render-markdown").setup(opts)
+            Snacks.toggle({
+                name = "Render Markdown",
+                get = function()
+                    return require("render-markdown.state").enabled
+                end,
+                set = function(enabled)
+                    local m = require("render-markdown")
+                    if enabled then
+                        m.enable()
+                    else
+                        m.disable()
+                    end
+                end,
+            }):map("<leader>um")
         end,
     }
 }

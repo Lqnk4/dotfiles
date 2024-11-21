@@ -10,7 +10,7 @@ if vim.g.vscode then
 end
 
 --set colorscheme
-vim.cmd [[colorscheme melange]]
+vim.cmd [[colorscheme solarized-osaka]]
 
 ::colorschemedone::
 

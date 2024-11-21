@@ -5,10 +5,12 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
 local opt = vim.opt
 
-vim.opt.background = "dark"
+opt.background = "dark"
 
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers
+
+--vim.o.cmdheight = 1       -- Size of commands line
 
 opt.guicursor = "n-v-i-c:block-Cursor"
 
@@ -25,7 +27,7 @@ opt.breakindent = true
 opt.completeopt = "menu,menuone,noselect"
 
 opt.conceallevel = 2   -- Hide * markup for bold and italic, but not markers with substitutions
-opt.confirm = false   -- Confirm to save changes before exiting modified buffer
+opt.confirm = false    -- Confirm to save changes before exiting modified buffer
 opt.cursorline = false -- Highlighting of the current line
 opt.fillchars = {
     foldopen = "",
@@ -47,8 +49,8 @@ opt.smartcase = true       -- Don't ignore case with capitals
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.jumpoptions = "view"
 
-opt.showmode = false -- statusline is configured
-opt.laststatus = 3         -- global statusline
+opt.showmode = false     -- statusline is configured
+opt.laststatus = 3       -- global statusline
 
 opt.wrap = false         -- Disable line wrap
 opt.linebreak = true     -- Wrap lines at convenient points

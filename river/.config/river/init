@@ -6,8 +6,8 @@
 # Super+Shift+Return to start alacritty
 riverctl map normal Super+Shift Return spawn alacritty
 
-# Super+G to start firefox
-riverctl map normal Super G spawn firefox
+# Super+G to start broswer
+riverctl map normal Super G spawn zen-browser
 
 # Super+D to start rofi app launcher
 riverctl map normal Super D spawn 'fuzzel'
@@ -177,8 +177,8 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-# Make firefox use server-side decorations
-riverctl rule-add -app-id "firefox" ssd
+# Make browser use server-side decorations
+#riverctl rule-add -app-id "zen" ssd
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.

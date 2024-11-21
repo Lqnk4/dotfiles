@@ -27,7 +27,7 @@ else
     start_agent;
 fi
 
-### EXPORTS
+### ENV
 
 # fcitx for jp keyboard
 export GTK_IM_MODULE=fcitx
@@ -35,8 +35,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 #fcitx5 -d -r &
 
-# Fix for IntelliJ windows (dated)
-export _JAVA_AWT_WM_NONREPARENTING=1
+export EDITOR=nvim
 
 ### WM
 

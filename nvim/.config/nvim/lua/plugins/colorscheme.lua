@@ -157,23 +157,24 @@ return {
         lazy = true,
     },
 
-    -- rose pine
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        lazy = true
-    },
-
     -- nightfox
     {
         "EdenEast/nightfox.nvim",
         lazy = true,
     },
 
-    -- solarized
+    -- solarized osaka
     {
-        'maxmx03/solarized.nvim',
+        "craftzdog/solarized-osaka.nvim",
         lazy = true,
+        opts = {
+            on_highlights = function(hl, c)
+                hl.FloatBorder = {
+                    bg = c.bg_dark,
+                    fg = c.fg_dark,
+                }
+            end,
+        },
     },
 
     -- melange
@@ -182,11 +183,10 @@ return {
         lazy = true,
     },
 
-    -- gruvbox
+    -- gruvbox material
     {
-        "ellisonleao/gruvbox.nvim",
+        'sainnhe/gruvbox-material',
         lazy = true,
-    }
-
+    },
 
 }

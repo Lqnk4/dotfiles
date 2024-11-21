@@ -17,11 +17,11 @@ return {
             local conditions = require("heirline.conditions")
             local utils = require("heirline.utils")
 
-            local get_highlight_with_fallback = function(group, layer, alt_group)
-                return utils.get_highlight(group)[layer] or utils.get_highlight(alt_group)[layer]
-            end
 
             local function setup_colors()
+                local get_highlight_with_fallback = function(group, layer, alt_group)
+                    return utils.get_highlight(group)[layer] or utils.get_highlight(alt_group)[layer]
+                end
                 return {
                     bright_bg = get_highlight_with_fallback("Folded", "bg", "StatusLine"),
                     bright_fg = utils.get_highlight("Folded").fg,
@@ -38,8 +38,8 @@ return {
                     diag_hint = utils.get_highlight("DiagnosticHint").fg,
                     diag_info = utils.get_highlight("DiagnosticInfo").fg,
                     git_del = get_highlight_with_fallback("diffDeleted", "fg", "DiagnosticError"),
-                    git_add = get_highlight_with_fallback("diffAdded", "fg", "String") or get_highlight_with_fallback("diffAdded", "bg"),
-                    git_change = get_highlight_with_fallback("diffChanged", "fg", "DiagnosticWarn")  or get_highlight_with_fallback("diffChange", "bg"),
+                    git_add = get_highlight_with_fallback("diffAdded", "fg", "String"),
+                    git_change = get_highlight_with_fallback("diffChanged", "fg", "DiagnosticWarn"),
                 }
             end
 
@@ -654,7 +654,7 @@ return {
             -- indicator for recording macros
             local MacroRec = {
                 condition = function()
-                    return vim.fn.reg_recording() ~= "" and vim.o.cmdheight == 0
+                    return vim.fn.reg_recording() ~= "" --and vim.o.cmdheight == 0
                 end,
                 provider = " ",
                 hl = { fg = "orange", bold = true },
@@ -673,17 +673,17 @@ return {
             -- show cmd mode
             vim.opt.showcmdloc = 'statusline'
             local ShowCmd = {
-                condition = function()
-                    return vim.o.cmdheight == 0
-                end,
-                provider = ":%3.5(%S%)",
+                -- condition = function()
+                --     return vim.o.cmdheight == 0
+                -- end,
+                provider = "%3.5(%S%) ",
             }
 
             -- spacing
             local Align = { provider = "%=" }
             local Space = { provider = " " }
 
-            ViMode = utils.surround({ "█", "█" }, "bright_bg", { MacroRec, ViMode, Snippets, ShowCmd })
+            ViMode = utils.surround({ "█", "█" }, "bright_bg", { MacroRec, ViMode, Snippets, })
 
             local DefaultStatusline = {
                 ViMode,
@@ -699,6 +699,8 @@ return {
                 Align,
                 { flexible = 3,   { Navic, Space }, { provider = "" } },
                 Align,
+                ShowCmd,
+                Space,
                 LSPActive,
                 Space,
                 FileType,
@@ -709,8 +711,8 @@ return {
                 Space,
                 ScrollBar,
             }
-            -- for inactive windows
 
+            -- for inactive windows
             local InactiveStatusline = {
                 condition = conditions.is_not_active,
                 { hl = { fg = "gray", force = true }, WorkDir },
@@ -845,8 +847,8 @@ YMMMUP^
             -- stylua: ignore
             dashboard.section.buttons.val = {
                 dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-                dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
-                dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
+                dashboard.button("f", "  > Find file", "<cmd>FzfLua files<cr>"),
+                dashboard.button("r", "  > Recent", "<cmd>FzfLua oldfiles<cr>"),
                 dashboard.button("c", "  > Config", ":e $MYVIMRC | :cd %:p:h |<CR>"),
                 dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
             }
