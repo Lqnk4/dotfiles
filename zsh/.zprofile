@@ -29,13 +29,15 @@ fi
 
 ### ENV
 
+export EDITOR=nvim
 # fcitx for jp keyboard
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 #fcitx5 -d -r &
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
-export EDITOR=nvim
 
 ### WM
 

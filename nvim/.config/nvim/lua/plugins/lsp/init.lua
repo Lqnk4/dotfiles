@@ -87,12 +87,6 @@ return {
         config = function(_, opts)
             local map = vim.keymap.set
 
-            -- note: diagnostics are not exclusive to lsp servers
-            -- so these can be global keybindings
-            map('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-            map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-            map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-
             require("util.lsp").on_attach(
                 function(client, bufnr)
                     local key_opts = { buffer = bufnr }

@@ -151,19 +151,21 @@ return {
         end,
     },
 
-    -- nano
+    {
+        'loctvl842/monokai-pro.nvim',
+        lazy = true,
+    },
+
     {
         "ronisbr/nano-theme.nvim",
         lazy = true,
     },
 
-    -- nightfox
     {
         "EdenEast/nightfox.nvim",
         lazy = true,
     },
 
-    -- solarized osaka
     {
         "craftzdog/solarized-osaka.nvim",
         lazy = true,
@@ -173,20 +175,26 @@ return {
                     bg = c.bg_dark,
                     fg = c.fg_dark,
                 }
+                hl.LineNr = {
+                    fg = c.base00
+                }
             end,
         },
     },
 
-    -- melange
     {
-        "savq/melange-nvim",
+        'navarasu/onedark.nvim',
         lazy = true,
     },
 
-    -- gruvbox material
     {
         'sainnhe/gruvbox-material',
         lazy = true,
     },
+
+    {
+        'navarasu/onedark.nvim',
+        lazy = true,
+    }
 
 }

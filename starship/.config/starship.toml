@@ -296,6 +296,7 @@ format = "\\[[took $duration]($style)\\]"
 format = "\\[[$symbol($version)]($style)\\]"
 
 [haskell]
+symbol = "haskell "
 format = "\\[[$symbol($version)]($style)\\]"
 
 [haxe]

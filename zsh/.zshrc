@@ -14,13 +14,11 @@ compinit
 # End of lines added by compinstall
 
 # vi mode
-bindkey -v
-export KEYTIMEOUT=1
-bindkey "^H" backward-delete-char
-bindkey "^?" backward-delete-char
+# bindkey -v
+# export KEYTIMEOUT=1
+# bindkey "^H" backward-delete-char
+# bindkey "^?" backward-delete-char
 
-# env
-export PATH="$HOME/.local/bin:$PATH"
 
 # Aliases
 alias sudo='sudo '

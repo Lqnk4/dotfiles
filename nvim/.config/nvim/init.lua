@@ -10,7 +10,7 @@ if vim.g.vscode then
 end
 
 --set colorscheme
-vim.cmd [[colorscheme solarized-osaka]]
+vim.cmd [[colorscheme terafox]]
 
 ::colorschemedone::
 
