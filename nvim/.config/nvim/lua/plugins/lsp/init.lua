@@ -180,7 +180,7 @@ return {
                     ensure_installed = vim.tbl_deep_extend(
                         "force",
                         ensure_installed,
-                        require("util").opts("mason-lspconfig.nvim").ensure_installed or {}
+                        require("util").lazy.opts("mason-lspconfig.nvim").ensure_installed or {}
                     ),
                     -- ensure_installed = ensure_installed,
                     handlers = { setup },

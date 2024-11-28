@@ -7,8 +7,11 @@ normal = { family = "monospace", style = "Regular" }
 style = "Block"
 vi_mode_style = "Block"
 
+[window]
+opacity = 1.0
+
 [general]
 # theme
 import = [
-    "~/.config/alacritty/themes/themes/solarized_dark.toml"
+    "~/.config/alacritty/themes/themes/terafox.toml"
 ]

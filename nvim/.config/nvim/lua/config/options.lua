@@ -3,7 +3,14 @@
 -- LSP, treesitter and other ft plugins will be disabled.
 vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
+local g = vim.g
 local opt = vim.opt
+local env = vim.env
+
+g.has_ui = #vim.api.nvim_list_uis() > 0
+g.has_gui = vim.fn.has('gui_running') == 1
+g.has_display = g.has_ui and env.DISPLAY ~= nil -- checks for tui
+g.has_nf = g.has_display and env.NVIM_NF and true or false
 
 opt.background = "dark"
 

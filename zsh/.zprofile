@@ -36,8 +36,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 #fcitx5 -d -r &
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/sbin:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-
 
 ### WM
 

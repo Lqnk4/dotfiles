@@ -1,60 +1,60 @@
 return {
 
     -- tokyonight
-    {
-        "folke/tokyonight.nvim",
-        enabled = true,
-        lazy = true,
-        opts = {
-            style = "moon",
-        },
-    },
-
-    -- catppuccin
-    {
-        "catppuccin/nvim",
-        enabled = true,
-        lazy = true,
-        name = "catppuccin",
-        opts = {
-            integrations = {
-                aerial = true,
-                alpha = true,
-                cmp = true,
-                dashboard = true,
-                flash = true,
-                grug_far = true,
-                gitsigns = true,
-                headlines = true,
-                illuminate = true,
-                indent_blankline = { enabled = true },
-                leap = true,
-                lsp_trouble = true,
-                mason = true,
-                markdown = true,
-                mini = true,
-                native_lsp = {
-                    enabled = true,
-                    underlines = {
-                        errors = { "undercurl" },
-                        hints = { "undercurl" },
-                        warnings = { "undercurl" },
-                        information = { "undercurl" },
-                    },
-                },
-                navic = { enabled = true, custom_bg = "lualine" },
-                neotest = true,
-                neotree = true,
-                noice = true,
-                notify = true,
-                semantic_tokens = true,
-                telescope = true,
-                treesitter = true,
-                treesitter_context = true,
-                which_key = true,
-            },
-        },
-    },
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     enabled = true,
+    --     lazy = true,
+    --     opts = {
+    --         style = "moon",
+    --     },
+    -- },
+    --
+    -- -- catppuccin
+    -- {
+    --     "catppuccin/nvim",
+    --     enabled = true,
+    --     lazy = true,
+    --     name = "catppuccin",
+    --     opts = {
+    --         integrations = {
+    --             aerial = true,
+    --             alpha = true,
+    --             cmp = true,
+    --             dashboard = true,
+    --             flash = true,
+    --             grug_far = true,
+    --             gitsigns = true,
+    --             headlines = true,
+    --             illuminate = true,
+    --             indent_blankline = { enabled = true },
+    --             leap = true,
+    --             lsp_trouble = true,
+    --             mason = true,
+    --             markdown = true,
+    --             mini = true,
+    --             native_lsp = {
+    --                 enabled = true,
+    --                 underlines = {
+    --                     errors = { "undercurl" },
+    --                     hints = { "undercurl" },
+    --                     warnings = { "undercurl" },
+    --                     information = { "undercurl" },
+    --                 },
+    --             },
+    --             navic = { enabled = true, custom_bg = "lualine" },
+    --             neotest = true,
+    --             neotree = true,
+    --             noice = true,
+    --             notify = true,
+    --             semantic_tokens = true,
+    --             telescope = true,
+    --             treesitter = true,
+    --             treesitter_context = true,
+    --             which_key = true,
+    --         },
+    --     },
+    -- },
 
     -- kanagawa
     {
@@ -95,15 +95,6 @@ return {
                     -- set their background accordingly if you wish to keep them dark and borderless
                     LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                     MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-
-                    -- block like telescope ui
-                    -- TelescopeTitle = { fg = theme.ui.special, bold = true },
-                    -- TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-                    -- TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-                    -- TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-                    -- TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-                    -- TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-                    -- TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
                 }
             end,
             theme = "wave",      -- Load "wave" theme when 'background' option is not set
@@ -113,6 +104,17 @@ return {
             },
         }
     },
+
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    --     lazy = true,
+    --     opts = {
+    --         styles = {
+    --             transparency = true,
+    --         },
+    --     },
+    -- },
 
     -- lackluster
     {
@@ -151,10 +153,10 @@ return {
         end,
     },
 
-    {
-        'loctvl842/monokai-pro.nvim',
-        lazy = true,
-    },
+    -- {
+    --     'loctvl842/monokai-pro.nvim',
+    --     lazy = true,
+    -- },
 
     {
         "ronisbr/nano-theme.nvim",
@@ -164,26 +166,31 @@ return {
     {
         "EdenEast/nightfox.nvim",
         lazy = true,
-    },
-
-    {
-        "craftzdog/solarized-osaka.nvim",
-        lazy = true,
         opts = {
-            on_highlights = function(hl, c)
-                hl.FloatBorder = {
-                    bg = c.bg_dark,
-                    fg = c.fg_dark,
-                }
-                hl.LineNr = {
-                    fg = c.base00
-                }
-            end,
-        },
+            options = {
+                transparent = false,
+            },
+        }
     },
 
+    -- {
+    --     "craftzdog/solarized-osaka.nvim",
+    --     lazy = true,
+    --     opts = {
+    --         on_highlights = function(hl, c)
+    --             hl.FloatBorder = {
+    --                 bg = c.bg_dark,
+    --                 fg = c.fg_dark,
+    --             }
+    --             hl.LineNr = {
+    --                 fg = c.base00
+    --             }
+    --         end,
+    --     },
+    -- },
+
     {
-        'navarasu/onedark.nvim',
+        'ishan9299/nvim-solarized-lua',
         lazy = true,
     },
 
@@ -195,6 +202,13 @@ return {
     {
         'navarasu/onedark.nvim',
         lazy = true,
-    }
+    },
+
+    -- {
+    --     "decaycs/decay.nvim",
+    --     name = "decay",
+    --     lazy = true,
+    -- },
+
 
 }

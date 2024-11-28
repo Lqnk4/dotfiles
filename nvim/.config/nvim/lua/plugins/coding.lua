@@ -106,13 +106,13 @@ return {
             },
         },
         opts = function(_, opts)
-            local cmpUtil = require("util.cmp")
+            local cmpUtil = require("util").cmp
             opts.snippet = {
                 expand = function(item)
                     return cmpUtil.expand(item.body)
                 end,
             }
-            if require("util").has_plugin("nvim-snippets") then
+            if require("util").lazy.has_plugin("nvim-snippets") then
                 table.insert(opts.sources, { name = "snippets" })
             end
         end,
@@ -152,7 +152,7 @@ return {
         event = "VeryLazy",
         opts = function()
             local ai = require("mini.ai")
-            local miniUtil = require("util.mini")
+            local miniUtil = require("util").mini
             return {
                 n_lines = 500,
                 custom_textobjects = {
@@ -177,9 +177,9 @@ return {
         end,
         config = function(_, opts)
             require("mini.ai").setup(opts)
-            require("util").on_load("which-key.nvim", function()
+            require("util").lazy.on_load("which-key.nvim", function()
                 vim.schedule(function()
-                    require("util.mini").ai_whichkey(opts)
+                    require("util").mini.ai_whichkey(opts)
                 end)
             end)
         end,
@@ -192,7 +192,7 @@ return {
         recommended = true,
         keys = function(_, keys)
             -- Populate the keys based on the user's options
-            local opts = require("util").opts("mini.surround")
+            local opts = require("util").lazy.opts("mini.surround")
             local mappings = {
                 { opts.mappings.add,            desc = "Add Surrounding",                     mode = { "n", "v" } },
                 { opts.mappings.delete,         desc = "Delete Surrounding" },
