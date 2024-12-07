@@ -27,6 +27,7 @@ else
     start_agent;
 fi
 
+
 ### ENV
 
 export EDITOR=nvim
@@ -38,6 +39,11 @@ export XMODIFIERS=@im=fcitx
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/sbin:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+# Doom Emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
+
+### TMUX
 
 ### WM
 

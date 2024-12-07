@@ -5,16 +5,14 @@ vim.g.maplocalleader = "\\"
 --source plugins
 require("config.lazy")
 
-if vim.g.vscode then
-    goto colorschemedone
-end
+-- setup globals
+require("config.options")
 
 --set colorscheme
-vim.cmd [[colorscheme terafox]]
-
-::colorschemedone::
+if vim.g.has_display and not vim.g.vscode then
+    vim.cmd [[colorscheme monochrome]]
+end
 
 --source vim options, keymaps
-require("config.options")
 require("config.keymaps")
 require("config.autocmds")

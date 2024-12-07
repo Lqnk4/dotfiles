@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+### Session Template
+
+SESSION_NAME="dotfiles"
+SESSION_PATH="$HOME/.dotfiles/"
+
+# Check if the session already exists
+if tmux has-session -t $SESSION_NAME 2>/dev/null; then
+    echo "Session $SESSION_NAME already exists."
+else
+    # Create a new session and name it
+    tmux new-session -d -s $SESSION_NAME -c $SESSION_PATH
+fi
+
+###
+
+SESSION_NAME="CTF"
+SESSION_PATH="$HOME/Teradox/"
+
+if tmux has-session -t $SESSION_NAME 2>/dev/null; then
+    echo "Session $SESSION_NAME already exists."
+else
+    tmux new-session -d -s $SESSION_NAME -c $SESSION_PATH
+fi
+
+SESSION_NAME="Software-Robot"
+SESSION_PATH="$HOME/2024-wpilib-projects/Software-Robot"
+
+if tmux has-session -t $SESSION_NAME 2>/dev/null; then
+    echo "Session $SESSION_NAME already exists."
+else
+    tmux new-session -d -s $SESSION_NAME -c $SESSION_PATH
+fi

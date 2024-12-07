@@ -23,6 +23,11 @@ return {
                             end
                         end,
                     },
+                    ["<C-l>"] = false,
+                    ["<C-n>"] = "actions.refresh",
+                    ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+                    ["<C-h>"] = false,
+                    ["<C-s>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
                 },
                 keymaps_help = {
                     border = "single",
@@ -75,7 +80,8 @@ return {
                             -- height is number of items minus 15 lines for the preview, with a max of 80% screen height
                             height = math.floor(math.min(vim.o.lines * 0.8 - 16, #items + 2) + 0.5) + 16,
                             width = 0.5,
-                            preview = not vim.tbl_isempty(require("util.lsp").get_clients({ bufnr = 0, name = "vtsls" })) and {
+                            preview = not vim.tbl_isempty(require("util.lsp").get_clients({ bufnr = 0, name = "vtsls" })) and
+                            {
                                 layout = "vertical",
                                 vertical = "down:15,border-top",
                                 hidden = "hidden",
@@ -250,6 +256,15 @@ return {
         end,
     },
 
+    -- undo tree navigation
+    {
+        'mbbill/undotree',
+        lazy = true,
+        keys = {
+            { '<leader>uu', vim.cmd.UndotreeToggle, desc = "Undo Tree Toggle" }
+        },
+    },
+
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -271,16 +286,16 @@ return {
             }
         },
         keys = {
-            { "<leader>un", function() Snacks.notifier.hide() end,  desc = "Dismiss All Notifications" },
-            { "<leader>bd", function() Snacks.bufdelete() end,      desc = "Delete Buffer" },
+            { "<leader>un", function() Snacks.notifier.hide() end,      desc = "Dismiss All Notifications" },
+            { "<leader>bd", function() Snacks.bufdelete() end,          desc = "Delete Buffer" },
             -- { "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
-            { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
-            { "<leader>gB", function() Snacks.gitbrowse() end,      desc = "Git Browse" },
+            { "<leader>gb", function() Snacks.git.blame_line() end,     desc = "Git Blame Line" },
+            { "<leader>gB", function() Snacks.gitbrowse() end,          desc = "Git Browse" },
             -- { "<leader>gf", function() Snacks.lazygit.log_file() end,        desc = "Lazygit Current File History" },
             -- { "<leader>gl", function() Snacks.lazygit.log() end,             desc = "Lazygit Log (cwd)" },
-            { "<leader>cR", function() Snacks.rename.rename_file() end,         desc = "Rename File" },
-            { "<c-/>",      function() Snacks.terminal() end,       desc = "Toggle Terminal" },
-            { "<c-_>",      function() Snacks.terminal() end,       desc = "which_key_ignore" },
+            { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+            { "<c-/>",      function() Snacks.terminal() end,           desc = "Toggle Terminal" },
+            { "<c-_>",      function() Snacks.terminal() end,           desc = "which_key_ignore" },
             -- { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference" },
             -- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
             {
@@ -316,17 +331,17 @@ return {
                     vim.print = _G.dd -- Override print to use snacks for `:=` command
 
                     -- Create some toggle mappings
-                    -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-                    -- Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-                    -- Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-                    -- Snacks.toggle.diagnostics():map("<leader>ud")
-                    -- Snacks.toggle.line_number():map("<leader>ul")
-                    -- Snacks.toggle.option("conceallevel",
-                    --     { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
-                    -- Snacks.toggle.treesitter():map("<leader>uT")
-                    -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
-                    --     "<leader>ub")
-                    -- Snacks.toggle.inlay_hints():map("<leader>uh")
+                    Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+                    Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+                    Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+                    Snacks.toggle.diagnostics():map("<leader>ud")
+                    Snacks.toggle.line_number():map("<leader>ul")
+                    Snacks.toggle.option("conceallevel",
+                        { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
+                    Snacks.toggle.treesitter():map("<leader>uT")
+                    Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map(
+                        "<leader>ub")
+                    Snacks.toggle.inlay_hints():map("<leader>uh")
                 end,
             })
         end,
@@ -335,7 +350,7 @@ return {
     -- lsp symbol navigation for statusline
     {
         "SmiteshP/nvim-navic",
-        enabled = true,
+        enabled = false,
         lazy = true,
         init = function()
             vim.g.navic_silence = true
@@ -359,6 +374,7 @@ return {
     -- highlights changed text since last commit
     {
         "lewis6991/gitsigns.nvim",
+        enabled = false,
         event = { "BufReadPost", "BufNewFile", "BufWritePre", },
         opts = {
             signs = {

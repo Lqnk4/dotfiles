@@ -69,5 +69,5 @@ window#waybar {
 #battery,
 #network,
 #clock {
-  padding: 0px 4px;
+  padding: 0px 6px;
 }

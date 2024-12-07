@@ -148,7 +148,7 @@ riverctl map normal Super P spawn 'grim -g "$(slurp -d)" - | swappy -f -'
 riverctl map normal Super+Shift P spawn 'grim - | swappy -f -'
 
 # Set wallpaper
-swaybg --image ~/Wallpapers/thinkpad.jpg &
+swaybg --image ~/Wallpapers/anna-scarfiello-Pxf5syDVuxQ.jpg &
 
 # Set waybar
 waybar &

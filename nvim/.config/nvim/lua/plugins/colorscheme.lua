@@ -9,10 +9,9 @@ return {
     --         style = "moon",
     --     },
     -- },
-    --
-    -- -- catppuccin
-    -- {
-    --     "catppuccin/nvim",
+
+    -- catppuccin
+    -- { "catppuccin/nvim",
     --     enabled = true,
     --     lazy = true,
     --     name = "catppuccin",
@@ -106,6 +105,11 @@ return {
     },
 
     -- {
+    --     "sho-87/kanagawa-paper.nvim",
+    --     lazy = true,
+    -- },
+
+    -- {
     --     "rose-pine/neovim",
     --     name = "rose-pine",
     --     lazy = true,
@@ -117,51 +121,64 @@ return {
     -- },
 
     -- lackluster
+    -- {
+    --     "slugbyte/lackluster.nvim",
+    --     lazy = true,
+    --     opts = function()
+    --         local lackluster = require("lackluster")
+    --         return {
+    --             tweak_syntax = {
+    --                 comment = lackluster.color.gray5,
+    --             },
+    --             tweak_background = {
+    --                 normal = "default", -- main background
+    --                 -- normal = "none", -- transparent
+    --             },
+    --             tweak_highlight = {
+    --                 FloatBorder = {
+    --                     overwrite = true,
+    --                     fg = lackluster.color.gray5,
+    --                     bg = "NONE",
+    --                 },
+    --                 ["@keyword"] = {
+    --                     overwrite = true,
+    --                     bold = false,
+    --                     italic = true,
+    --                     fg = lackluster.color.gray6,
+    --                 },
+    --                 ["@keyword.return"] = {
+    --                     overwrite = true,
+    --                     bold = false,
+    --                     italic = true,
+    --                     fg = lackluster.color.green,
+    --                 },
+    --             },
+    --         }
+    --     end,
+    -- },
+
     {
-        "slugbyte/lackluster.nvim",
+        "zenbones-theme/zenbones.nvim",
+        dependencies = "rktjmp/lush.nvim",
         lazy = true,
-        opts = function()
-            local lackluster = require("lackluster")
-            return {
-                tweak_syntax = {
-                    comment = lackluster.color.gray5,
-                },
-                tweak_background = {
-                    normal = "default", -- main background
-                    -- normal = "none", -- transparent
-                },
-                tweak_highlight = {
-                    FloatBorder = {
-                        overwrite = true,
-                        fg = lackluster.color.gray5,
-                        bg = "NONE",
-                    },
-                    ["@keyword"] = {
-                        overwrite = true,
-                        bold = false,
-                        italic = true,
-                        fg = lackluster.color.gray6,
-                    },
-                    ["@keyword.return"] = {
-                        overwrite = true,
-                        bold = false,
-                        italic = true,
-                        fg = lackluster.color.green,
-                    },
-                },
-            }
+    },
+
+    {
+        'kdheepak/monochrome.nvim',
+        lazy = true,
+    },
+
+    {
+        'sainnhe/sonokai',
+        lazy = true,
+        config = function()
         end,
     },
 
     -- {
-    --     'loctvl842/monokai-pro.nvim',
+    --     "ronisbr/nano-theme.nvim",
     --     lazy = true,
     -- },
-
-    {
-        "ronisbr/nano-theme.nvim",
-        lazy = true,
-    },
 
     {
         "EdenEast/nightfox.nvim",
@@ -173,24 +190,19 @@ return {
         }
     },
 
-    -- {
-    --     "craftzdog/solarized-osaka.nvim",
-    --     lazy = true,
-    --     opts = {
-    --         on_highlights = function(hl, c)
-    --             hl.FloatBorder = {
-    --                 bg = c.bg_dark,
-    --                 fg = c.fg_dark,
-    --             }
-    --             hl.LineNr = {
-    --                 fg = c.base00
-    --             }
-    --         end,
-    --     },
-    -- },
 
     {
         'ishan9299/nvim-solarized-lua',
+        lazy = true,
+    },
+
+    {
+        'mhartington/oceanic-next',
+        lazy = true,
+    },
+
+    {
+        'Shatur/neovim-ayu',
         lazy = true,
     },
 
@@ -199,16 +211,29 @@ return {
         lazy = true,
     },
 
+    -- { "ellisonleao/gruvbox.nvim", lazy = true, },
+
+    -- {
+    --     "savq/melange-nvim",
+    --     lazy = true
+    -- },
+
     {
         'navarasu/onedark.nvim',
+        lazy = true,
+        opts = {
+            style = "darker"
+        }
+    },
+
+    {
+        'deparr/tairiki.nvim',
         lazy = true,
     },
 
     -- {
-    --     "decaycs/decay.nvim",
-    --     name = "decay",
-    --     lazy = true,
+    --     "vague2k/vague.nvim",
+    --     lazy = true
     -- },
-
 
 }

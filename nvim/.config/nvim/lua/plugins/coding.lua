@@ -33,14 +33,14 @@ return {
             local defaults = require("cmp.config.default")()
             local auto_select = false
             return {
-                auto_brackets = {}, -- configure any filetype to auto add brackets
+                auto_brackets = { "java", }, -- configure any filetype to auto add brackets
                 completion = {
                     completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
                 },
                 preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
                 window = {
-                    completion = cmp.config.window.bordered({ border = "single" }),
-                    documentation = cmp.config.window.bordered({ border = "single" }),
+                    -- completion = cmp.config.window.bordered({ border = "single" }),
+                    -- documentation = cmp.config.window.bordered({ border = "single" }),
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -69,16 +69,32 @@ return {
                             item.kind = icons[item.kind] .. item.kind
                         end
 
+                        -- local menu_text = {
+                        --     buffer = "[Buffer]",
+                        --     nvim_lsp = "[LSP]",
+                        --     luasnip = "[LuaSnip]",
+                        --     latex_symbols = "[LaTeX]",
+                        -- }
+                        -- if menu_text[entry.source.name] then
+                        --     item.menu = menu_text[entry.source.name]
+                        -- end
+
                         local widths = {
-                            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-                            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+                            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 45,
+                            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 35,
                         }
+                        local min_label_width = 0
 
                         for key, width in pairs(widths) do
                             if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
                                 item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
                             end
                         end
+                        if string.len(item.abbr) < min_label_width then
+                            local padding = string.rep(' ', min_label_width - string.len(item.abbr))
+                            item.abbr = item.abbr .. padding
+                        end
+
 
                         return item
                     end,
