@@ -34,7 +34,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-zenburn)
+(setq doom-theme 'doom-solarized-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -82,4 +82,18 @@
 
 ;; Remove scroll bar
 (scroll-bar-mode -1)
+
+;; Disable clipboard sync
+;;(setq select-enable-clipboard nil)
+
+;; LSP code actions icon fix
+(setq lsp-modeline-code-action-fallback-icon "󰌶")
+
+;; haskell-mode rename fix
+(add-hook `haskell-mode-hook
+          (lambda ()
+                    (setq-local lsp-rename-use-prepare nil)))
+
+;; Latex pdf viewer
+(setq +latex-viewers '(zathura))
 

@@ -148,7 +148,7 @@ riverctl map normal Super P spawn 'grim -g "$(slurp -d)" - | swappy -f -'
 riverctl map normal Super+Shift P spawn 'grim - | swappy -f -'
 
 # Set wallpaper
-swaybg --image ~/Wallpapers/anna-scarfiello-Pxf5syDVuxQ.jpg &
+# swaybg --image ~/Wallpapers/thinkpad.jpg &
 
 # Set waybar
 waybar &
@@ -158,8 +158,8 @@ riverctl map normal Super B spawn 'killall waybar || waybar'
 
 # Set background and border color
 #riverctl background-color 0x002b36
-riverctl border-color-focused 0x7A7A7A
-riverctl border-color-unfocused 0x2A2A2A
+#riverctl border-color-focused 0x7A7A7A
+#riverctl border-color-unfocused 0x2A2A2A
 
 # Idle Configuration using waylock and swayidle (monoitor specific)
 swayidle -w \
@@ -167,6 +167,12 @@ swayidle -w \
 	timeout 1000 'wlr-randr --output ePD-1 --off' \
 		resume 'wlr-randr --output eDP-1 --on' \
 	before-sleep 'swaylock -f -c 000000' &
+
+# Enables inhibit_idle when playing audio
+sway-audio-idle-inhibit &
+
+# Emacs daemon
+emacsclient -c -a 'emacs' &
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -177,10 +183,15 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
+# Make these apps use server side decorations to allow borders to be drawn
+riverctl rule-add -app-id "zen-alph" ssd
+riverctl rule-add -app-id "org.pwmt.zathura" ssd
+riverctl rule-add -app-id "emacs" ssd
+
 # Make browser use server-side decorations
 #riverctl rule-add -app-id "zen" ssd
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 0 -outer-padding 0 &
+rivertile -view-padding 5 -outer-padding 10 &

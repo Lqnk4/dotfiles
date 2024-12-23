@@ -1,3 +1,6 @@
+# Ignore Emacs project file
+.dir-locals.el
+
 # Ignore bash history
 bash/.bash_history
 bash/*.tmp

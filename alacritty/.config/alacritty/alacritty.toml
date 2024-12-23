@@ -13,5 +13,5 @@ opacity = 1.0
 [general]
 # theme
 import = [
-    "~/.config/alacritty/themes/themes/zenburned.toml"
+    "~/.config/alacritty/themes/themes/lackluster.toml"
 ]

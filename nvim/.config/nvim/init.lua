@@ -5,14 +5,8 @@ vim.g.maplocalleader = "\\"
 --source plugins
 require("config.lazy")
 
--- setup globals
+vim.cmd [[colorscheme cold]]
+
+
 require("config.options")
-
---set colorscheme
-if vim.g.has_display and not vim.g.vscode then
-    vim.cmd [[colorscheme monochrome]]
-end
-
---source vim options, keymaps
 require("config.keymaps")
-require("config.autocmds")
