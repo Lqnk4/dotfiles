@@ -4,6 +4,8 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         version = false, -- last release is way too old and doesn't work on Windows
+        event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
+        lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
         opts = {
             ensure_installed = {
                 "bash",

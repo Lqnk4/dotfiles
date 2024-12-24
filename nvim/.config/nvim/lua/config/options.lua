@@ -7,10 +7,7 @@ local g = vim.g
 local opt = vim.opt
 local env = vim.env
 
-g.has_ui = #vim.api.nvim_list_uis() > 0
-g.has_gui = vim.fn.has('gui_running') == 1
-g.has_display = g.has_ui and env.DISPLAY ~= nil -- checks for tui
-g.has_nf = g.has_display and env.NVIM_NF and true or false
+g.is_tty = env.TERM == 'linux'
 
 opt.background = "dark"
 
@@ -74,3 +71,7 @@ opt.smoothscroll = true
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- Prevent LSP from overwriting treesitter color settings
+-- https://github.com/NvChad/NvChad/issues/1907
+--vim.highlight.priorities.semantic_tokens = 95

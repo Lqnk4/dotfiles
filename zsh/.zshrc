@@ -13,11 +13,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# vi mode
-# bindkey -v
-# export KEYTIMEOUT=1
-# bindkey "^H" backward-delete-char
-# bindkey "^?" backward-delete-char
+# Force emacs keybinds
+bindkey -e
 
 
 # Aliases
@@ -27,5 +24,5 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias top='htop'
 
-# starship prompt
-eval "$(starship init zsh)"
+# prompt
+export PS1="%{$(tput setaf 243)%}%n%{$(tput setaf 245)%}@%{$(tput setaf 249)%}%m %{$(tput setaf 254)%}%~ %{$(tput sgr0)%}$ "
