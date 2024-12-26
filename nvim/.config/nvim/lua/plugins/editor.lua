@@ -6,8 +6,6 @@ return {
             { "<leader>pv", "<cmd>Oil<cr>", desc = "Oil" },
             { "<leader>o-", "<cmd>Oil<cr>", desc = "Oil" },
         },
-        ---@module 'oil'
-        ---@type oil.SetupOpts
         opts = function()
             local permission_hlgroups = {
                 ['-'] = 'NonText',
@@ -28,14 +26,8 @@ return {
                         return hls
                     end,
                 },
-                { 'size',  highlight = 'Special' },
-                { 'mtime', highlight = 'Number' },
-                {
-                    'icon',
-                    default_file = icon_file,
-                    directory = icon_dir,
-                    add_padding = false,
-                },
+                { 'size',  highlight = 'Normal' },
+                { 'mtime', highlight = 'Normal' },
             }
 
             local detail = true
@@ -118,7 +110,7 @@ return {
                     desc = "Harpoon File",
                 },
                 {
-                    "<leader>H",
+                    "<leader>h",
                     function()
                         local harpoon = require("harpoon")
                         harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -143,6 +135,7 @@ return {
 
     {
         "ibhagwan/fzf-lua",
+        cmd = "FzfLua",
         opts = {
             file_icons = false,
             buffers = {
@@ -151,21 +144,24 @@ return {
             },
         },
         keys = function()
-            local fzflua = require("fzf-lua")
+            local bottom_window =
+            [[ winopts={row=1,col=0,height=0.3,width=1,backdrop=100,border="none"} winopts.preview={hidden="hidden"} hls={normal="FzfLuaPreviewNormal",border="FzfLuaPreviewBorder"} ]]
+
             return {
 
-                { "<leader>,",       "<cmd>FzfLua buffers winopts={row=1,col=0,height=0.3,width=1} winopts.preview.hidden=\"hidden\" winopts.backdrop=100<cr>", desc = "Switch Buffer" },
-                { "<leader>pb",      fzflua.buffers,                                                                                                            desc = "Switch Buffer" },
+                { "<leader>,",       "<cmd>FzfLua buffers " .. bottom_window .. "<cr>",      desc = "Switch Buffer" },
+                { "<leader><",       "<cmd>FzfLua buffers " .. bottom_window .. "<cr>",      desc = "Switch Buffer" },
+                { "<leader>pb",      "<cmd>FzfLua buffers<cr>",                              desc = "Switch Buffer" },
 
-                { "<leader>/",       "<cmd>FzfLua live_grep<cr>",                                                                                               desc = "Grep (Root Dir)" },
+                { "<leader>/",       "<cmd>FzfLua live_grep<cr>",                            desc = "Grep (Root Dir)" },
 
-                { "<leader>:",       "<cmd>FzfLua command_history<cr>",                                                                                         desc = "Command History" },
+                { "<leader>:",       "<cmd>FzfLua command_history<cr>",                      desc = "Command History" },
 
-                { "<leader><space>", "<cmd>FzfLua files<cr>",                                                                                                   desc = "Find Files (Root Dir)" },
-                { "<leader>.",       "<cmd>FzfLua files winopts={row=1,col=0,height=0.3,width=1} winopts.preview.hidden=\"hidden\" winopts.backdrop=100<cr>",                                                                                                   desc = "Find Files (Root Dir)" },
-                { "<leader>pf",      "<cmd>FzfLua files<cr>",                                                                                                   desc = "Find Files (Root Dir)" },
+                { "<leader><space>", "<cmd>FzfLua files " .. bottom_window .. "<cr>",        desc = "Find Files (Root Dir)" },
+                { "<leader>.",       "<cmd>FzfLua files " .. bottom_window .. "<cr>",        desc = "Find Files (Root Dir)" },
+                { "<leader>pf",      "<cmd>FzfLua files<cr>",                                desc = "Find Project Files (Root Dir)" },
 
-                { "<leader>ht",      "<cmd>FzfLua colorschemes<cr>",                                                                                            desc = "Colorschemes" },
+                { "<leader>sc",      "<cmd>FzfLua colorschemes " .. bottom_window .. "<cr>", desc = "Colorschemes" },
             }
         end
     },
@@ -184,5 +180,20 @@ return {
         keys = {
             { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "Buffer Local Keymaps (which-key)" },
         },
+    },
+
+    {
+        "NeogitOrg/neogit",
+        cmd = { "Neogit" },
+        keys = {
+            { "<leader>gg", function() require("neogit").open({ kind = "tab" }) end }
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- required
+            -- "sindrets/diffview.nvim", -- optional - Diff integration
+            "ibhagwan/fzf-lua",      -- optional
+        },
     }
+
+
 }

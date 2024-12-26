@@ -8,10 +8,10 @@ require("config.lazy")
 require("config.options")
 require("config.keymaps")
 
-if not vim.g.is_tty then
-    vim.cmd [[colorscheme cold]]
-else
+if vim.g.is_tty then
     vim.cmd [[colorscheme lackluster]]
+else
+    vim.cmd [[colorscheme cold]]
 end
 
 

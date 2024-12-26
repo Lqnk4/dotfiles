@@ -49,6 +49,6 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # autostart wm
 if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ]; then
-  exec river
+  exec river -c $HOME/.local/bin/riverhs # remove -c flag to default to backup config
 fi
 

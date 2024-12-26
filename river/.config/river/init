@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Backup riverwm config
+
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
@@ -168,11 +170,9 @@ swayidle -w \
 		resume 'wlr-randr --output eDP-1 --on' \
 	before-sleep 'swaylock -f -c 000000' &
 
-# Enables inhibit_idle when playing audio
-sway-audio-idle-inhibit &
 
 # Emacs daemon
-emacsclient -c -a 'emacs' &
+# emacsclient -c -a 'emacs' &
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -184,7 +184,7 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id "bar" csd
 
 # Make these apps use server side decorations to allow borders to be drawn
-riverctl rule-add -app-id "zen-alph" ssd
+riverctl rule-add -app-id "zen-alpha" ssd
 riverctl rule-add -app-id "org.pwmt.zathura" ssd
 riverctl rule-add -app-id "emacs" ssd
 
@@ -194,4 +194,4 @@ riverctl rule-add -app-id "emacs" ssd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 5 -outer-padding 10 &
+rivertile -view-padding 0 -outer-padding 0 &

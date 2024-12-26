@@ -54,9 +54,8 @@ opt.smartcase = true       -- Don't ignore case with capitals
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.jumpoptions = "view"
 
--- opt.statusline = '%2{mode()} | %f %m %r %= %{&spelllang} %y #%{bufnr()} %8(%l,%c%) %8p%%'
--- opt.showmode = false     -- statusline is configured
--- opt.laststatus = 2       -- global statusline
+opt.showmode = true
+opt.laststatus = 2       -- global statusline
 
 opt.wrap = false         -- Disable line wrap
 opt.linebreak = true     -- Wrap lines at convenient points

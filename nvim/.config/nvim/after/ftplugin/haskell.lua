@@ -10,7 +10,7 @@ require("config.lspconfig").on_attach({}, bufnr)
 
 vim.keymap.set('n', '<space>cl', vim.lsp.codelens.run, opts "Codelens")
 -- Hoogle search for the type signature of the definition under the cursor
-vim.keymap.set('n', '<leader>hs', ht.hoogle.hoogle_signature, opts "Hoogle signature")
+vim.keymap.set('n', '<leader>Hs', ht.hoogle.hoogle_signature, opts "Hoogle signature")
 -- Evaluate all code snippets
 vim.keymap.set('n', '<leader>ea', ht.lsp.buf_eval_all, opts "Eval all")
 -- Toggle a GHCi repl for the current package
