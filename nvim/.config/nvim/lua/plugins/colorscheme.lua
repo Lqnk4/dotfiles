@@ -4,29 +4,19 @@ local M = {
         dependencies = "rktjmp/lush.nvim",
     },
 
-    {
-        "gmr458/cold.nvim",
-    },
+    { "gmr458/cold.nvim", },
 
-    {
-        "navarasu/onedark.nvim",
-    },
+    { "navarasu/onedark.nvim", },
 
-    {
-        "slugbyte/lackluster.nvim",
-    },
+    { "slugbyte/lackluster.nvim", },
 
-    {
-        'deparr/tairiki.nvim',
-    },
+    { 'deparr/tairiki.nvim', },
 
-    {
-        'kdheepak/monochrome.nvim',
-    },
+    { 'kdheepak/monochrome.nvim' },
 
-    {
-        'metalelf0/base16-black-metal-scheme',
-    },
+    { 'metalelf0/base16-black-metal-scheme', },
+
+    { "blazkowolf/gruber-darker.nvim" },
 
 }
 

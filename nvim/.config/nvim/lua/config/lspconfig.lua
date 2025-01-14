@@ -1,5 +1,6 @@
-local M = {}
 local map = vim.keymap.set
+
+local M = {}
 
 M.on_attach = function(_, bufnr)
     local function opts(desc)
@@ -54,11 +55,18 @@ M.capabilities.textDocument.completion.completionItem = {
     },
 }
 
-
-local lspconfig = require("lspconfig")
-
 M.defaults = function(servers)
-    lspconfig.lua_ls.setup {
+    for _, lsp in ipairs(servers) do
+        require("lspconfig")[lsp].setup {
+            on_attach = M.on_attach,
+            capabilities = M.capabilities,
+            on_init = M.on_init,
+        }
+    end
+end
+
+M.lua_ls = function()
+    require("lspconfig").lua_ls.setup {
         on_attach = M.on_attach,
         capabilities = M.capabilities,
         on_init = M.on_init,
@@ -79,15 +87,23 @@ M.defaults = function(servers)
             },
         },
     }
-
-    for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
-            on_attach = M.on_attach,
-            capabilities = M.capabilities,
-            on_init = M.on_init,
-        }
-    end
 end
 
+M.clangd = function()
+    require("lspconfig").clangd.setup {
+        on_attach = function(client, bufnr)
+            M.on_attach(client, bufnr)
+
+            local function opts(desc)
+                return { buffer = bufnr, desc = "Clangd " .. desc }
+            end
+
+            map("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", opts "Switch Source/Header (C/C++)")
+            map("n", "<leader>si", "<cmd>ClangdShowSymbolInfo<cr>", opts "Show Symbol Info")
+        end,
+        capabilities = M.capabilities,
+        on_init = M.on_init,
+    }
+end
 
 return M

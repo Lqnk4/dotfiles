@@ -26,8 +26,8 @@ return {
                         return hls
                     end,
                 },
-                { 'size',  highlight = 'Normal' },
-                { 'mtime', highlight = 'Normal' },
+                { 'size',  highlight = 'Special' },
+                { 'mtime', highlight = 'Number' },
             }
 
             local detail = true

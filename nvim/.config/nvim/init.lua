@@ -11,7 +11,7 @@ require("config.keymaps")
 if vim.g.is_tty then
     vim.cmd [[colorscheme lackluster]]
 else
-    vim.cmd [[colorscheme cold]]
+    vim.cmd [[colorscheme gruber-darker]]
 end
 
 
