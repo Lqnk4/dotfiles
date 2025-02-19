@@ -144,6 +144,7 @@ return {
             },
         },
         keys = function()
+            -- template for doom style popup
             local bottom_window =
             [[ winopts={row=1,col=0,height=0.3,width=1,backdrop=100,border="none"} winopts.preview={hidden="hidden"} hls={normal="FzfLuaPreviewNormal",border="FzfLuaPreviewBorder"} ]]
 

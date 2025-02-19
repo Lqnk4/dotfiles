@@ -36,7 +36,6 @@ M.on_init = function(client, _)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-
 M.capabilities.textDocument.completion.completionItem = {
     documentationFormat = { "markdown", "plaintext" },
     snippetSupport = true,
@@ -55,7 +54,10 @@ M.capabilities.textDocument.completion.completionItem = {
     },
 }
 
-M.defaults = function(servers)
+
+---Setup any servers passed in with default lspconfig settings
+---@param servers table<string, function>
+M.default_setup = function(servers)
     for _, lsp in ipairs(servers) do
         require("lspconfig")[lsp].setup {
             on_attach = M.on_attach,
@@ -65,45 +67,49 @@ M.defaults = function(servers)
     end
 end
 
-M.lua_ls = function()
-    require("lspconfig").lua_ls.setup {
-        on_attach = M.on_attach,
-        capabilities = M.capabilities,
-        on_init = M.on_init,
+M.setup = {
 
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { "vim" },
-                },
-                workspace = {
-                    library = {
-                        vim.env.VIMRUNTIME,
-                        "${3rd}/luv/library",
+    lua_ls = function()
+        require("lspconfig").lua_ls.setup {
+            on_attach = M.on_attach,
+            capabilities = M.capabilities,
+            on_init = M.on_init,
+
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" },
                     },
-                    maxPreload = 100000,
-                    preloadFileSize = 10000,
+                    workspace = {
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            "${3rd}/luv/library",
+                        },
+                        maxPreload = 100000,
+                        preloadFileSize = 10000,
+                    },
                 },
             },
-        },
-    }
-end
+        }
+    end,
 
-M.clangd = function()
-    require("lspconfig").clangd.setup {
-        on_attach = function(client, bufnr)
-            M.on_attach(client, bufnr)
+    clangd = function()
+        require("lspconfig").clangd.setup {
+            on_attach = function(client, bufnr)
+                M.on_attach(client, bufnr)
 
-            local function opts(desc)
-                return { buffer = bufnr, desc = "Clangd " .. desc }
-            end
+                local function opts(desc)
+                    return { buffer = bufnr, desc = "Clangd " .. desc }
+                end
 
-            map("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", opts "Switch Source/Header (C/C++)")
-            map("n", "<leader>si", "<cmd>ClangdShowSymbolInfo<cr>", opts "Show Symbol Info")
-        end,
-        capabilities = M.capabilities,
-        on_init = M.on_init,
-    }
-end
+                map("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", opts "Switch Source/Header (C/C++)")
+                map("n", "<leader>si", "<cmd>ClangdShowSymbolInfo<cr>", opts "Show Symbol Info")
+            end,
+            capabilities = M.capabilities,
+            on_init = M.on_init,
+        }
+    end,
+}
+
 
 return M

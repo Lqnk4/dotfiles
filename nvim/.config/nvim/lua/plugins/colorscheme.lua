@@ -14,14 +14,12 @@ local M = {
 
     { 'kdheepak/monochrome.nvim' },
 
-    { 'metalelf0/base16-black-metal-scheme', },
-
     { "blazkowolf/gruber-darker.nvim" },
 
 }
 
-for _, colorscheme_plugin in ipairs(M) do
-    colorscheme_plugin["lazy"] = true
+for _, scheme in ipairs(M) do
+    scheme["lazy"] = true
 end
 
 return M

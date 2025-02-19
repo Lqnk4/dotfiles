@@ -10,9 +10,10 @@ return {
         local conf = require("config.lspconfig")
 
         -- setup lua_ls and other default config servers
-        conf.defaults(opts.servers)
-        conf.lua_ls()
-        conf.clangd()
+        conf.default_setup(opts.servers)
+        for setup_func in pairs(conf.setup) do
+            conf.setup[setup_func]()
+        end
 
     end,
 }

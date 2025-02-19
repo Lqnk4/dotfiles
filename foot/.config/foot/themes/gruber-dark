@@ -1,0 +1,24 @@
+#author: rexim
+#from: https://github.com/rexim/gruber-darker-theme
+
+[colors]
+background=181818
+foreground=E4E4E4
+
+regular0=181818
+regular1=F43841
+regular2=73D936
+regular3=FFDD33
+regular4=96A6C8
+regular5=9E95C7
+regular6=95A99F
+regular7=E4E4E4
+
+bright0=52494E
+bright1=FF4F58
+bright2=73D936
+bright3=FFDD33
+bright4=96A6C8
+bright5=AFAFD7
+bright6=95A99F
+bright7=F5F5F5
