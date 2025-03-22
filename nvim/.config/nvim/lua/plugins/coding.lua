@@ -1,116 +1,85 @@
 return {
     {
-        "hrsh7th/nvim-cmp",
-        version = false, -- last release is way too old
+        'saghen/blink.cmp',
         event = "InsertEnter",
-        dependencies = {
-            {
-                "L3MON4D3/LuaSnip",
-                lazy = true,
-                dependencies = {
-                    {
-                        "rafamadriz/friendly-snippets",
-                        config = function()
-                            require("luasnip.loaders.from_vscode").lazy_load()
-                            require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-                        end,
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
+            keymap = {
+                preset = 'default',
+                ['<CR>'] = { 'accept', 'fallback' },
+
+                ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
+                ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
+                ['<A-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
+                ['<A-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
+                ['<A-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
+                ['<A-6>'] = { function(cmp) cmp.accept({ index = 6 }) end },
+                ['<A-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
+                ['<A-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
+                ['<A-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
+                ['<A-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
+
+            },
+            appearance = {
+                -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+                -- Useful for when your theme doesn't support blink.cmp
+                -- Will be removed in a future release
+                use_nvim_cmp_as_default = false,
+                -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+                -- Adjusts spacing to ensure icons are aligned
+                nerd_font_variant = 'normal'
+            },
+            completion = {
+                accept = {
+                    auto_brackets = {
+                        enabled = true,
                     },
                 },
-                opts = {
-                    history = true,
-                    delete_check_events = "TextChanged",
+                list = {
+                    selection = {
+                        preselect = false,
+                    },
+                },
+                menu = {
+                    draw = {
+                        columns = { { "label", "label_description", gap = 2 }, { "kind" } },
+                        treesitter = { "lsp" },
+                    },
+                    -- border = "single",
+                },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 200,
+                    window = {
+                        -- border = "single",
+                    },
                 },
             },
+            signature = { enabled = true },
 
-            {
-                "windwp/nvim-autopairs",
-                opts = {
-                    fast_wrap = {},
-                    disable_filetype = { "TelescopePrompt", "vim" },
-                },
-                config = function(_, opts)
-                    require("nvim-autopairs").setup(opts)
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
 
-                    -- setup cmp for autopairs
-                    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                min_keyword_length = function(ctx)
+                    -- only applies when typing a command, doesn't apply to arguments
+                    if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then return 2 end
+                    return 0
                 end,
+
             },
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "saadparwaiz1/cmp_luasnip",
         },
-        opts = function()
-            vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
-            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        opts_extend = { "sources.default" }
+    },
 
-            cmp.event:on(
-                'confirm_done',
-                cmp_autopairs.on_confirm_done()
-            )
-
-            local defaults = require("cmp.config.default")()
-            local auto_select = false -- whether to automatically select the first entry of the completion menu
-
-            return {
-                auto_brackets = { "java", }, -- configure any filetype to auto add brackets
-                completion = {
-                    completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
-                },
-                preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
-                    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-                    ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                    ["<C-CR>"] = function(fallback)
-                        cmp.abort()
-                        fallback()
-                    end,
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        if luasnip.locally_jumpable(1) then
-                            luasnip.jump(1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        if luasnip.locally_jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                }),
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end
-                },
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "path" },
-                    { name = "buffer" },
-                    { name = "luasnip" },
-                }),
-                experimental = {
-                    -- only show ghost text when we show ai completions
-                    ghost_text = vim.g.ai_cmp and {
-                        hl_group = "CmpGhostText",
-                    } or false,
-                },
-                sorting = defaults.sorting,
-            }
-        end,
-        keys = {
-        },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
     },
 
     {

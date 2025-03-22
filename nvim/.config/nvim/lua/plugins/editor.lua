@@ -187,7 +187,7 @@ return {
         "NeogitOrg/neogit",
         cmd = { "Neogit" },
         keys = {
-            { "<leader>gg", function() require("neogit").open({ kind = "tab" }) end }
+            { "<leader>gg", function() require("neogit").open({ kind = "tab" }) end, desc = "Neogit" }
         },
         dependencies = {
             "nvim-lua/plenary.nvim", -- required
