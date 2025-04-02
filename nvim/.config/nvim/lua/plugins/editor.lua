@@ -7,11 +7,18 @@ return {
             { "<leader>o-", "<cmd>Oil<cr>", desc = "Oil" },
         },
         opts = function()
-            local permission_hlgroups = {
-                ['-'] = 'NonText',
-                ['r'] = 'DiagnosticSignWarn',
-                ['w'] = 'DiagnosticSignError',
-                ['x'] = 'DiagnosticSignOk',
+            -- local permission_hlgroups = {
+            --     ['-'] = 'NonText',
+            --     ['r'] = 'DiagnosticSignWarn',
+            --     ['w'] = 'DiagnosticSignError',
+            --     ['x'] = 'DiagnosticSignOk',
+            -- }
+
+            local permission_hlgroups_muted = {
+                ['-'] = 'Normal',
+                ['r'] = 'Normal',
+                ['w'] = 'Normal',
+                ['x'] = 'Normal',
             }
 
             local columns = {
@@ -21,7 +28,7 @@ return {
                         local hls = {}
                         for i = 1, #permission_str do
                             local char = permission_str:sub(i, i)
-                            table.insert(hls, { permission_hlgroups[char], i - 1, i })
+                            table.insert(hls, { permission_hlgroups_muted[char], i - 1, i })
                         end
                         return hls
                     end,
@@ -162,6 +169,8 @@ return {
                 { "<leader>.",       "<cmd>FzfLua files " .. bottom_window .. "<cr>",        desc = "Find Files (Root Dir)" },
                 { "<leader>pf",      "<cmd>FzfLua files<cr>",                                desc = "Find Project Files (Root Dir)" },
 
+                { "<leader>pm",      "<cmd>FzfLua manpages<cr>",                             desc = "Find Man Pages" },
+
                 { "<leader>sc",      "<cmd>FzfLua colorschemes " .. bottom_window .. "<cr>", desc = "Colorschemes" },
             }
         end
@@ -194,7 +203,86 @@ return {
             -- "sindrets/diffview.nvim", -- optional - Diff integration
             "ibhagwan/fzf-lua",      -- optional
         },
-    }
+    },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {
+            auto_attach = true
+        },
+    },
 
 
+    {
+        "stevearc/overseer.nvim",
+        lazy = false,
+        enabled = true,
+        cmd = {
+            "OverseerOpen",
+            "OverseerClose",
+            "OverseerToggle",
+            "OverseerSaveBundle",
+            "OverseerLoadBundle",
+            "OverseerDeleteBundle",
+            "OverseerRunCmd",
+            "OverseerRun",
+            "OverseerInfo",
+            "OverseerBuild",
+            "OverseerQuickAction",
+            "OverseerTaskAction",
+            "OverseerClearCache",
+        },
+        opts = function()
+
+            local overseer = require("overseer")
+
+            -- Restart last task
+            vim.api.nvim_create_user_command("OverseerRestartLast", function()
+                local tasks = overseer.list_tasks({ recent_first = true })
+                if (vim.tbl_isempty(tasks)) then
+                    vim.notify("Not tasks found", vim.log.levels.WARN)
+                else
+                    overseer.run_action(tasks[1], "restart")
+                end
+            end, {})
+
+            return {
+                dap = false,
+                task_list = {
+                    bindings = {
+                        ["<C-h>"] = false,
+                        ["<C-j>"] = false,
+                        ["<C-k>"] = false,
+                        ["<C-l>"] = false,
+                    },
+                },
+                form = {
+                    win_opts = {
+                        winblend = 0,
+                    },
+                },
+                confirm = {
+                    win_opts = {
+                        winblend = 0,
+                    },
+                },
+                task_win = {
+                    win_opts = {
+                        winblend = 0,
+                    },
+                },
+            }
+        end,
+        -- stylua: ignore
+        keys = {
+            { "<leader>ow", "<cmd>OverseerToggle<cr>",       desc = "Task list" },
+            { "<leader>oo", "<cmd>OverseerRun<cr>",          desc = "Run task" },
+            { "<leader>or", "<cmd> OverseerRestartLast<cr>", desc = "Restart Last Task" },
+            { "<leader>oq", "<cmd>OverseerQuickAction<cr>",  desc = "Action recent task" },
+            { "<leader>oi", "<cmd>OverseerInfo<cr>",         desc = "Overseer Info" },
+            { "<leader>ob", "<cmd>OverseerBuild<cr>",        desc = "Task builder" },
+            { "<leader>ot", "<cmd>OverseerTaskAction<cr>",   desc = "Task action" },
+            { "<leader>oc", "<cmd>OverseerClearCache<cr>",   desc = "Clear cache" },
+        },
+    },
 }

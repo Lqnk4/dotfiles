@@ -13,5 +13,5 @@ opacity = 1.0
 [general]
 # theme
 import = [
-    "~/.config/alacritty/themes/themes/gruber_darker.toml"
+    "~/.config/alacritty/themes/themes/doom-one-light.toml"
 ]

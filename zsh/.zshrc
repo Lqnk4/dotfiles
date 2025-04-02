@@ -25,4 +25,15 @@ alias grep='grep --color=auto'
 alias top='htop'
 
 # prompt
-export PS1="%{$(tput setaf 243)%}%n%{$(tput setaf 245)%}@%{$(tput setaf 249)%}%m %{$(tput setaf 254)%}%~ %{$(tput sgr0)%}$ "
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+# This line obtains information from the vcs.
+zstyle ':vcs_info:git*' formats " ∈ %F{magenta}%b%F{default} "
+precmd() {
+    vcs_info
+}
+setopt PROMPT_SUBST
+
+PROMPT="%F{blue}%~%F{default}\${vcs_info_msg_0_}"$'\n'"λx:%(?.⊤.%{%F{red}%}⊥%{%F{default}%}) " 
+

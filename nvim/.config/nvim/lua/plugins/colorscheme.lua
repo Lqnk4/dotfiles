@@ -4,18 +4,13 @@ local M = {
         dependencies = "rktjmp/lush.nvim",
     },
 
-    { "gmr458/cold.nvim", },
-
-    { "navarasu/onedark.nvim", },
-
-    { "slugbyte/lackluster.nvim", },
-
-    { 'deparr/tairiki.nvim', },
-
     { 'kdheepak/monochrome.nvim' },
 
     { "blazkowolf/gruber-darker.nvim" },
 
+    { "pgdouyon/vim-yin-yang" },
+
+    { "ronisbr/nano-theme.nvim" },
 }
 
 for _, scheme in ipairs(M) do

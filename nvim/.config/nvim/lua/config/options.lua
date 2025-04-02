@@ -9,11 +9,13 @@ local env = vim.env
 
 g.is_tty = env.TERM == 'linux'
 
-opt.background = "dark"
+opt.background = "light"
 
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers
 opt.signcolumn = "yes"    -- When and how to draw the signcolumn.
+opt.cursorline = true
+opt.cursorlineopt = "number"     -- Highlighting of the current line
 
 --vim.o.cmdheight = 1       -- Size of commands line
 
@@ -31,9 +33,8 @@ opt.breakindent = true
 
 opt.completeopt = "menu,menuone,noselect"
 
-opt.conceallevel = 2   -- Hide * markup for bold and italic, but not markers with substitutions
-opt.confirm = false    -- Confirm to save changes before exiting modified buffer
-opt.cursorline = false -- Highlighting of the current line
+opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
+opt.confirm = false  -- Confirm to save changes before exiting modified buffer
 opt.fillchars = {
     foldopen = "",
     foldclose = "",
@@ -54,8 +55,8 @@ opt.smartcase = true       -- Don't ignore case with capitals
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.jumpoptions = "view"
 
-opt.showmode = true
-opt.laststatus = 2       -- global statusline
+opt.showmode = false
+opt.laststatus = 3       -- global statusline
 
 opt.wrap = false         -- Disable line wrap
 opt.linebreak = true     -- Wrap lines at convenient points
