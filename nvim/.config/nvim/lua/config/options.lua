@@ -17,7 +17,7 @@ opt.signcolumn = "yes"    -- When and how to draw the signcolumn.
 opt.cursorline = true
 opt.cursorlineopt = "number"     -- Highlighting of the current line
 
---vim.o.cmdheight = 1       -- Size of commands line
+vim.o.cmdheight = 1       -- Size of commands line
 
 opt.guicursor = "n-v-i-c:block-Cursor"
 
@@ -55,8 +55,8 @@ opt.smartcase = true       -- Don't ignore case with capitals
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.jumpoptions = "view"
 
-opt.showmode = false
-opt.laststatus = 3       -- global statusline
+opt.showmode = true
+opt.laststatus = 2       -- global statusline
 
 opt.wrap = false         -- Disable line wrap
 opt.linebreak = true     -- Wrap lines at convenient points

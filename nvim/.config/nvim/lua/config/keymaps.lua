@@ -50,6 +50,9 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- file manager
+map("n", "<leader>pv", "<cmd>Ex<cr>", { desc = "Netrw" })
+
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
@@ -70,14 +73,6 @@ map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search R
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
--- Add undo break-points
--- map("i", ",", ",<c-g>u")
--- map("i", ".", ".<c-g>u")
--- map("i", ";", ";<c-g>u")
-
--- save file
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-
 --keywordprg
 map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
@@ -92,19 +87,20 @@ map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 -- lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-
+-- quickfix
 map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- diagnostic
-map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
-map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "Next Diagnostic" })
 map("n", "]e", function() vim.diagnostic.goto_next({ severity = "ERROR" }) end, { desc = "Next Diagnostic" })
 map("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR" }) end, { desc = "Next Diagnostic" })
 map("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, { desc = "Next Diagnostic" })
 map("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Next Diagnostic" })
+map('n', 'gK', function()
+  local virtual_lines = not vim.diagnostic.config().virtual_lines
+  local virtual_text = not vim.diagnostic.config().virtual_text
+  vim.diagnostic.config({ virtual_lines = virtual_lines , virtual_text = virtual_text})
+end, { desc = 'Toggle diagnostic virtual_lines' })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })

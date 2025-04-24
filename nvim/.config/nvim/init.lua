@@ -7,12 +7,13 @@ require("config.lazy")
 
 require("config.options")
 require("config.keymaps")
-require("config.statusline")
+-- require("config.statusline")
 
 if vim.g.is_tty then
     vim.cmd [[colorscheme quiet]]
 else
-    vim.cmd [[colorscheme zenwritten]]
+    vim.cmd [[colorscheme gruber-darker]]
+    -- vim.api.nvim_set_hl(0, "SignColumn", { bg = vim.api.nvim_get_hl(0, { name = "LineNr" }).bg })
 end
 
 

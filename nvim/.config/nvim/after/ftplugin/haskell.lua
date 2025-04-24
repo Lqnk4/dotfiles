@@ -28,5 +28,5 @@ map('n', '<leader>rp', ht.repl.paste, opts "[r]epl [p]aste")
 map('n', '<leader>rt', ht.repl.paste_type, opts "[r]epl paste [t]ype from <register>")
 map('n', '<leader>rw', ht.repl.paste_type, opts "[r]epl type of <c[w]ord>")
 
---| Cabal
+--| Build
 map('n', '<leader>mc', ht.project.open_project_file, opts "Open project file")

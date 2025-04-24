@@ -38,9 +38,11 @@ return {
     config = function(_, opts)
         local lspconfig = require('lspconfig')
 
+        vim.diagnostic.config({
+            virtual_text = true
+        })
 
         for server, config in pairs(opts.servers) do
-
             config.on_attach = function(_, bufnr)
                 require("config.lspkeymaps").default_on_attach(_, bufnr)
                 if config.keys ~= nil then
@@ -48,9 +50,9 @@ return {
                 end
             end
 
+
             config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
             lspconfig[server].setup(config)
         end
-
     end
 }
