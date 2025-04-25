@@ -85,7 +85,7 @@ return {
                 { "<leader>pm",      "<cmd>FzfLua manpages<cr>",                             desc = "Find Man Pages" },
 
                 { "<leader>sc",      "<cmd>FzfLua colorschemes " .. bottom_window .. "<cr>", desc = "Colorschemes" },
-                { "<leader>sC",      "<cmd>FzfLua awesome_colorschemes<cr>", desc = "Awesome Colorschemes" },
+                { "<leader>sC",      "<cmd>FzfLua awesome_colorschemes<cr>",                 desc = "Awesome Colorschemes" },
             }
         end
     },
@@ -127,6 +127,8 @@ return {
         },
     },
 
-
+    {
+        "tpope/vim-dispatch",
+    },
 
 }

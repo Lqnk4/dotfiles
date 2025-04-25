@@ -88,6 +88,8 @@ map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- quickfix
+map('n', "<leader>q", "<cmd>copen<cr>", {desc = "Open Quickfix"})
+map('n', "<leader>Q", "<cmd>copen<cr>", {desc = "Close Quickfix"})
 map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
@@ -97,13 +99,10 @@ map("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR" }) end, 
 map("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, { desc = "Next Diagnostic" })
 map("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Next Diagnostic" })
 map('n', 'gK', function()
-  local virtual_lines = not vim.diagnostic.config().virtual_lines
-  local virtual_text = not vim.diagnostic.config().virtual_text
-  vim.diagnostic.config({ virtual_lines = virtual_lines , virtual_text = virtual_text})
-end, { desc = 'Toggle diagnostic virtual_lines' })
-
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+    local virtual_lines = not vim.diagnostic.config().virtual_lines
+    local virtual_text = not vim.diagnostic.config().virtual_text
+    vim.diagnostic.config({ virtual_lines = virtual_lines, virtual_text = virtual_text })
+end, { desc = 'Toggle diagnostic virtual lines and text' })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })

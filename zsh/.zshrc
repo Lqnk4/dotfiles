@@ -35,5 +35,5 @@ precmd() {
 }
 setopt PROMPT_SUBST
 
-PROMPT="%F{default}%~%F{default}\${vcs_info_msg_0_}"$'\n'"%F{magenta}λx:%(?.⊤.⊥)%F{default} " 
+PROMPT="%F{magenta}%~%F{default}\${vcs_info_msg_0_}"$'\n'"%F{default}λx:%(?.⊤.⊥)%F{default} " 
 
