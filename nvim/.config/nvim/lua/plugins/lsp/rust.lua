@@ -7,7 +7,6 @@ return {
             vim.g.rustaceanvim = {
                 tools = {},
                 server = {
-                    on_attach = require("config.lspkeymaps").default_on_attach,
                     default_settings = {
                         ['rust-analyzer'] = {
                             diagnostics = {

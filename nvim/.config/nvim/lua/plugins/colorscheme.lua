@@ -33,9 +33,9 @@ local M = {
 
     { "EdenEast/nightfox.nvim" },
 
-    { "yorickpeterse/nvim-grey", },
+    -- { "yorickpeterse/nvim-grey", },
 
-    { "ronisbr/nano-theme.nvim" },
+    -- { "ronisbr/nano-theme.nvim" },
 
 }
 

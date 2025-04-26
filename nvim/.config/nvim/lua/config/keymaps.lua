@@ -91,6 +91,10 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map('n', "<leader>q", "<cmd>copen<cr>", {desc = "Open Quickfix"})
 map('n', "<leader>Q", "<cmd>cclose<cr>", {desc = "Close Quickfix"})
 
+-- lsp
+map({ "n", "x" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", { desc = "Format Buffer" })
+map({ "n", "x" }, "grf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", { desc = "Format Buffer" })
+
 -- diagnostic
 map("n", "]e", function() vim.diagnostic.goto_next({ severity = "ERROR" }) end, { desc = "Next Diagnostic" })
 map("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR" }) end, { desc = "Next Diagnostic" })
