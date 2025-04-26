@@ -130,5 +130,4 @@ return {
     {
         "tpope/vim-dispatch",
     },
-
 }

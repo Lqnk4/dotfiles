@@ -89,9 +89,7 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- quickfix
 map('n', "<leader>q", "<cmd>copen<cr>", {desc = "Open Quickfix"})
-map('n', "<leader>Q", "<cmd>copen<cr>", {desc = "Close Quickfix"})
-map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+map('n', "<leader>Q", "<cmd>cclose<cr>", {desc = "Close Quickfix"})
 
 -- diagnostic
 map("n", "]e", function() vim.diagnostic.goto_next({ severity = "ERROR" }) end, { desc = "Next Diagnostic" })
