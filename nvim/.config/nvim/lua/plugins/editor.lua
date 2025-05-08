@@ -119,13 +119,13 @@ return {
         },
     },
 
-    {
-        "lewis6991/gitsigns.nvim",
-        enabled = false,
-        opts = {
-            auto_attach = true
-        },
-    },
+    -- {
+    --     "lewis6991/gitsigns.nvim",
+    --     enabled = false,
+    --     opts = {
+    --         auto_attach = true
+    --     },
+    -- },
 
     {
         "tpope/vim-dispatch",

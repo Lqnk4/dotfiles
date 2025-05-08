@@ -1,6 +1,7 @@
 return {
     {
         'saghen/blink.cmp',
+        enabled = false,
         event = "InsertEnter",
         dependencies = 'rafamadriz/friendly-snippets',
         version = '*',
@@ -9,7 +10,7 @@ return {
         opts = {
             keymap = {
                 preset = 'default',
-                ['<CR>'] = { 'accept', 'fallback' },
+                -- ['<CR>'] = { 'accept', 'fallback' },
 
                 ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
                 ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },

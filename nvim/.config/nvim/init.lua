@@ -2,16 +2,17 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
---source plugins
 require("config.lazy")
 require("config.options")
+
+if vim.g.is_tty then
+    vim.cmd [[colorscheme modus_vivendi]]
+else
+    vim.cmd [[colorscheme modus]]
+end
+
 require("config.keymaps")
 require("config.lsp")
 
-if vim.g.is_tty then
-    vim.cmd [[colorscheme gruber-darker]]
-else
-    vim.cmd [[colorscheme gruber-darker]]
-end
 
 

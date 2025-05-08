@@ -1,6 +1,8 @@
 vim.lsp.enable({
+    -- 'ada_ls',
     'clangd',
     'lua-language-server',
+    'pyright',
     'zls',
 })
 
