@@ -1,7 +1,7 @@
 return {
     {
         'saghen/blink.cmp',
-        enabled = false,
+        enabled = true,
         event = "InsertEnter",
         dependencies = 'rafamadriz/friendly-snippets',
         version = '*',
@@ -45,6 +45,7 @@ return {
                     },
                 },
                 menu = {
+                    auto_show = true, -- show the completion menu automatically
                     draw = {
                         columns = { { "label", "label_description", gap = 2 }, { "kind" } },
                         treesitter = { "lsp" },

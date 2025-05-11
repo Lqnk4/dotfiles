@@ -1,6 +1,6 @@
 # font
 [font]
-size = 9
+size = 12.5
 normal = { family = "monospace", style = "Regular" }
 
 [cursor]
