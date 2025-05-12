@@ -93,7 +93,7 @@ map('n', "<leader>Q", "<cmd>cclose<cr>", {desc = "Close Quickfix"})
 
 -- lsp
 map("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
-map("n", "gd", vim.lsp.buf.declaration , { desc = "Goto Definition" })
+map("n", "gD", vim.lsp.buf.declaration , { desc = "Goto Declaration" })
 map({ "n", "x" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", { desc = "Format Buffer" })
 map({ "n", "x" }, "grf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", { desc = "Format Buffer" })
 
