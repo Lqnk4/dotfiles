@@ -1,14 +1,17 @@
 # [start]
 shell-integration = zsh
 window-decoration = false
+gtk-single-instance = true
+resize-overlay = never
+confirm-close-surface = false
 
 # [colors]
 theme = gruber-darker
 cursor-color = #ffffff
 
 # [font]
-font-family = Monoid Nerd Font
-font-size = 9
+font-family = Iosevka Nerd Font
+font-size = 12.5
 
 # [cursor]
 cursor-style = block

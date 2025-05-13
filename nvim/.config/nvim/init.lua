@@ -5,10 +5,11 @@ vim.g.maplocalleader = "\\"
 require("config.lazy")
 require("config.options")
 
+
 if vim.g.is_tty then
     vim.cmd [[colorscheme modus_vivendi]]
 else
-    vim.cmd [[colorscheme modus]]
+    vim.cmd [[colorscheme gruber-darker]]
 end
 
 require("config.keymaps")
