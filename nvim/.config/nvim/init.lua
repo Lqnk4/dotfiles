@@ -9,7 +9,7 @@ require("config.options")
 if vim.g.is_tty then
     vim.cmd [[colorscheme modus_vivendi]]
 else
-    vim.cmd [[colorscheme gruber-darker]]
+    vim.cmd [[colorscheme vscode]]
 end
 
 require("config.keymaps")
