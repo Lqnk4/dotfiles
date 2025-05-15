@@ -56,21 +56,24 @@ local M = {
 
     -- { "vague2k/vague.nvim" },
 
-    -- {
-    --     'Mofiqul/vscode.nvim',
-    --     opts = function()
-    --         local c = require('vscode.colors').get_colors()
-    --         local ret = {
-    --             group_overrides = {
-    --                 FloatBorder = { fg = c.vsscGray },
-    --                 BlinkCmpMenuBorder = { fg = c.vscGray },
-    --                 BlinkCmpDocBorder = { fg = c.vscGray },
-    --             }
-    --         }
-    --
-    --         return ret
-    --     end
-    -- },
+    {
+        'Mofiqul/vscode.nvim',
+        opts = function()
+            local c = require('vscode.colors').get_colors()
+            local darkbg = "#191919"
+            local ret = {
+                group_overrides = {
+                    NormalFloat = { fg = "NONE", bg = darkbg },
+                    BlinkCmpMenu = { fg = "NONE", bg = darkbg },
+                    BlinkCmpDoc = { fg = "NONE", bg = darkbg },
+                    BlinkCmpMenuBorder = { fg = c.vscGray },
+                    BlinkCmpDocBorder = { fg = c.vscGray },
+                }
+            }
+
+            return ret
+        end
+    },
 
     { "EdenEast/nightfox.nvim" },
 
