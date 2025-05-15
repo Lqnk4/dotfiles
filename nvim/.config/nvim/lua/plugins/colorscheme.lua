@@ -29,7 +29,20 @@ local M = {
 
     { "vague2k/vague.nvim" },
 
-    { 'Mofiqul/vscode.nvim', },
+    {
+        'Mofiqul/vscode.nvim',
+        opts = function()
+            local c = require('vscode.colors').get_colors()
+            local ret = {
+                group_overrides = {
+                    BlinkCmpMenuBorder = { fg = c.vscGray },
+                    BlinkCmpDocBorder = { fg = c.vscGray },
+                }
+            }
+
+            return ret
+        end
+    },
 
     -- { "EdenEast/nightfox.nvim" },
 

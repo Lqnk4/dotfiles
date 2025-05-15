@@ -41,7 +41,8 @@ export PATH="$HOME/.local/sbin:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 # Doom Emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
-
+# Anki
+export ANKI_WAYLAND=1
 
 ### TMUX
 
