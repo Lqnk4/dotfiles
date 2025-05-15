@@ -6,7 +6,7 @@ resize-overlay = never
 confirm-close-surface = false
 
 # [colors]
-theme = vscode-dark
+theme = Kanagawa Dragon
 cursor-color = #ffffff
 
 # [font]

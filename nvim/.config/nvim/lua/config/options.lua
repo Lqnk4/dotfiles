@@ -19,6 +19,8 @@ opt.cursorlineopt = "number"     -- Highlighting of the current line
 
 vim.o.cmdheight = 1       -- Size of commands line
 
+-- vim.o.winborder = "single" -- global floatborder
+
 opt.guicursor = "n-v-i-c:block-Cursor"
 
 opt.mouse = ""

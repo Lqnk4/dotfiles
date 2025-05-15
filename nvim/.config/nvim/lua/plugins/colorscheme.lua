@@ -1,8 +1,8 @@
 local M = {
-    -- {
-    --     "zenbones-theme/zenbones.nvim",
-    --     dependencies = "rktjmp/lush.nvim",
-    -- },
+    {
+        "zenbones-theme/zenbones.nvim",
+        dependencies = "rktjmp/lush.nvim",
+    },
 
     -- { "blazkowolf/gruber-darker.nvim" },
 
@@ -21,30 +21,58 @@ local M = {
 
     -- { "rose-pine/neovim" },
 
-    -- { "rebelot/kanagawa.nvim" },
+    {
+        "rebelot/kanagawa.nvim",
+        opts = {
+            background = {
+                dark = "dragon",
+                light = "lotus"
+            },
+            colors = {
+                theme = {
+                    all = {
+                        ui = {
+                            bg_gutter = "none"
+                        }
+                    }
+                }
+            },
+            overrides = function(colors)
+                local theme = colors.theme
+                return {
+                    Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+                    PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+                    PmenuSbar = { bg = theme.ui.bg_m1 },
+                    PmenuThumb = { bg = theme.ui.bg_p2 },
+                }
+            end,
+        },
+
+    },
 
     -- { "alexxGmZ/e-ink.nvim", },
 
     -- { "armannikoyan/rusty" },
 
-    { "vague2k/vague.nvim" },
+    -- { "vague2k/vague.nvim" },
 
-    {
-        'Mofiqul/vscode.nvim',
-        opts = function()
-            local c = require('vscode.colors').get_colors()
-            local ret = {
-                group_overrides = {
-                    BlinkCmpMenuBorder = { fg = c.vscGray },
-                    BlinkCmpDocBorder = { fg = c.vscGray },
-                }
-            }
+    -- {
+    --     'Mofiqul/vscode.nvim',
+    --     opts = function()
+    --         local c = require('vscode.colors').get_colors()
+    --         local ret = {
+    --             group_overrides = {
+    --                 FloatBorder = { fg = c.vsscGray },
+    --                 BlinkCmpMenuBorder = { fg = c.vscGray },
+    --                 BlinkCmpDocBorder = { fg = c.vscGray },
+    --             }
+    --         }
+    --
+    --         return ret
+    --     end
+    -- },
 
-            return ret
-        end
-    },
-
-    -- { "EdenEast/nightfox.nvim" },
+    { "EdenEast/nightfox.nvim" },
 
     -- { "yorickpeterse/nvim-grey", },
 

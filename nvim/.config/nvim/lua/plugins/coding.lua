@@ -51,13 +51,13 @@ return {
                         columns = { { "label", "label_description", gap = 2 }, { "kind" } },
                         treesitter = { "lsp" },
                     },
-                    border = "single",
+                    -- border = "single",
                 },
                 documentation = {
                     auto_show = true,
                     auto_show_delay_ms = 200,
                     window = {
-                        border = "single",
+                        -- border = "single",
                     },
                 },
             },
