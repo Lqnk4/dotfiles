@@ -4,7 +4,7 @@ local M = {
         dependencies = "rktjmp/lush.nvim",
     },
 
-    -- { "blazkowolf/gruber-darker.nvim" },
+    { "blazkowolf/gruber-darker.nvim" },
 
     -- {
     --     "ishan9299/nvim-solarized-lua",

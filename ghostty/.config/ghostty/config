@@ -6,7 +6,7 @@ resize-overlay = never
 confirm-close-surface = false
 
 # [colors]
-theme = vscode-dark
+theme = gruber-darker
 cursor-color = #ffffff
 
 # [font]

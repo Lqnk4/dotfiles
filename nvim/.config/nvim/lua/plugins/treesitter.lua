@@ -11,6 +11,7 @@ return {
             "TSUpdateSync",
             "TSUpdate",
             "TSInstall",
+            "TSInstallSync",
             "TSBufEnable",
             "TSBufDisable",
             "TSBufToggle",
@@ -67,9 +68,8 @@ return {
             },
             auto_install = true,
             highlight = {
-                enable = true,
+                enable = false,
                 disable = function(lang, buf)
-
                     local disabled_langs = { "latex" }
                     for _, l in ipairs(disabled_langs) do
                         if l == lang then
