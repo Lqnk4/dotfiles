@@ -78,7 +78,7 @@
     },
     "clock": {
         "interval": 60,
-        "timezone": "Europe/Budapest",
+        "timezone": "US/Pacific",
         "format": "{:%F %R }",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
