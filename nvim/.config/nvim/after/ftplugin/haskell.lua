@@ -1,4 +1,10 @@
--- ~/.config/nvim/after/ftplugin/haskell.lua
+vim.opt_local.makeprg = "cabal"
+vim.cmd([[
+    setlocal makeprg=cabal
+    compiler ghc
+    "setlocal omnifunc=haskellcomplete#Complete
+]])
+
 local ht = require('haskell-tools')
 local bufnr = vim.api.nvim_get_current_buf()
 
@@ -7,8 +13,6 @@ local map = vim.keymap.set
 local function opts(desc)
     return { noremap = true, silent = true, buffer = bufnr, desc = "Haskell " .. desc }
 end
-
--- require("config.lspkeymaps").default_on_attach(nil, bufnr)
 
 --| hls
 map('n', '<space>cl', vim.lsp.codelens.run, opts "Codelens")

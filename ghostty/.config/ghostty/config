@@ -6,7 +6,7 @@ resize-overlay = never
 confirm-close-surface = false
 
 # [colors]
-theme = gruber-darker
+theme = dracula
 cursor-color = #ffffff
 
 # [font]

@@ -33,7 +33,7 @@ opt.breakindent = true
 
 -- opt.clipboard = "unnamedplus" -- sync system clipboard
 
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,menuone,noselect,popup,fuzzy"
 
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = false  -- Confirm to save changes before exiting modified buffer

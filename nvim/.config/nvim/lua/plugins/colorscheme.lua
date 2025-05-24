@@ -4,6 +4,8 @@ local M = {
         dependencies = "rktjmp/lush.nvim",
     },
 
+    { "archseer/colibri.vim", },
+
     { "blazkowolf/gruber-darker.nvim" },
 
     -- {
@@ -21,34 +23,34 @@ local M = {
 
     -- { "rose-pine/neovim" },
 
-    {
-        "rebelot/kanagawa.nvim",
-        opts = {
-            background = {
-                dark = "dragon",
-                light = "lotus"
-            },
-            colors = {
-                theme = {
-                    all = {
-                        ui = {
-                            bg_gutter = "none"
-                        }
-                    }
-                }
-            },
-            overrides = function(colors)
-                local theme = colors.theme
-                return {
-                    Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-                    PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-                    PmenuSbar = { bg = theme.ui.bg_m1 },
-                    PmenuThumb = { bg = theme.ui.bg_p2 },
-                }
-            end,
-        },
-
-    },
+    -- {
+    --     "rebelot/kanagawa.nvim",
+    --     opts = {
+    --         background = {
+    --             dark = "dragon",
+    --             light = "lotus"
+    --         },
+    --         colors = {
+    --             theme = {
+    --                 all = {
+    --                     ui = {
+    --                         bg_gutter = "none"
+    --                     }
+    --                 }
+    --             }
+    --         },
+    --         overrides = function(colors)
+    --             local theme = colors.theme
+    --             return {
+    --                 Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+    --                 PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+    --                 PmenuSbar = { bg = theme.ui.bg_m1 },
+    --                 PmenuThumb = { bg = theme.ui.bg_p2 },
+    --             }
+    --         end,
+    --     },
+    --
+    -- },
 
     -- { "alexxGmZ/e-ink.nvim", },
 
@@ -75,7 +77,7 @@ local M = {
         end
     },
 
-    { "EdenEast/nightfox.nvim" },
+    -- { "EdenEast/nightfox.nvim" },
 
     -- { "yorickpeterse/nvim-grey", },
 
@@ -94,6 +96,11 @@ local M = {
     -- { "sainnhe/gruvbox-material" },
 
     -- { "deparr/tairiki.nvim", },
+
+    -- {
+    --     "psliwka/termcolors.nvim",
+    --     cmd = "TermcolorsShow"
+    -- },
 }
 
 for _, scheme in ipairs(M) do

@@ -68,7 +68,7 @@ return {
             },
             auto_install = true,
             highlight = {
-                enable = false,
+                enable = true,
                 disable = function(lang, buf)
                     local disabled_langs = { "latex" }
                     for _, l in ipairs(disabled_langs) do
