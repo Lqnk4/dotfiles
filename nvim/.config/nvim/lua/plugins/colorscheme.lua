@@ -1,19 +1,24 @@
 local M = {
+
+    { 'huyvohcmc/atlas.vim', },
+
     {
         "zenbones-theme/zenbones.nvim",
         dependencies = "rktjmp/lush.nvim",
     },
 
+    { "gmr458/cold.nvim", },
+
     { "archseer/colibri.vim", },
 
     { "blazkowolf/gruber-darker.nvim" },
 
-    -- {
-    --     "ishan9299/nvim-solarized-lua",
-    --     init = function()
-    --         vim.g.solarized_statusline = 'flat'
-    --     end,
-    -- },
+    {
+        "ishan9299/nvim-solarized-lua",
+        init = function()
+            vim.g.solarized_statusline = 'flat'
+        end,
+    },
 
     -- { "maxmx03/solarized.nvim", },
 
@@ -54,28 +59,28 @@ local M = {
 
     -- { "alexxGmZ/e-ink.nvim", },
 
-    -- { "armannikoyan/rusty" },
+    { "armannikoyan/rusty" },
 
     -- { "vague2k/vague.nvim" },
 
-    {
-        'Mofiqul/vscode.nvim',
-        opts = function()
-            local c = require('vscode.colors').get_colors()
-            local darkbg = "#191919"
-            local ret = {
-                group_overrides = {
-                    NormalFloat = { fg = "NONE", bg = darkbg },
-                    BlinkCmpMenu = { fg = "NONE", bg = darkbg },
-                    BlinkCmpDoc = { fg = "NONE", bg = darkbg },
-                    BlinkCmpMenuBorder = { fg = c.vscGray },
-                    BlinkCmpDocBorder = { fg = c.vscGray },
-                }
-            }
-
-            return ret
-        end
-    },
+    -- {
+    --     'Mofiqul/vscode.nvim',
+    --     opts = function()
+    --         local c = require('vscode.colors').get_colors()
+    --         local darkbg = "#191919"
+    --         local ret = {
+    --             group_overrides = {
+    --                 NormalFloat = { fg = "NONE", bg = darkbg },
+    --                 BlinkCmpMenu = { fg = "NONE", bg = darkbg },
+    --                 BlinkCmpDoc = { fg = "NONE", bg = darkbg },
+    --                 BlinkCmpMenuBorder = { fg = c.vscGray },
+    --                 BlinkCmpDocBorder = { fg = c.vscGray },
+    --             }
+    --         }
+    --
+    --         return ret
+    --     end
+    -- },
 
     -- { "EdenEast/nightfox.nvim" },
 

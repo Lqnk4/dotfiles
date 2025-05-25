@@ -29,10 +29,4 @@ return {
             end
         end,
     },
-
-    {
-        "neovimhaskell/haskell-vim",
-        enabled = false,
-        ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-    }
 }

@@ -37,14 +37,14 @@ opt.completeopt = "menu,menuone,noselect,popup,fuzzy"
 
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = false  -- Confirm to save changes before exiting modified buffer
-opt.fillchars = {
-    foldopen = "",
-    foldclose = "",
-    fold = " ",
-    foldsep = " ",
-    diff = "╱",
-    eob = " ",
-}
+-- opt.fillchars = {
+--     foldopen = "",
+--     foldclose = "",
+--     fold = " ",
+--     foldsep = " ",
+--     diff = "╱",
+--     eob = " ",
+-- }
 
 opt.foldlevel = 99
 
