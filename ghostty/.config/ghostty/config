@@ -6,7 +6,7 @@ resize-overlay = never
 confirm-close-surface = false
 
 # [colors]
-theme = Dracula
+theme = vscode-dark
 cursor-color = #ffffff
 
 # [font]

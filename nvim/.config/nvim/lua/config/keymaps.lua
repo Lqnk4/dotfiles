@@ -112,7 +112,16 @@ end, { desc = 'Toggle diagnostic virtual lines and text' })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
--- Terminal Mappings
+-- command line
+map("c", "<C-a>", "<Home>", { desc = "Goto beginning of line"})
+map("c", "<C-e>", "<End>", { desc = "Goto end of line"})
+map("c", "<C-f>", "<Right>", { desc = "Forward one character"})
+map("c", "<C-b>", "<Left>", { desc = "Backward one character"})
+map("c", "<M-f>", "<S-Right>", { desc = "Forward one word"})
+map("c", "<M-b>", "<S-Left>", { desc = "Backward one word"})
+map("c", "<C-d>", "<Del>", { desc = "Delete character in front of cursor" })
+
+-- terminal
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
 -- map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to Lower Window" })
