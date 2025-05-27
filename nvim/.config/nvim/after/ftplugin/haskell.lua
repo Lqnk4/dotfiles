@@ -2,7 +2,7 @@ vim.opt_local.makeprg = "cabal"
 vim.cmd([[
     setlocal makeprg=cabal
     compiler ghc
-    "setlocal omnifunc=haskellcomplete#Complete
+    setlocal omnifunc=haskellcomplete#Complete
 ]])
 
 local ht = require('haskell-tools')

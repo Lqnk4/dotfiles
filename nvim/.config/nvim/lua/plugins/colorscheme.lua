@@ -7,11 +7,29 @@ local M = {
         dependencies = "rktjmp/lush.nvim",
     },
 
-    { "gmr458/cold.nvim", },
+    -- { "gmr458/cold.nvim", },
 
     { "archseer/colibri.vim", },
 
-    { "blazkowolf/gruber-darker.nvim" },
+    -- { 
+    --     "blazkowolf/gruber-darker.nvim",
+    --     opts = {
+    --         italic = {
+    --             strings = false,
+    --         }
+    --     }
+    -- },
+
+    {
+        dir = "~/Programming/gruber-darker.nvim",
+        enabled = true,
+        opts = {
+            italic = {
+                strings = false,
+                comments = false,
+            }
+        },
+    },
 
     {
         "ishan9299/nvim-solarized-lua",

@@ -19,7 +19,7 @@ bindkey -e
 
 # Aliases
 alias sudo='sudo '
-alias vim='nvim'
+# alias vim='nvim'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias top='htop'
