@@ -11,24 +11,15 @@ local M = {
 
     { "archseer/colibri.vim", },
 
-    -- { 
-    --     "blazkowolf/gruber-darker.nvim",
-    --     opts = {
-    --         italic = {
-    --             strings = false,
-    --         }
-    --     }
-    -- },
-
     {
-        dir = "~/Programming/gruber-darker.nvim",
-        enabled = true,
+        -- Custom fork
+        "Lqnk4/gruber-darker.nvim",
         opts = {
             italic = {
                 strings = false,
                 comments = false,
             }
-        },
+        }
     },
 
     {
