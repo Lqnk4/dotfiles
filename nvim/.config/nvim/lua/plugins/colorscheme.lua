@@ -14,6 +14,7 @@ local M = {
     {
         -- Custom fork
         "Lqnk4/gruber-darker.nvim",
+        enabled = true,
         opts = {
             italic = {
                 strings = false,
