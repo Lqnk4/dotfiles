@@ -10,6 +10,10 @@ local M = {
 
     -- { "alexxGmZ/e-ink.nvim", },
 
+    {
+        "amedoeyes/eyes.nvim"
+    },
+
     -- { "yorickpeterse/nvim-grey", },
 
     {
@@ -63,7 +67,7 @@ local M = {
 
     { "EdenEast/nightfox.nvim" },
 
-    { "savq/melange-nvim" },
+    -- { "savq/melange-nvim" },
 
     {
         "miikanissi/modus-themes.nvim",
@@ -74,7 +78,7 @@ local M = {
             styles = {
                 comments = { italic = false },
                 keywords = { italic = false },
-            }
+            },
         }
     },
 
@@ -84,16 +88,20 @@ local M = {
 
     -- { "armannikoyan/rusty" },
 
-    -- {
-    --     "ishan9299/nvim-solarized-lua",
-    --     init = function()
-    --         vim.g.solarized_statusline = 'flat'
-    --     end,
-    -- },
+    {
+        "ishan9299/nvim-solarized-lua",
+        init = function()
+            vim.g.solarized_statusline = 'flat'
+        end,
+    },
 
     -- { "maxmx03/solarized.nvim", },
 
     -- { "craftzdog/solarized-osaka.nvim", },
+
+    {
+        "sainnhe/sonokai"
+    },
 
     -- { "deparr/tairiki.nvim", },
 

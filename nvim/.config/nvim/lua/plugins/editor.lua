@@ -134,8 +134,8 @@ return {
                 "sindrets/diffview.nvim",
                 lazy = true,
                 opts = { use_icons = false, },
-            },                                        -- optional - Diff integration
-            { "ibhagwan/fzf-lua",      lazy = true }, -- optional
+            },
+            { "ibhagwan/fzf-lua",      lazy = true },
         },
         keys = {
             { "<leader>gg", function() require("neogit").open({ kind = "tab" }) end, desc = "Neogit" }
