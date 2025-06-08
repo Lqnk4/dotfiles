@@ -1,28 +1,15 @@
 return {
     {
         'saghen/blink.cmp',
-        enabled = false,
+        enabled = true,
         event = "InsertEnter",
-        dependencies = 'rafamadriz/friendly-snippets',
+        dependencies = {'rafamadriz/friendly-snippets', lazy = true},
         version = '*',
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
             keymap = {
                 preset = 'default',
-                -- ['<CR>'] = { 'accept', 'fallback' },
-
-                ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
-                ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
-                ['<A-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
-                ['<A-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
-                ['<A-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
-                ['<A-6>'] = { function(cmp) cmp.accept({ index = 6 }) end },
-                ['<A-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
-                ['<A-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
-                ['<A-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
-                ['<A-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
-
             },
             appearance = {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -36,7 +23,7 @@ return {
             completion = {
                 accept = {
                     auto_brackets = {
-                        enabled = true,
+                        enabled = false,
                     },
                 },
                 list = {
@@ -55,35 +42,49 @@ return {
                 },
                 documentation = {
                     auto_show = true,
-                    auto_show_delay_ms = 200,
+                    auto_show_delay_ms = 500,
+                    update_delay_ms = 50,
                     window = {
                         -- border = "single",
                     },
                 },
             },
-            signature = { enabled = true },
-
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
-
-                min_keyword_length = function(ctx)
-                    -- only applies when typing a command, doesn't apply to arguments
-                    if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then return 2 end
-                    return 0
-                end,
-
             },
+
+            cmdline = {
+                enabled = false,
+            },
+            snippets = { preset = 'default' },
+            signature = { enabled = true },
         },
-        opts_extend = { "sources.default" }
     },
 
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        config = true
-        -- use opts = {} for passing setup options
-        -- this is equivalent to setup({}) function
+        opts = {
+            disable_filetype = { "lean" }
+        }
     },
+
+    -- {
+    --     "echasnovski/mini.pairs",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         modes = { insert = true, command = true, terminal = false },
+    --         -- skip autopair when next character is one of these
+    --         skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+    --         -- skip autopair when the cursor is inside these treesitter nodes
+    --         skip_ts = { "string" },
+    --         -- skip autopair when next character is closing pair
+    --         -- and there are more closing pairs than opening pairs
+    --         skip_unbalanced = true,
+    --         -- better deal with markdown code blocks
+    --         markdown = true,
+    --     },
+    -- },
 
     {
         "echasnovski/mini.ai",

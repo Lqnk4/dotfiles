@@ -7,8 +7,13 @@ vim.lsp.enable({
 })
 
 vim.diagnostic.config({
+    severity_sort = true,
     virtual_text = true,
+    -- underline = false,
+    -- float = { border = "rounded" }
 })
+
+-- vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single' }) end)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

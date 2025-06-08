@@ -4,8 +4,8 @@ return {
         event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 
         dependencies = {
-            'neovim/nvim-lspconfig',
-            'nvim-lua/plenary.nvim',
+            {'neovim/nvim-lspconfig', lazy = true},
+            {'nvim-lua/plenary.nvim', lazy = true}
 
             -- optional dependencies:
 
@@ -21,6 +21,13 @@ return {
         ---@type lean.Config
         opts = { -- see below for full configuration options
             mappings = true,
+            goal_markers = { unsolved = '', accomplished = '✓' },
+            lsp = {
+                init_options = {
+                    editDelay = 500,
+                    hasWidgets = true,
+                }
+            },
         }
     }
 }

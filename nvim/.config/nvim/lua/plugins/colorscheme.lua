@@ -2,14 +2,15 @@ local M = {
 
     { 'huyvohcmc/atlas.vim', },
 
-    {
-        "zenbones-theme/zenbones.nvim",
-        dependencies = "rktjmp/lush.nvim",
-    },
+    -- { "ribru17/bamboo.nvim" },
 
     -- { "gmr458/cold.nvim", },
 
     { "archseer/colibri.vim", },
+
+    -- { "alexxGmZ/e-ink.nvim", },
+
+    -- { "yorickpeterse/nvim-grey", },
 
     {
         -- Custom fork
@@ -19,24 +20,13 @@ local M = {
             italic = {
                 strings = false,
                 comments = false,
-            }
+            },
         }
     },
 
-    {
-        "ishan9299/nvim-solarized-lua",
-        init = function()
-            vim.g.solarized_statusline = 'flat'
-        end,
-    },
+    -- { "morhetz/gruvbox" },
 
-    -- { "maxmx03/solarized.nvim", },
-
-    -- { "craftzdog/solarized-osaka.nvim", },
-
-    -- { "folke/tokyonight.nvim" },
-
-    -- { "rose-pine/neovim" },
+    -- { "sainnhe/gruvbox-material" },
 
     -- {
     --     "rebelot/kanagawa.nvim",
@@ -67,54 +57,74 @@ local M = {
     --
     -- },
 
-    -- { "alexxGmZ/e-ink.nvim", },
-
-    { "armannikoyan/rusty" },
-
-    -- { "vague2k/vague.nvim" },
-
-    -- {
-    --     'Mofiqul/vscode.nvim',
-    --     opts = function()
-    --         local c = require('vscode.colors').get_colors()
-    --         local darkbg = "#191919"
-    --         local ret = {
-    --             group_overrides = {
-    --                 NormalFloat = { fg = "NONE", bg = darkbg },
-    --                 BlinkCmpMenu = { fg = "NONE", bg = darkbg },
-    --                 BlinkCmpDoc = { fg = "NONE", bg = darkbg },
-    --                 BlinkCmpMenuBorder = { fg = c.vscGray },
-    --                 BlinkCmpDocBorder = { fg = c.vscGray },
-    --             }
-    --         }
-    --
-    --         return ret
-    --     end
-    -- },
-
-    -- { "EdenEast/nightfox.nvim" },
-
-    -- { "yorickpeterse/nvim-grey", },
+    -- { "grosheth/kaolin.nvim" },
 
     -- { "ronisbr/nano-theme.nvim" },
+
+    { "EdenEast/nightfox.nvim" },
+
+    { "savq/melange-nvim" },
 
     {
         "miikanissi/modus-themes.nvim",
         opts = {
-            line_nr_column_background = false,
-            sign_column_background = true,
+            variant = "tinted",
+            -- line_nr_column_background = false,
+            -- sign_column_background = true,
+            styles = {
+                comments = { italic = false },
+                keywords = { italic = false },
+            }
         }
     },
 
-    -- { "bluz71/vim-moonfly-colors" },
+    -- { "nyoom-engineering/oxocarbon.nvim" },
 
-    -- { "sainnhe/gruvbox-material" },
+    -- { "rose-pine/neovim" },
+
+    -- { "armannikoyan/rusty" },
+
+    -- {
+    --     "ishan9299/nvim-solarized-lua",
+    --     init = function()
+    --         vim.g.solarized_statusline = 'flat'
+    --     end,
+    -- },
+
+    -- { "maxmx03/solarized.nvim", },
+
+    -- { "craftzdog/solarized-osaka.nvim", },
 
     -- { "deparr/tairiki.nvim", },
 
+    -- { "folke/tokyonight.nvim" },
+
+    -- { "vague2k/vague.nvim" },
+
+    -- { "bluz71/vim-moonfly-colors" },
+
+    {
+        'Mofiqul/vscode.nvim',
+        opts = function()
+            local c = require('vscode.colors').get_colors()
+            local darkbg = "#191919"
+            local ret = {
+                group_overrides = {
+                    NormalFloat = { fg = "NONE", bg = darkbg },
+                    BlinkCmpMenu = { fg = "NONE", bg = darkbg },
+                    BlinkCmpDoc = { fg = "NONE", bg = darkbg },
+                    BlinkCmpMenuBorder = { fg = c.vscGray },
+                    BlinkCmpDocBorder = { fg = c.vscGray },
+                }
+            }
+
+            return ret
+        end
+    },
+
     -- {
-    --     "psliwka/termcolors.nvim",
-    --     cmd = "TermcolorsShow"
+    --     "zenbones-theme/zenbones.nvim",
+    --     dependencies = { "rktjmp/lush.nvim", lazy = true },
     -- },
 }
 

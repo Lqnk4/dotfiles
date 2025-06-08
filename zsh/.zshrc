@@ -10,12 +10,25 @@ unsetopt autocd beep
 zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit
+autoload -Uz add-zsh-hook
 compinit
 # End of lines added by compinstall
 
+# Spawn new terminal instances in the current working directory (ctrl+shift+n)
+function osc7-pwd() {
+    emulate -L zsh # also sets localoptions for us
+    setopt extendedglob
+    local LC_ALL=C
+    printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+}
+
+function chpwd-osc7-pwd() {
+    (( ZSH_SUBSHELL )) || osc7-pwd
+}
+add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+
 # Force emacs keybinds
 bindkey -e
-
 
 # Aliases
 alias sudo='sudo '

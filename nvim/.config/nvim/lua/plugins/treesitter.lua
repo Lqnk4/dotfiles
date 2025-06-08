@@ -2,25 +2,45 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         enabled = false,
+        lazy = false,
+        branch = "main",
         build = ':TSUpdate',
-        event = { "VeryLazy", "BufReadPost", "BufWritePost", "BufNewFile" },
-        lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-        init = function()
-            require("nvim-treesitter.query_predicates")
-        end,
-        cmd = {
-            "TSUpdateSync",
-            "TSUpdate",
-            "TSInstall",
-            "TSInstallSync",
-            "TSBufEnable",
-            "TSBufDisable",
-            "TSBufToggle",
-            "TSInstallInfo",
-            "TSConfigInfo",
-        },
-        opts = {
-            ensure_installed = {
+        config = function()
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = {
+                    'ada',
+                    'asm',
+                    'bash',
+                    'c',
+                    'cpp',
+                    'cmake',
+                    'c_sharp',
+                    'css',
+                    'clojure',
+                    'go',
+                    'haskell',
+                    'html',
+                    'java',
+                    'javascript',
+                    'json',
+                    'kotlin',
+                    'lua',
+                    'ocaml',
+                    'perl',
+                    'php',
+                    'python',
+                    'r',
+                    'rust',
+                    'toml',
+                    'typescript',
+                    'vim',
+                    'xml',
+                    'yaml',
+                    'zig',
+                },
+                callback = function() vim.treesitter.start() end,
+            })
+            local ensure_installed = {
                 "ada",
                 "agda",
                 "asm",
@@ -43,14 +63,13 @@ return {
                 "json",
                 "jsonc",
                 "kotlin",
-                "latex",
+                -- "latex",
                 "lua",
                 "luadoc",
                 "luap",
                 "make",
                 "markdown",
                 "markdown_inline",
-                "nasm",
                 "ocaml",
                 "perl",
                 "php",
@@ -66,30 +85,8 @@ return {
                 "xml",
                 "yaml",
                 "zig",
-            },
-            auto_install = true,
-            highlight = {
-                enable = false,
-                disable = function(lang, buf)
-                    local disabled_langs = { "latex", "haskell" }
-                    for _, l in ipairs(disabled_langs) do
-                        if l == lang then
-                            return true
-                        end
-                    end
-
-                    local max_filesize = 100 * 1024 -- 100 KB
-                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                    if ok and stats and stats.size > max_filesize then
-                        return true
-                    end
-                end,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = { enable = true, },
-        },
-        config = function(_, opts)
-            require("nvim-treesitter.configs").setup(opts)
-        end,
+            }
+            require 'nvim-treesitter'.install(ensure_installed)
+        end
     }
 }

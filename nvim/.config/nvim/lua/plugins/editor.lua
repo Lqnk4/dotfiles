@@ -10,7 +10,7 @@ return {
 
     {
         "ThePrimeagen/harpoon",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = { "nvim-lua/plenary.nvim", lazy = true },
         branch = "harpoon2",
         opts = {
             menu = {
@@ -57,10 +57,29 @@ return {
         "ibhagwan/fzf-lua",
         cmd = "FzfLua",
         opts = {
-            file_icons = false,
+            files = {
+                file_icons = false,
+                git_icons = false,
+                color_icons = false,
+            },
             buffers = {
                 sort_mru = true,
                 sort_lastused = true,
+            },
+            keymap = {
+                builtin = {
+                    true,
+                    ["<C-f>"] = "preview-page-down",
+                    ["<C-b>"] = "preview-page-up",
+                },
+                fzf = {
+                    true,
+                    ["ctrl-d"] = "half-page-down",
+                    ["ctrl-u"] = "half-page-up",
+                    ["ctrl-f"] = "preview-page-down",
+                    ["ctrl-b"] = "preview-page-up",
+                    ["ctrl-q"] = "select-all+accept",
+                },
             },
         },
         keys = function()
@@ -109,13 +128,17 @@ return {
     {
         "NeogitOrg/neogit",
         cmd = { "Neogit" },
+        dependencies = {
+            { "nvim-lua/plenary.nvim", lazy = true }, -- required
+            {
+                "sindrets/diffview.nvim",
+                lazy = true,
+                opts = { use_icons = false, },
+            },                                        -- optional - Diff integration
+            { "ibhagwan/fzf-lua",      lazy = true }, -- optional
+        },
         keys = {
             { "<leader>gg", function() require("neogit").open({ kind = "tab" }) end, desc = "Neogit" }
-        },
-        dependencies = {
-            "nvim-lua/plenary.nvim", -- required
-            -- "sindrets/diffview.nvim", -- optional - Diff integration
-            "ibhagwan/fzf-lua",      -- optional
         },
     },
 

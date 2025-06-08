@@ -1,8 +1,3 @@
--- Set filetype to `bigfile` for files larger than 1.5 MB
--- Only vim syntax will be enabled (with the correct filetype)
--- LSP, treesitter and other ft plugins will be disabled.
-vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
-
 local g = vim.g
 local opt = vim.opt
 local env = vim.env
@@ -72,7 +67,7 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.smoothscroll = true
 
 -- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+-- vim.g.markdown_recommended_style = 0
 
 -- Prevent LSP from overwriting treesitter color settings
 -- https://github.com/NvChad/NvChad/issues/1907

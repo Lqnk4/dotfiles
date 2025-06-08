@@ -1,3 +1,6 @@
+vim.opt_local.makeprg = "cabal"
+vim.cmd('compiler ghc')
+
 local ht = require("haskell-tools")
 local bufnr = vim.api.nvim_get_current_buf()
 
