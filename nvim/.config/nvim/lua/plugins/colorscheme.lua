@@ -10,9 +10,9 @@ local M = {
 
     -- { "alexxGmZ/e-ink.nvim", },
 
-    {
-        "amedoeyes/eyes.nvim"
-    },
+    -- {
+    --     "amedoeyes/eyes.nvim"
+    -- },
 
     -- { "yorickpeterse/nvim-grey", },
 
@@ -63,6 +63,8 @@ local M = {
 
     -- { "grosheth/kaolin.nvim" },
 
+    { "slugbyte/lackluster.nvim" },
+
     -- { "ronisbr/nano-theme.nvim" },
 
     { "EdenEast/nightfox.nvim" },
@@ -81,6 +83,13 @@ local M = {
             },
         }
     },
+
+    -- {
+    --     "navarasu/onedark.nvim",
+    --     opts = {
+    --         style = 'warmer',
+    --     }
+    -- },
 
     -- { "nyoom-engineering/oxocarbon.nvim" },
 

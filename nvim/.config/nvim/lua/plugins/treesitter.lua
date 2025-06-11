@@ -1,45 +1,12 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        enabled = false,
+        enabled = true,
         lazy = false,
         branch = "main",
         build = ':TSUpdate',
+        opts = {},
         config = function()
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = {
-                    'ada',
-                    'asm',
-                    'bash',
-                    'c',
-                    'cpp',
-                    'cmake',
-                    'c_sharp',
-                    'css',
-                    'clojure',
-                    'go',
-                    'haskell',
-                    'html',
-                    'java',
-                    'javascript',
-                    'json',
-                    'kotlin',
-                    'lua',
-                    'ocaml',
-                    'perl',
-                    'php',
-                    'python',
-                    'r',
-                    'rust',
-                    'toml',
-                    'typescript',
-                    'vim',
-                    'xml',
-                    'yaml',
-                    'zig',
-                },
-                callback = function() vim.treesitter.start() end,
-            })
             local ensure_installed = {
                 "ada",
                 "agda",
@@ -87,6 +54,41 @@ return {
                 "zig",
             }
             require 'nvim-treesitter'.install(ensure_installed)
+
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = {
+                    'ada',
+                    'asm',
+                    'bash',
+                    'c',
+                    'cpp',
+                    'cmake',
+                    'c_sharp',
+                    'css',
+                    'clojure',
+                    'go',
+                    'haskell',
+                    'html',
+                    'java',
+                    'javascript',
+                    'json',
+                    'kotlin',
+                    'lua',
+                    'ocaml',
+                    'perl',
+                    'php',
+                    'python',
+                    'r',
+                    'rust',
+                    'toml',
+                    'typescript',
+                    'vim',
+                    'xml',
+                    'yaml',
+                    'zig',
+                },
+                callback = function() vim.treesitter.start() end,
+            })
         end
     }
 }

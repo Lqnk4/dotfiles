@@ -128,7 +128,7 @@
     "disk#ssd": {
         "interval": 60,
         "format": "{path} {free} ",
-        "path": "/",
+        "path": "/home",
         "tooltip": true,
         "warning": 80,
         "critical": 90

@@ -4,7 +4,7 @@ local env = vim.env
 
 g.is_tty = env.TERM == 'linux'
 
-opt.background = "light"
+opt.background = "dark"
 
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers
