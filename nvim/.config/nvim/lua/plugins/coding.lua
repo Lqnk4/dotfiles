@@ -57,7 +57,6 @@ return {
                 enabled = false,
             },
             snippets = { preset = 'default' },
-            signature = { enabled = true },
         },
     },
 
@@ -71,6 +70,7 @@ return {
 
     {
         "vim-scripts/transpose-words",
+        dependencies = { "tpope/vim-repeat", lazy = true},
         keys = {
             { "<A-t>" },
         },
