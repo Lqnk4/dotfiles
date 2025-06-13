@@ -1,4 +1,5 @@
-return {    cmd = { "ada_language_server" },
+return {
+    cmd = { "ada_language_server" },
     filetypes = { "ada" },
     root_markers = {
         '*.gpr',
@@ -9,8 +10,7 @@ return {    cmd = { "ada_language_server" },
     },
     settings = {
         ada = {
-            -- projectFile = gpr_files[1],
-            -- scenarioVariables = { ... },
+
         }
     }
 }

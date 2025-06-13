@@ -1,12 +1,12 @@
 local M = {
 
-    { 'huyvohcmc/atlas.vim', },
+    -- { 'huyvohcmc/atlas.vim', },
 
     -- { "ribru17/bamboo.nvim" },
 
     -- { "gmr458/cold.nvim", },
 
-    { "archseer/colibri.vim", },
+    -- { "archseer/colibri.vim", },
 
     -- { "alexxGmZ/e-ink.nvim", },
 
@@ -63,11 +63,11 @@ local M = {
 
     -- { "grosheth/kaolin.nvim" },
 
-    { "slugbyte/lackluster.nvim" },
+    -- { "slugbyte/lackluster.nvim" },
 
     -- { "ronisbr/nano-theme.nvim" },
 
-    { "EdenEast/nightfox.nvim" },
+    -- { "EdenEast/nightfox.nvim" },
 
     -- { "savq/melange-nvim" },
 
@@ -108,9 +108,9 @@ local M = {
 
     -- { "craftzdog/solarized-osaka.nvim", },
 
-    {
-        "sainnhe/sonokai"
-    },
+    -- {
+    --     "sainnhe/sonokai"
+    -- },
 
     -- { "deparr/tairiki.nvim", },
 
@@ -120,29 +120,31 @@ local M = {
 
     -- { "bluz71/vim-moonfly-colors" },
 
-    {
-        'Mofiqul/vscode.nvim',
-        opts = function()
-            local c = require('vscode.colors').get_colors()
-            local darkbg = "#191919"
-            local ret = {
-                group_overrides = {
-                    NormalFloat = { fg = "NONE", bg = darkbg },
-                    BlinkCmpMenu = { fg = "NONE", bg = darkbg },
-                    BlinkCmpDoc = { fg = "NONE", bg = darkbg },
-                    BlinkCmpMenuBorder = { fg = c.vscGray },
-                    BlinkCmpDocBorder = { fg = c.vscGray },
-                }
-            }
-
-            return ret
-        end
-    },
+    -- {
+    --     'Mofiqul/vscode.nvim',
+    --     opts = function()
+    --         local c = require('vscode.colors').get_colors()
+    --         local darkbg = "#191919"
+    --         local ret = {
+    --             group_overrides = {
+    --                 NormalFloat = { fg = "NONE", bg = darkbg },
+    --                 BlinkCmpMenu = { fg = "NONE", bg = darkbg },
+    --                 BlinkCmpDoc = { fg = "NONE", bg = darkbg },
+    --                 BlinkCmpMenuBorder = { fg = c.vscGray },
+    --                 BlinkCmpDocBorder = { fg = c.vscGray },
+    --             }
+    --         }
+    --
+    --         return ret
+    --     end
+    -- },
 
     -- {
     --     "zenbones-theme/zenbones.nvim",
     --     dependencies = { "rktjmp/lush.nvim", lazy = true },
     -- },
+
+    { "phha/zenburn.nvim" },
 }
 
 for _, scheme in ipairs(M) do

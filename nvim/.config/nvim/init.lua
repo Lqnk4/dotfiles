@@ -7,9 +7,9 @@ require("config.options")
 
 
 if vim.g.is_tty then
-    vim.cmd [[colorscheme modus_vivendi]]
+    vim.cmd [[colorscheme default]]
 else
-    vim.cmd [[colorscheme lackluster]]
+    vim.cmd [[colorscheme zenburn]]
 end
 
 require("config.keymaps")
