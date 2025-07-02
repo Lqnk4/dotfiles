@@ -1,4 +1,4 @@
-vim.opt_local.makeprg = "cabal"
+vim.opt_local.makeprg = "cabal build"
 vim.cmd('compiler ghc')
 
 local ht = require("haskell-tools")

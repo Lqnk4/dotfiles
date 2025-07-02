@@ -10,6 +10,7 @@ return {
         opts = {
             keymap = {
                 preset = 'default',
+                ['<C-k>'] = false,
             },
             appearance = {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -52,10 +53,10 @@ return {
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
-
             cmdline = {
                 enabled = false,
             },
+            signature = { enabled = false },
             snippets = { preset = 'default' },
         },
     },
@@ -70,7 +71,7 @@ return {
 
     {
         "vim-scripts/transpose-words",
-        dependencies = { "tpope/vim-repeat", lazy = true},
+        dependencies = { "tpope/vim-repeat", lazy = true },
         keys = {
             { "<A-t>" },
         },
@@ -87,6 +88,5 @@ return {
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
         opts = {},
-    }
-
+    },
 }

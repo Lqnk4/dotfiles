@@ -14,6 +14,8 @@ return {
                             return { noremap = true, silent = true, buffer = bufnr, desc = "Rust " .. desc }
                         end
 
+                        vim.opt_local.makeprg = "cargo build"
+
                         map("n", "<leader>mc", function() cmd.RustLsp('openCargo') end, opts "Open Cargo")
                         map("n", "god", function() cmd.RustLsp('openDocs') end, opts "Open Docs")
                         map("n", "K", function() cmd.RustLsp({ 'hover', 'actions' }) end, opts "Hover")

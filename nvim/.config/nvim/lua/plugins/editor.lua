@@ -113,7 +113,7 @@ return {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {
-            preset = "classic",
+            preset = "helix",
             delay = 600,
             icons = {
                 separator = " ",

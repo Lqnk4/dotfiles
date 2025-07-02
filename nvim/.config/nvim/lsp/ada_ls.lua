@@ -10,7 +10,9 @@ return {
     },
     settings = {
         ada = {
-
+            -- number of parameters/components at which point named notation is
+            -- used for subprogram/aggregate completion snippets.
+            namedNotationThreshold = 6,
         }
-    }
+    },
 }

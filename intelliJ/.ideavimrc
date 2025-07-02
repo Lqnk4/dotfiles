@@ -1,22 +1,21 @@
 set relativenumber
 set number
-
-" https://superuser.com/questions/622898/how-to-turn-off-the-bell-sound-in-intellij
-" https://stackoverflow.com/questions/63386803/how-to-turn-off-a-bell-in-intellij-idea
 set visualbell
 
-" https://youtrack.jetbrains.com/issue/VIM-1970 
-set highlightedyank
-
-" https://youtrack.jetbrains.com/issue/VIM-959
 set ideamarks
-
-
-" https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples
 set ideajoin
-
-" https://youtrack.jetbrains.com/issue/VIM-1521
 set commentary
-
-" dia daa cia caa
 set argtextobj
+set surround
+
+let mapleader = " "
+
+vnoremap < <gv
+vnoremap > >gv
+
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)

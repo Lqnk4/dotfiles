@@ -1,5 +1,5 @@
 vim.lsp.enable({
-    -- 'ada_ls',
+    'ada_ls',
     'clangd',
     'gopls',
     'lua-language-server',

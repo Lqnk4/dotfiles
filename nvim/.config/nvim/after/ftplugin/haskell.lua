@@ -1,4 +1,4 @@
-vim.opt_local.makeprg = "cabal"
+vim.opt_local.makeprg = "cabal build"
 vim.cmd('compiler ghc')
 
 local ht = require('haskell-tools')
@@ -10,10 +10,15 @@ local function opts(desc)
     return { noremap = true, silent = true, buffer = bufnr, desc = "Haskell " .. desc }
 end
 
+--| hover
+map('n', '<leader>k', '<Plug>HaskellHoverAction', opts "Haskell Hover Action")
+
 --| hls
 map('n', '<space>cl', vim.lsp.codelens.run, opts "Codelens")
+
 -- Hoogle search for the type signature of the definition under the cursor
 map('n', '<leader>Hs', ht.hoogle.hoogle_signature, opts "[H]oogle [s]ignature")
+
 -- Evaluate all code snippets
 map('n', '<leader>ea', ht.lsp.buf_eval_all, opts "[e]val [a]ll")
 

@@ -93,6 +93,11 @@ local M = {
 
     -- { "nyoom-engineering/oxocarbon.nvim" },
 
+    {
+        "chrsm/paramount-ng.nvim",
+        dependencies = { "rktjmp/lush.nvim", lazy = true },
+    },
+
     -- { "rose-pine/neovim" },
 
     -- { "armannikoyan/rusty" },
@@ -144,7 +149,7 @@ local M = {
     --     dependencies = { "rktjmp/lush.nvim", lazy = true },
     -- },
 
-    { "phha/zenburn.nvim" },
+    { "phha/zenburn.nvim", },
 }
 
 for _, scheme in ipairs(M) do
