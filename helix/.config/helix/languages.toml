@@ -1,2 +1,0 @@
-[language-server]
-lean = { command = "lean", args = ["--server"] }
