@@ -2,6 +2,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+if vim.g.vscode then
+    goto done
+end
+
 require("config.lazy")
 require("config.options")
 
@@ -15,5 +19,4 @@ end
 require("config.keymaps")
 require("config.lsp")
 
-
-
+::done::
