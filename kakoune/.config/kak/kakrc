@@ -39,8 +39,14 @@ add-highlighter global/ number-lines -relative
 
 # Plugins
 source "%val{config}/smarttab.kak"
-hook global BufOpenFile .* expandtab
-hook global BufNewFile  .* expandtab
+hook global BufOpenFile .* %{
+    editorconfig-load
+    autoconfigtab
+}
+hook global BufNewFile .* %{
+    editorconfig-load
+    autoconfigtab
+}
 
 # Hooks
 hook global WinCreate .*\.adb|.*\.ads %{
