@@ -1,96 +1,80 @@
 {
-    "height": 20,
-    //    "margin": "6 12 0 12",
-    "modules-left": [
-        "river/tags",
-        //        "river/window",
-        "river/mode"
-    ],
-    "modules-center": [],
-    "modules-right": [
-        "custom/keyboard-layout",
-        "pulseaudio",
-        "bluetooth",
-        "network",
-        "battery",
-        "clock"
-    ],
-    "river/window": {
-        "max-length": 48,
-        "min-length": 4
-    },
-    "clock": {
-        "interval": 60,
-        "format": "  {:%I:%M }",
-        "format-alt": "{:%Y-%m-%d}",
-        "tooltip": true,
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3,
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "on-click-right": "mode",
-            "format": {
-                "months": "<span color='#deeeed'><b>{}</b></span>",
-                "days": "<span color='#dddddd'><b>{}</b></span>",
-                "weeks": "<span color='#708090'><b>W{}</b></span>",
-                "weekdays": "<span color='#555555'><b>{}</b></span>",
-                "today": "<span color='#789978'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
-    },
-    "battery": {
-        "states": {
-            "warning": 50,
-            "critical": 25
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "<span color=\"#9ece6a\">󰂄</span> {capacity}%",
-        "format-icons": [
-            "󰂎",
-            "󰁻",
-            "󰁾",
-            "󰂀",
-            "󰁹"
-        ],
-        "interval": 30
-    },
-    "bluetooth": {
-        "format": "",
-        "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_battery_percentage}% ({device_alias})",
-        "tooltip-format": "{num_connections} connected"
-    },
-    "custom/keyboard-layout": {
-        "exec": "~/.config/waybar/scripts/fcitx5.sh",
-        "interval": 30,
-        "signal": 1,
-        "format": "  {}",
-        "tooltip": false
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}%  {format_source}",
-        "format-bluetooth": "{volume}%  {format_source}",
-        "format-bluetooth-muted": " {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "on-click": "pavucontrol"
-    },
-    "network": {
-        "format-wifi": "  {essid}",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  "layer": "top", // Waybar at top layer
+  // "position": "bottom", // Waybar position (top|bottom|left|right)
+  "height": 30, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 4, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": ["river/tags"],
+  "modules-center": ["river/window"],
+  "modules-right": ["battery", "pulseaudio", "network", "clock", "tray"],
+  // Modules configuration
+  "river/tags": {
+    "hide-vacant": true
+  },
+  "wlr/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate"
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
     }
+  },
+  "wlr/window": {
+    "tooltip": true
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "<span color='#ffffff'>{:%H:%M %d/%m/%Y}</span>",
+    "on-click": "thunderbird"
+  },
+  "network": {
+    "format": "  {essid}"
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "$TERMINAL -e pulsemixer",
+    "tooltip": false
+  },
+  "battery": {
+      "states": {
+          "warning": 50,
+          "critical": 25
+      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "<span color=\"#9ece6a\">󰂄</span> {capacity}%",
+      "format-icons": [
+          "󰂎",
+          "󰁻",
+          "󰁾",
+          "󰂀",
+          "󰁹"
+      ],
+      "interval": 30
+  },
 }

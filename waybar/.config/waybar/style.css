@@ -1,73 +1,62 @@
-@define-color background #101010;
-@define-color foreground #cccccc;
-@define-color focused #DEEEED;
-@define-color occupied #7A7A7A;
-@define-color empty #444444;
-@define-color urgent #f7768e;
-@define-color bluetooth #2ac3de;
-@define-color border #2A2A2A;
-
 * {
-  font-family: monospace;
-  font-size: 12px;
-  min-height: 0px;
+    border: none;
+    border-radius: 0;
+    font-family: monospace;
+    font-size: 10pt;
+    min-height: 0;
 }
 
 window#waybar {
-  color: @foreground;
-  background: @background;
-  border: 2px solid @border;
+    background: #1d1f21;
+    color: white;
 }
 
-#tags,
-#window,
-#mode {
-    padding: 0px 4px;
+tooltip {
+  background: #1d1f21;
+  border: 1px solid #327bd1;
+}
+
+tooltip label {
+  color: white;
 }
 
 #tags button {
-  padding: 0px;
-  min-width: 16px;
-  color: @empty;
-  border-radius: 0px;
-}
-
-#tags button:hover {
-  box-shadow: none;
-  text-shadow: none;
-  background: transparent;
+    padding: 0 5px;
+    background: #1d1f21;
 }
 
 #tags button.occupied {
-  color: @occupied;
-  font-weight: bold;
+    color: white;
 }
 
 #tags button.focused {
-  color: @focused;
+    background: #333333;
+    border-bottom: 2px solid #327bd1;
+    color: white;
 }
 
-#tags button.urgent {
-  color: @urgent;
+#tags button.active {
+    background: #333333;
+    border-bottom: 2px solid #327bd1;
 }
 
-#window {
-    color: @empty;
+#battery {
+    padding-right: 10px
 }
 
-#mode {
-    color: @focused;
+#pulseaudio {
+	padding-right: 10px
 }
 
-#mode.normal {
-    opacity: 0;
+#network {
+    padding-right: 10px
 }
 
-#pulseaudio,
-#bluetooth,
-#custom-keyboard-layout,
-#battery,
-#network,
 #clock {
-  padding: 0px 6px;
+	padding-right: 10px
 }
+
+#tray {
+	padding-right: 10px
+}
+

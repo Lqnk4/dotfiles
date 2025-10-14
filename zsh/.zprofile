@@ -31,6 +31,7 @@ fi
 ### ENV
 
 export EDITOR=kak
+export VISUAL=kak
 # fcitx for jp keyboard
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx

@@ -11,6 +11,7 @@ zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit
 autoload -Uz add-zsh-hook
+autoload -z edit-command-line
 compinit
 # End of lines added by compinstall
 
@@ -27,8 +28,10 @@ function chpwd-osc7-pwd() {
 }
 add-zsh-hook -Uz chpwd chpwd-osc7-pwd
 
-# Force emacs keybinds
-bindkey -e
+# keybinds
+bindkey -e # Emacs keybinds
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 # Aliases
 alias sudo='sudo '

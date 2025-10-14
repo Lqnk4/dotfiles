@@ -7,7 +7,7 @@
   // Choose the order of the modules
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["pulseaudio", "clock", "tray"],
+  "modules-right": ["pulseaudio", "network", "clock", "tray"],
   // Modules configuration
   "wlr/workspaces": {
     "format": "{icon}",
@@ -34,6 +34,9 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "<span color='#ffffff'>{:%H:%M %d/%m/%Y}</span>",
     "on-click": "thunderbird"
+  },
+  "network": {
+    "format": "  {essid}"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float

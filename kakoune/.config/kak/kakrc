@@ -6,6 +6,8 @@ eval %sh{kak-lsp}
 lsp-enable
 
 # Mappings
+map global normal '#' :comment-line<ret>
+
 map global user l ':enter-user-mode lsp<ret>' -docstring 'LSP mode'
 map global user k ':lsp-hover<ret>' -docstring 'LSP hover'
 map global insert <tab> '<a-;>:try lsp-snippets-select-next-placeholders catch %{ execute-keys -with-hooks <lt>tab> }<ret>' -docstring 'Select next snippet placeholder'
@@ -29,6 +31,17 @@ map global make ? '<a-;>:echo %opt{makecmd}<ret>' -docstring 'make view command'
 map global make [ '<a-;>:make-previous-error<ret>' -docstring 'make previous error'
 map global make ] '<a-;>:make-next-error<ret>' -docstring 'make next error'
 
+define-command -hidden -params 2 inc %{ try %{
+    evaluate-commands %sh{
+        [ "$1" = 0 ] && count=1 || count="$1"
+        printf '%s%s' 'exec h"_/\d<ret><a-i>na' "$2($count)<esc>|{<space>cat<semicolon>echo<semicolon>}|bc<ret>"
+    }
+} catch %{
+    execute-keys l
+}}
+map global normal <c-a> ': inc %val{count} +<ret>'
+map global normal <c-x> ': inc %val{count} -<ret>'
+
 # Options
 set-option global tabstop 4
 set-option global indentwidth 4
@@ -40,15 +53,33 @@ add-highlighter global/ number-lines -relative
 # Plugins
 source "%val{config}/smarttab.kak"
 hook global BufOpenFile .* %{
-    editorconfig-load
-    autoconfigtab
+    # editorconfig-load
+    # autoconfigtab
+    expandtab
 }
 hook global BufNewFile .* %{
-    editorconfig-load
-    autoconfigtab
+    # editorconfig-load
+    # autoconfigtab
+    expandtab
 }
 
-# Hooks
+# Commands
+define-command -docstring "vsplit [<commands>]: split tmux vertically" \
+vsplit -params .. -command-completion %{
+    tmux-terminal-horizontal kak -c %val{session} -e "%arg{@}"
+}
+
+define-command -docstring "split [<commands>]: split tmux horizontally" \
+split -params .. -command-completion %{
+    tmux-terminal-vertical kak -c %val{session} -e "%arg{@}"
+}
+
+define-command -docstring "tabnew [<commands>]: create new tmux window" \
+tabnew -params .. -command-completion %{
+    tmux-terminal-window kak -c %val{session} -e "%arg{@}"
+}
+
+# Filetype specific hooks
 hook global WinCreate .*\.adb|.*\.ads %{
     set-option window tabstop 3
     set-option window indentwidth 3
