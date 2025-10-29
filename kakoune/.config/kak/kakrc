@@ -4,6 +4,7 @@ colorscheme zenburn
 # LSP
 eval %sh{kak-lsp}
 lsp-enable
+set global lsp_debug true
 
 # Mappings
 map global normal '#' :comment-line<ret>
@@ -47,7 +48,9 @@ set-option global tabstop 4
 set-option global indentwidth 4
 set-option global scrolloff 1,3
 set-option -add global ui_options terminal_assistant=none
-add-highlighter global/ number-lines -relative
+hook global WinCreate .* %{
+    add-highlighter window/line-nr number-lines -relative
+}
 # add-highlighter global/ regex \h+$ 0:Error
 
 # Plugins
@@ -64,22 +67,30 @@ hook global BufNewFile .* %{
 }
 
 # Commands
-define-command -docstring "vsplit [<commands>]: split tmux vertically" \
-vsplit -params .. -command-completion %{
-    tmux-terminal-horizontal kak -c %val{session} -e "%arg{@}"
-}
+evaluate-commands %sh{
+    if ! [ -z $TMUX ]; then
+    printf '%s\n' "
+        define-command -docstring 'vsplit [<commands>]: split tmux vertically' \
+        vsplit -params .. -command-completion %{
+            tmux-terminal-horizontal kak -c %val{session} -e \"%arg{@}\"
+        }
 
-define-command -docstring "split [<commands>]: split tmux horizontally" \
-split -params .. -command-completion %{
-    tmux-terminal-vertical kak -c %val{session} -e "%arg{@}"
-}
+        define-command -docstring 'split [<commands>]: split tmux horizontally' \
+        split -params .. -command-completion %{
+            tmux-terminal-vertical kak -c %val{session} -e \"%arg{@}\"
+        }
 
-define-command -docstring "tabnew [<commands>]: create new tmux window" \
-tabnew -params .. -command-completion %{
-    tmux-terminal-window kak -c %val{session} -e "%arg{@}"
+        define-command -docstring 'tabnew [<commands>]: create new tmux window' \
+        tabnew -params .. -command-completion %{
+            tmux-terminal-window kak -c %val{session} -e \"%arg{@}\"
+        }
+        "
+    fi
 }
 
 # Filetype specific hooks
+
+## Ada
 hook global WinCreate .*\.adb|.*\.ads %{
     set-option window tabstop 3
     set-option window indentwidth 3
@@ -87,6 +98,7 @@ hook global WinCreate .*\.adb|.*\.ads %{
     set-option window makecmd "alr build"
 }
 
+## Haskell
 hook global WinSetOption filetype=haskell %{
     set-option window tabstop 2
     set-option window indentwidth 2
@@ -97,6 +109,43 @@ hook global WinSetOption filetype=cabal %{
     set-option window makecmd "cabal build"
 }
 
+## LaTeX
+hook global WinSetOption filetype=latex %{
+    set-option window autowrap_column 80
+    autowrap-enable
+    map window goto p '<a-;>:texlab-forward-search<ret>' -docstring 'texlab forward search'
+    hook global BufWritePost .* %{ texlab-build }
+}
+
+## Lean
+hook global BufCreate .*\.lean %{
+    set-option buffer filetype lean
+}
+define-command -hidden lean-indent-on-new-line %<
+    try %{ execute-keys -draft <semicolon> K <a-&> }
+>
+hook global BufSetOption filetype=lean %{
+    hook buffer -group lean BufReload .* %{ lsp-semantic-tokens; lean-get-term-goal *lean-infoview-term*; lean-get-goal *lean-infoview* }
+    hook buffer -group lean NormalIdle .* %{ lsp-semantic-tokens; lean-get-term-goal *lean-infoview-term*; lean-get-goal *lean-infoview* }
+    hook buffer -group lean InsertIdle .* %{ lsp-semantic-tokens; lean-get-term-goal *lean-infoview-term*; lean-get-goal *lean-infoview* }
+    hook buffer -group lean InsertChar \n lean-indent-on-new-line
+    map buffer user i ': evaluate-commands %{ set-option local windowing_placement vertical; new buffer *lean-infoview* }<ret>'
+    hook -once -always buffer BufSetOption filetype=.* %{
+        remove-hooks buffer lean
+        unmap buffer user i
+    }
+}
+hook global WinSetOption filetype=lean %{
+    lsp-inlay-hints-enable global
+    set-option window tabstop 2
+    set-option window indentwidth 2
+}
+hook global WinSetOption filetype=lean-goals %{
+    remove-highlighter window/line-nr
+}
+
+## Rust
 hook global WinSetOption filetype=rust %{
     set-option window makecmd "cargo build"
+    set-option window formatcmd "rustfmt"
 }
