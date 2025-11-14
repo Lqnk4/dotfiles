@@ -1,12 +1,16 @@
 # https://lean-lang.org/
 
-hook global BufCreate .*\.lean %{
+hook global BufCreate .*[.](lean) %{
     set-option buffer filetype lean
 }
 
 
 hook global WinSetOption filetype=lean %{
     require-module lean4
+
+    set-option buffer comment_line '--'
+    set-option buffer comment_block_begin '/-'
+    set-option buffer comment_block_end '-/'
 
     set-option buffer extra_word_chars '_' "'"
 
@@ -16,7 +20,9 @@ hook global WinSetOption filetype=lean %{
 
     hook -group lean4-infoview window BufReload  .* %{ lean4_update_infoview } 
     hook -group lean4-infoview window NormalIdle .* %{ lean4_update_infoview } 
-    hook -group lean4-infoview window InsertIdle .* %{ lean4_update_infoview } 
+    hook -group lean4-infoview window InsertIdle .* %{ lean4_update_infoview }
+
+    hook -group lean4-abbreviations window ModeChange pop:insert:.* %{ lean4_replace_abbreviations }
 
     hook -once -always window WinSetOption filetype=.* %{ remove-hooks window lean4-.+ }
 }
@@ -30,7 +36,7 @@ provide-module lean4 %[
 
 add-highlighter shared/lean4 regions
 add-highlighter shared/lean4/code default-region group
-add-highlighter shared/lean4/string region (?<!'\\)(?<!')" (?<!\\)(\\\\)*"  fill string
+add-highlighter shared/lean4/string region (?<!'\\)(?<!')" (?<!\\)(\\\\)*" fill string
 add-highlighter shared/lean4/line_comment region -- $ fill comment
 add-highlighter shared/lean4/block_comment region -recurse /- /-  -/ fill comment
 
@@ -38,6 +44,13 @@ add-highlighter shared/lean4/block_comment region -recurse /- /-  -/ fill commen
 define-command -hidden lean4_update_infoview %{
     lean-get-goal *lean-infoview*
     lean-get-term-goal *lean-infoview-term*
+}
+
+# Abbreviations
+define-command -hidden lean4_replace_abbreviations %{
+    execute-keys -draft %{
+        %|python $kak_config/lean4-replace-abbreviations.py<ret>
+    }
 }
 
 # Indentation
@@ -68,3 +81,5 @@ define-command -hidden lean4-indent-on-new-line %{
 }
 
 ]
+
+

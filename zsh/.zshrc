@@ -41,7 +41,6 @@ alias grep='grep --color=auto'
 alias top='htop'
 
 # prompt
-
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
 # This line obtains information from the vcs.
@@ -51,5 +50,5 @@ precmd() {
 }
 setopt PROMPT_SUBST
 
-PROMPT="%F{default}%~%F{default}\${vcs_info_msg_0_}"$'\n'"%F{default}λx:%(?.⊤.⊥)%F{default} " 
+PROMPT="%F{default}%~%F{default}\${vcs_info_msg_0_}\${CONTAINER_ID:+ *}\${CONTAINER_ID}"$'\n'"%F{default}λx:%(?.⊤.⊥)%F{default} "
 

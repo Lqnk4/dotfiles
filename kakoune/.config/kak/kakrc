@@ -4,7 +4,6 @@ colorscheme zenburn
 # LSP
 eval %sh{kak-lsp}
 lsp-enable
-set global lsp_debug true
 
 # Mappings
 map global normal '#' :comment-line<ret>
@@ -40,8 +39,8 @@ define-command -hidden -params 2 inc %{ try %{
 } catch %{
     execute-keys l
 }}
-map global normal <c-a> ': inc %val{count} +<ret>' -docstring 'add'
-map global normal <c-x> ': inc %val{count} -<ret>' -docstring 'subtract'
+map global normal <c-a> ': inc %val{count} +<ret>' -docstring "inc"
+map global normal <c-x> ': inc %val{count} -<ret>' -docstring "dec"
 
 declare-option -docstring %{
     Command for opening URLs.
@@ -168,3 +167,4 @@ hook global WinSetOption filetype=lean-goals %{
 hook global WinSetOption filetype=rust %{
     set-option window formatcmd "rustfmt"
 }
+
