@@ -8,11 +8,13 @@ hook global BufCreate .*[.](lean) %{
 hook global WinSetOption filetype=lean %{
     require-module lean4
 
-    set-option buffer comment_line '--'
-    set-option buffer comment_block_begin '/-'
-    set-option buffer comment_block_end '-/'
+    set-option window comment_line '--'
+    set-option window comment_block_begin '/-'
+    set-option window comment_block_end '-/'
 
-    set-option buffer extra_word_chars '_' "'"
+    set-option window extra_word_chars '_' "'"
+
+    set-option -add window matching_pairs '⟨' '⟩' '‹' '›'
 
     hook window ModeChange pop:insert:.* -group lean4-trim-indent lean4-trim-indent
     hook window InsertChar \n -group lean4-insert lean4-insert-on-new-line
@@ -23,6 +25,7 @@ hook global WinSetOption filetype=lean %{
     hook -group lean4-infoview window InsertIdle .* %{ lean4_update_infoview }
 
     hook -group lean4-abbreviations window ModeChange pop:insert:.* %{ lean4_replace_abbreviations }
+    hook -group lean4-abbreviations window InsertKey <ret> %{ lean4_replace_abbreviations }
 
     hook -once -always window WinSetOption filetype=.* %{ remove-hooks window lean4-.+ }
 }
@@ -36,9 +39,13 @@ provide-module lean4 %[
 
 add-highlighter shared/lean4 regions
 add-highlighter shared/lean4/code default-region group
+# TODO: support for s! and r! strings
 add-highlighter shared/lean4/string region (?<!'\\)(?<!')" (?<!\\)(\\\\)*" fill string
 add-highlighter shared/lean4/line_comment region -- $ fill comment
 add-highlighter shared/lean4/block_comment region -recurse /- /-  -/ fill comment
+
+add-highlighter shared/lean4/code/ regex (?<!')\b0x+[A-Fa-f0-9]+ 0:value
+add-highlighter shared/lean4/code/ regex (?<!')\b\d+([.]\d+)? 0:value
 
 # Infoview
 define-command -hidden lean4_update_infoview %{

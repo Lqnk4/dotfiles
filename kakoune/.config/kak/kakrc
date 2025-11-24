@@ -160,6 +160,8 @@ hook global WinSetOption filetype=lean %{
     hook window -group lean4-semantic-tokens InsertIdle .* lsp-semantic-tokens
 }
 hook global WinSetOption filetype=lean-goals %{
+    set-face window PrimaryCursor Default
+    set-face window PrimaryCursorEol Default
     remove-highlighter window/line-nr
 }
 

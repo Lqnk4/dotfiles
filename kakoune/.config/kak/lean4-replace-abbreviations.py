@@ -17,11 +17,10 @@ if abbrevs is None:
 
 abbrevs = \
     dict(sorted(abbrevs.items(), key=lambda item: len(item[0]), reverse=True))
+abbrevs = {'\\' + k: v.replace("$CURSOR", "")
+           for (k, v) in abbrevs.items() if k != "\\\\"}
 
 for line in input:
     for (k, v) in abbrevs.items():
-        if '\\' in k:
-            continue
-        v = v.replace("$CURSOR", "")
-        line = line.replace('\\' + k, v)
+        line = line.replace(k, v)
     print(line)
