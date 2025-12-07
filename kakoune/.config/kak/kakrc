@@ -170,3 +170,8 @@ hook global WinSetOption filetype=rust %{
     set-option window formatcmd "rustfmt"
 }
 
+## Typst
+hook global WinSetOption filetype=typst %{
+    set-option window autowrap_column 80
+    autowrap-enable
+}
