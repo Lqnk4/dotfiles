@@ -14,7 +14,8 @@ hook global WinSetOption filetype=lean %{
 
     set-option window extra_word_chars '_' "'"
 
-    set-option -add window matching_pairs '⟨' '⟩' '‹' '›'
+    set-option -add window matching_pairs '⦃' '⦄' '⟦' '⟧' '⟨' '⟩' '‹' '›' '«' '»' '⁅' '⁆' '‖' '‖'
+    set-option -add window matching_pairs '⌊' '⌋' '⌈' '⌉' '⦋' '⦌' '⟪' '⟫'
 
     hook window ModeChange pop:insert:.* -group lean4-trim-indent lean4-trim-indent
     hook window InsertChar \n -group lean4-insert lean4-insert-on-new-line
