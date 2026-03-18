@@ -42,12 +42,8 @@ define-command -hidden -params 2 inc %{ try %{
 map global normal <c-a> ': inc %val{count} +<ret>' -docstring "inc"
 map global normal <c-x> ': inc %val{count} -<ret>' -docstring "dec"
 
-declare-option -docstring %{
-    Command for opening URLs.
-} str url_open_cmd 'xdg-open %s'
-define-command -docstring %{
-    Open the URL the cursor is on with url_open_cmd.
-} url-open %{
+declare-option -docstring %{ Command for opening URLs. } str url_open_cmd 'xdg-open %s'
+define-command -docstring %{ Open the URL the cursor is on with url_open_cmd. } url-open %{
     evaluate-commands -save-regs 'ab' %{
         set-register b 'https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
         try %{

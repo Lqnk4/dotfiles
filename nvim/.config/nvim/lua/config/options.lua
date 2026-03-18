@@ -12,7 +12,7 @@ opt.signcolumn = "yes"    -- When and how to draw the signcolumn.
 opt.cursorline = true
 opt.cursorlineopt = "number"     -- Highlighting of the current line
 
-vim.o.cmdheight = 1       -- Size of commands line
+vim.o.cmdheight = 0       -- Size of commands line
 
 -- vim.o.winborder = "single" -- global floatborder
 
