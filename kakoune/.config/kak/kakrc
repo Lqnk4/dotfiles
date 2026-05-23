@@ -42,8 +42,8 @@ define-command -hidden -params 2 inc %{ try %{
 map global normal <c-a> ': inc %val{count} +<ret>' -docstring "inc"
 map global normal <c-x> ': inc %val{count} -<ret>' -docstring "dec"
 
-declare-option -docstring %{ Command for opening URLs. } str url_open_cmd 'xdg-open %s'
-define-command -docstring %{ Open the URL the cursor is on with url_open_cmd. } url-open %{
+declare-option -docstring %{ Command for using xdg-open } str xdg_open_cmd 'xdg-open %s'
+define-command -docstring %{ Open the URL the cursor is on with xdg_open_cmd. } url-open %{
     evaluate-commands -save-regs 'ab' %{
         set-register b 'https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
         try %{
@@ -55,10 +55,10 @@ define-command -docstring %{ Open the URL the cursor is on with url_open_cmd. } 
             evaluate-commands %sh{
                 # strip trailing punctuation
                 clean_url="$(echo "$kak_reg_a" | sed 's/[][(){}.,;!?]*$//')"
-                if eval "$(printf "$kak_opt_url_open_cmd" "$clean_url")" >/dev/null 2>&1; then
+                if eval "$(printf "$kak_opt_xdg_open_cmd" "$clean_url")" >/dev/null 2>&1; then
                     echo "info -title 'URL Opened' '$clean_url'"
                 else
-                    echo "fail 'url_open_cmd failed!'"
+                    echo "fail 'xdg_open_cmd failed!'"
                 fi
             }
         } catch %{
@@ -68,6 +68,11 @@ define-command -docstring %{ Open the URL the cursor is on with url_open_cmd. } 
 }
 map global goto x '<a-;>: url-open<ret>' -docstring 'url'
 
+define-command -docstring "Open PDF version of current file" open-pdf %{
+    nop %sh{
+        xdg-open "${kak_buffile%.*}.pdf" >/dev/null 2>&1 &
+    } 
+}
 
 # Options
 set-option global tabstop 4
@@ -170,4 +175,6 @@ hook global WinSetOption filetype=rust %{
 hook global WinSetOption filetype=typst %{
     set-option window autowrap_column 80
     autowrap-enable
+
+    map window goto p '<a-;>:open-pdf<ret>' -docstring 'open pdf'
 }
