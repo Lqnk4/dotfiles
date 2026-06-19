@@ -24,3 +24,6 @@ nvim/.config/nvim/lua/plugins/dev.lua
 
 # Ignore GTK-3.0 themes
 gtk-3.0/.themes/**
+
+# Ignore htop history
+htop/.config/htop/htop_history
