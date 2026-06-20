@@ -25,8 +25,14 @@ hook global WinSetOption filetype=lean %{
     hook -group lean4-infoview window NormalIdle .* %{ lean4_update_infoview } 
     hook -group lean4-infoview window InsertIdle .* %{ lean4_update_infoview }
 
-    hook -group lean4-abbreviations window ModeChange pop:insert:.* %{ lean4_replace_abbreviations }
-    hook -group lean4-abbreviations window InsertKey <ret> %{ lean4_replace_abbreviations }
+    hook -group lean4-abbrev window InsertChar '[ .,;:(){}]' %{ lean4_expand_abbrevs }
+    hook -group lean4-abbrev window InsertKey '<tab>' %{ lean4_expand_abbrevs }
+    hook -group lean4-abbrev window InsertChar \n %{
+        execute-keys "<up>"
+        lean4_expand_abbrevs
+        execute-keys "<down>"
+    }
+    hook -group lean4-abbrev window ModeChange pop:insert:.* %{ lean4_expand_abbrevs }
 
     hook -once -always window WinSetOption filetype=.* %{ remove-hooks window lean4-.+ }
 }
@@ -55,10 +61,20 @@ define-command -hidden lean4_update_infoview %{
 }
 
 # Abbreviations
-define-command -hidden lean4_replace_abbreviations %{
-    execute-keys -draft %{
-        %|python $kak_config/lean4-replace-abbreviations.py<ret>
-    }
+define-command -hidden lean4_expand_abbrevs %{
+    try %[
+        evaluate-commands -draft -save-regs '"' %{
+                execute-keys "xs\\\S+<ret>"
+                set-register '"' %sh{
+                    printf '<%s>' "$kak_selection" >&2
+                    python $kak_config/lean4_expand_abbrevs.py $kak_selection
+                }
+                execute-keys "R"
+        }
+        try %[
+            execute-keys "<a-;>x<a-;>s\$CURSOR<ret><a-;>d"
+        ]
+    ]
 }
 
 # Indentation
