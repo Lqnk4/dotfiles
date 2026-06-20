@@ -28,9 +28,12 @@ hook global WinSetOption filetype=lean %{
     hook -group lean4-abbrev window InsertChar ' ' %{ lean4_expand_abbrevs }
     hook -group lean4-abbrev window InsertKey '<tab>' %{ lean4_expand_abbrevs }
     hook -group lean4-abbrev window InsertChar \n %{
-        execute-keys "<up>"
-        lean4_expand_abbrevs
-        execute-keys "<down>"
+        evaluate-commands -draft %sh{
+            printf 'select %s.%s,%s.%s\n' \
+            $((${kak_cursor_line}-1)) ${kak_cursor_column} \
+            $((${kak_cursor_line}-1)) ${kak_cursor_column}
+            printf 'lean4_expand_abbrevs'
+        }
     }
     hook -group lean4-abbrev window ModeChange pop:insert:.* %{ lean4_expand_abbrevs }
 
@@ -61,18 +64,21 @@ define-command -hidden lean4_update_infoview %{
 }
 
 # Abbreviations
+declare-option -hidden str lean4_saved_sel
 define-command -hidden lean4_expand_abbrevs %{
     try %[
         evaluate-commands -draft -save-regs '"' %{
                 execute-keys "xs\\\S+<ret>"
                 set-register '"' %sh{
-                    printf '<%s>' "$kak_selection" >&2
                     python $kak_config/lean4_expand_abbrevs.py $kak_selection
                 }
                 execute-keys "R"
         }
+        set-option window lean4_saved_sel %val{selection_desc}
         try %[
             execute-keys "<a-;>x<a-;>s\$CURSOR<ret><a-;>d"
+        ] catch %[
+            select %opt{lean4_saved_sel}
         ]
     ]
 }
