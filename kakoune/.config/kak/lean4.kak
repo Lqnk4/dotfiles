@@ -25,7 +25,7 @@ hook global WinSetOption filetype=lean %{
     hook -group lean4-infoview window NormalIdle .* %{ lean4_update_infoview } 
     hook -group lean4-infoview window InsertIdle .* %{ lean4_update_infoview }
 
-    hook -group lean4-abbrev window InsertChar '[ .,;:(){}]' %{ lean4_expand_abbrevs }
+    hook -group lean4-abbrev window InsertChar ' ' %{ lean4_expand_abbrevs }
     hook -group lean4-abbrev window InsertKey '<tab>' %{ lean4_expand_abbrevs }
     hook -group lean4-abbrev window InsertChar \n %{
         execute-keys "<up>"
