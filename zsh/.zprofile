@@ -52,6 +52,6 @@ export ANKI_WAYLAND=1
 
 # autostart wm
 if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ] && command -v river; then
-  exec river -c $HOME/.local/bin/riverhs # remove -c flag to default to backup config
+  exec river -c kwm
 fi
 
