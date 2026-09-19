@@ -114,7 +114,8 @@
         },
         // set null to disable status part
         .status = .{
-            .data = .{ .text = "^#ff0000ffk^#00ff00ffw^#0000ffffm" }, // .stdin or .{ .fifo = "fifo file path" }, could use ^#RGBA to switch text color, and use ^#! to switch back to default color
+            // .data = .{ .text = "^#ff0000ffa^#00ff00ffw^#0000ffffm" }, // .stdin or .{ .fifo = "fifo file path" }, could use ^#RGBA to switch text color, and use ^#! to switch back to default color
+            .data = .{ .text = "" },
 
             .click = .{
                 .middle = .{ .spawn = .{ .argv = .{ "foot" } } },
@@ -217,8 +218,8 @@
         .tile = .{
             .nmaster = 1,
             .mfact = 0.55,
-            .inner_gap = 12,
-            .outer_gap = 9,
+            .inner_gap = 2,
+            .outer_gap = 2,
 
             // .left
             // .right
