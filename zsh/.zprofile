@@ -51,8 +51,7 @@ export ANKI_WAYLAND=1
 ### WM
 
 # autostart wm
-if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ] && command -v river; then
-  $HOME/.config/kwm/status.sh &
-  exec river -c kwm
+if [ -z "$WAYLAND_DISPLAY" ] && [ $(tty) = "/dev/tty1" ] && command -v mango; then
+  exec mango
 fi
 

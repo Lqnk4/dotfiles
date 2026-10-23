@@ -1,0 +1,32 @@
+[theme]
+mode = "dark"
+
+[bar.default]
+position = "top"
+start = ["workspaces"]
+center = ["active_window"]
+end = ["notifications", "clipboard", "network", "bluetooth", "tray", "volume", "clock", "home", "session"]
+margin_ends = 0
+radius = 0
+capsule_radius = 0
+
+[widget.workspaces]
+style = "minimal"
+scale = 1.3
+active_pill_size = 1.0
+
+[idle]
+behavior_order = ["lock", "screen-off", "suspend"]
+pre_action_fade_seconds = 2.0
+[idle.behavior.lock]
+timeout = 900
+action = "lock"
+enabled = true
+[idle.behavior.screen-off]
+timeout = 1200
+action = "screen_off"       
+enabled = true
+[idle.behavior.suspend]
+timeout = 1500
+action = "lock_and_suspend"
+
