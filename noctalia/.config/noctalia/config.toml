@@ -5,7 +5,7 @@ mode = "dark"
 position = "top"
 start = ["workspaces"]
 center = ["active_window"]
-end = ["notifications", "clipboard", "network", "bluetooth", "tray", "volume", "clock", "home", "session"]
+end = ["notifications", "clipboard", "network", "bluetooth", "tray", "volume", "battery", "clock", "home", "session"]
 margin_ends = 0
 radius = 0
 capsule_radius = 0
@@ -30,3 +30,5 @@ enabled = true
 timeout = 1500
 action = "lock_and_suspend"
 
+[lockscreen]
+transition = []
